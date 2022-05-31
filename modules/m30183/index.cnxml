@@ -1,0 +1,642 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lập trình logic</title>
+  <metadata>
+  <md:content-id>m30183</md:content-id><md:title>Lập trình logic</md:title>
+  <md:abstract/>
+  <md:uuid>f2cf6a08-2110-40ef-ab6b-ce20d57974e3</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-89219554079">
+      <title>TỔNG QUAN</title>
+      <section id="id-459921451946">
+        <title>Mục tiêu</title>
+        <para id="id19889678">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id19889684" list-type="bulleted">
+          <item>Khái niệm về lập trình logic.</item>
+          <item>Các nguyên tắc trong lập trình logic.</item>
+          <item>Viết chương trình đơn giản bằng ngôn ngữ Prolog.</item>
+        </list>
+      </section>
+      <section id="id-594661605072">
+        <title>Nội dung cốt lõi</title>
+        <list id="id19889717" list-type="bulleted">
+          <item>Lập trình logic.</item>
+          <item>Căn bản về ngôn ngữ lập trình Prolog.</item>
+        </list>
+      </section>
+      <section id="id-715140279663">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id19630008">Kiến thức và kĩ năng lập trình căn bản</para>
+      </section>
+    </section>
+    <section id="id-059500446284">
+      <title>GIỚI THIỆU VỀ LẬP TRÌNH LOGIC</title>
+      <para id="id19630024">Trong lập trình logic, ta có thể sử dụng các vị từ để định nghĩa các khái niệm của tất cả các môn khoa học khác.</para>
+      <para id="id19630034">Ví dụ định nghĩa một số nguyên tố:</para>
+      <para id="id19630040">Số nguyên tố N là một số nguyên lớn hơn 1, chỉ chia hết cho 1 và chính nó.</para>
+      <para id="id19630047">Để xét xem số N có phải là số nguyên tố hay không, người ta thường sử dụng dấu hiệu nhận biết: Số nguyên tố là một số nguyên dương, không chia hết cho mọi số nguyên tố nhỏ hơn nó và 2 là số nguyên tố nhỏ nhất. </para>
+      <para id="id19630061">Dấu hiệu này có thể mô tả bằng các vị từ như sau:</para>
+      <list id="id19630067" list-type="bulleted">
+        <item>2 là một số nguyên tố.</item>
+        <item>N là một số nguyên tố nếu N&gt;0, M là số nguyên tố nào đó, M&lt;N và N không chia hết cho M.</item>
+      </list>
+      <para id="id19630086">Khi mô tả bài toán dưới dạng logic vị từ, ta có thể yêu cầu hệ thống tìm kiếm các lời giải liên quan đến các khai báo đó. Bài toán cần giải được xem là “mục tiêu” mà hệ thống phải chứng minh trên cơ sở các tri thức đã được khai báo.</para>
+      <para id="id19630100">Như thế, toàn bộ các ký hiệu của ngôn ngữ lập trình suy về một công thức đặc biệt:</para>
+      <list id="id19630108" list-type="bulleted">
+        <item>Phát sinh từ một yêu cầu.</item>
+        <item>Nhằm chứng minh một mục tiêu. Để trả lời cho câu hỏi đó hệ thống xem nó như là một “đích” và cố chứng minh “đích” đó bằng cách tạo những suy diễn trên cơ sở các tri thức đã khai báo.</item>
+      </list>
+      <para id="id19630132">Một ngôn ngữ logic có thể được dùng trong giai đoạn đặc tả yêu cầu của quy trình xây dựng một sản phẩm phần mềm. Hơn thế nữa, logic vị từ cho phép biểu diễn hầu hết các khái niệm và các định lý trong các bộ môn khoa học.</para>
+      <para id="id19630146">Một trong những ngôn ngữ lập trình logic có hỗ trợ rất nhiều cho lĩnh vực trí tuệ nhân tạo mà ta xét đến ở đây đó là ngôn ngữ Prolog.</para>
+    </section>
+    <section id="id-762566017698">
+      <title>NGÔN NGỮ PROLOG</title>
+      <section id="id-561882913376">
+        <title>Giới thiệu</title>
+        <para id="id19630172">Prolog là một ngôn ngữ cấp cao, có đặc điểm gần với ngôn ngữ tự nhiên, từ những người mới học đến những lập trình viên chuyên nghiệp đều có thể tiếp cận một cách nhanh chóng, viết ra một chương trình ứng dụng hữu ích.</para>
+        <para id="id19630186">Prolog ra đời vào năm 1973 do C.Camerauer (Đại học Marseilles, Pháp) và nhóm đồng sự phát triển. Từ đó đến nay, qua nhiều lần cải tiến, đặc biệt hãng Borland cho ra đời phần mềm TURBO PROLOG với nhiều ưu điểm, thuận tiện cho người sử dụng. Để giải quyết một số vấn đề, ta nhận thấy sử dụng ngôn ngữ Prolog cho ta chương trình gọn nhẹ hơn nhiều so với các ngôn ngữ khác.</para>
+        <para id="id19630211">Khác với những ngôn ngữ cấu trúc như Pascal, hay C mà ta đã làm quen, Prolog là một ngôn ngữ mô tả, với một số sự kiện và quy luật suy diễn đã mô tả, Prolog sẽ suy luận cho ta các kết quả.</para>
+      </section>
+      <section id="id-735518943923">
+        <title>Các yếu tố cơ bản của Turbo Prolog</title>
+        <para id="id19630233">Trong một chương trình Prolog, ta cần khai báo các yếu tố sau đây: đối tượng, quan hệ giữa các đối tượng, sự kiện và các luật.</para>
+        <section id="id-267570731989">
+          <title>Đối tượng</title>
+          <para id="id19630250">Gồm có các hằng và biến. Hằng mang giá trị cho sẵn ở đầu chương trình hoặc trong quá trình viết ta đưa vào; Các biến có giá trị thay đổi sẽ được gán giá trị khi chạy chương trình. Tên biến là một ký tự hoa hoặc một chuỗi ký tự, bắt đầu bằng một ký tự hoa. </para>
+          <para id="id19630277">Có một loại biến đặc biệt gọi là biến tự do, biến này không có tên và người ta dùng ký hiệu _ (dấu gạch dưới) thay cho tên biến. </para>
+        </section>
+        <section id="id-755056084023">
+          <title>Quan hệ giữa các đối tượng</title>
+          <para id="id19630296">Quan hệ giữa các đối tượng được dùng dưới hình thức vị từ.</para>
+          <para id="id19630303">Ví dụ: Thich(X,Y) là vị từ diễn tả câu “X thích Y” trong ngôn ngữ tự nhiên.</para>
+          <para id="id19630311">Blue(car) là vị từ diễn tả câu “Car is blue”.</para>
+          <para id="id19630319">Như vậy các vị từ sẽ bao gồm tên của vị từ và các đối số của nó. Các đối số được đặt trong ngoặc và phân cách nhau bởi dấu phẩy.</para>
+        </section>
+        <section id="id-453460734476">
+          <title>Sự kiện và luật</title>
+          <para id="id19630338">Sự kiện là một vị từ diễn tả một sự thật. </para>
+          <para id="id19630347">Ví dụ: “2 là một số nguyên tố” là một sự kiện vì nó diễn tả sự thật 2 là một số nguyên tố. </para>
+          <para id="id19630359">Luật là vị từ diễn tả quy luật suy diễn mà ta công nhận đúng. Luật được trình bày dưới dạng một mệnh đề.</para>
+          <para id="id19630372">Ví dụ để suy diễn số nguyên N bất kỳ là một số nguyên tố ta viết:</para>
+          <para id="id19630382">“N là một số nguyên tố nếu N&gt;0, M là số nguyên tố nào đó, M&lt;N và N không chia hết cho M”.</para>
+        </section>
+      </section>
+      <section id="id-335118847264">
+        <title>Cấu trúc của một chương trình Prolog</title>
+        <para id="id19630400">Một chương trình Prolog thường gồm có 3 hoặc 4 đoạn cơ bản: clauses, predicates, domains và goal. Phần goal có thể bỏ đi, nếu ta không thiết kế goal trong chương trình, thì khi thực hiện, hệ thống sẽ yêu cầu ta nhập goal vào.</para>
+        <section id="id-404022100148">
+          <title>Phần Domains</title>
+          <para id="id19630421">Đây là phần định nghĩa kiểu mới dựa vào các kiểu đã biết. Các kiểu được định nghĩa ở đây sẽ được sử dụng cho các đối số trong các vị từ. Nếu các vị từ sử dụng đối số có kiểu cơ bản thì có thể không cần phải định nghĩa lại các kiểu đó. Tuy nhiên để cho chương trình sáng sủa, người ta sẽ định nghĩa lại cả các kiểu cơ bản.</para>
+          <para id="id19630441">Cú pháp: &lt;danh sách kiểu mới&gt; = &lt;kiểu đã biết&gt; hoặc &lt;danh sách kiểu mới&gt; = &lt;danh sách kiểu đã biết&gt; </para>
+          <para id="id19630483">Trong đó các kiểu mới phân cách nhau bởi dấu phẩy, còn các kiểu đã biết phân cách nhau bởi dấu chấm phẩy. </para>
+          <para id="id19630492">Ví dụ: </para>
+          <para id="id19630497">Domains</para>
+          <para id="id19630502">ten, tac_gia, nha_xb, dia_chi = string</para>
+          <para id="id19630506">nam, thang, so_luong = integer</para>
+          <para id="id19630510">dien_tich = real</para>
+          <para id="id19630514">nam_xb = nxb(thang, nam)</para>
+          <para id="id19630519">do_vat = sach(tac_gia, ten, nha_xb, nam_xb); xe(ten, so_luong); nha(dia_chi, dien_tich)</para>
+          <para id="id19630526">Trong ví dụ trên, ta đã định nghĩa các kiểu mới, trong đó các kiểu mới ten, tac_gia, nha_xb, dia_chi dựa vào cùng một kiểu đã biết là string; các kiểu mới nam, thang, so_luong dựa vào cùng một kiểu đã biết là integer; kiểu mới dien_tich dựa vào kiểu đã biết là real; kiểu mới năm_xb dựa vào kiểu nxb được xây dựng từ các kiểu đã biết là thang, nam; còn kiểu do_vat lại dựa vào các kiểu sach, xe, nha mà các kiểu này lại dựa vào các kiểu đã biết. </para>
+        </section>
+        <section id="id-0917362143416">
+          <title>Phần Predicates</title>
+          <para id="id19630611">Đây là phần bắt buộc phải có. Trong phần này chúng ta cần phải khai báo đầy đủ các vị từ sử dụng trong phần Clauses, ngoại trừ các vị từ mà Turbo Prolog đã xây dựng sẵn. </para>
+          <para id="id19630619">Cú pháp: &lt;Tên vị từ&gt; (&lt;danh sách các kiểu&gt;) </para>
+          <para id="id19630648">Các kiểu là các kiểu cơ bản hoặc là các kiểu đã được định nghĩa trong phần domains và được viết phân cách nhau bơi dấu phẩy.</para>
+          <para id="id19630659">Ví dụ:</para>
+          <para id="id19630663">Predicates</para>
+          <para id="id19630668">so_huu (ten, do_vat)</para>
+          <para id="id19630673">so_nguyen_to(integer)</para>
+          <para id="id19630677">Trong ví dụ trên ta khai báo hai vị từ. Trong đó vị từ so_huu (ten, do_vat) để chỉ một người có tên là ten sẽ sở hữu môt do_vat nào đó. Còn vị từ so_nguyen_to(integer) để xét xem một số integer nào đó có phải là số nguyên tố hay không. </para>
+        </section>
+        <section id="id-105376184762">
+          <title>Phần Clauses</title>
+          <para id="id19630727">Đây là phần bắt buộc phải có dùng để mô tả các sự kiện và các luật, sử dụng các vị từ đã khai báo trong phần predicates.</para>
+          <para id="id19630734">Cú pháp:</para>
+          <para id="id19630739">&lt;Tên vị từ&gt;(&lt;danh sách các tham số&gt;) &lt;kí hiệu&gt;</para>
+          <para id="id19289023">&lt;Tên vị từ 1&gt;(&lt;danh sách các tham số 1&gt;) &lt;kí hiệu&gt;</para>
+          <para id="id19289057">………</para>
+          <para id="id19289066">&lt;Tên vị từ N&gt;(&lt;danh sách các tham số N&gt;) &lt;kí hiệu&gt;</para>
+          <para id="id19289100">Trong đó: Tên vị từ phải là các tên vị từ đã được khai báo trong phần predicates. Các tham số có thể là các hằng hoặc biến có kiểu tương thích với các kiểu tương ứng đã được khai báo trong các vị từ ở trong phần predicates; các tham số được viết cách nhau bởi dấu phẩy. Các kí hiệu bao gồm: </para>
+          <para id="id19289140">:- (điều kiện nếu).</para>
+          <para id="id19289149">, (điều kiện và).</para>
+          <para id="id19289158">; (điều kiện hoặc).</para>
+          <para id="id19289168">. (kết thúc vị từ)</para>
+          <para id="id19289179">Ví dụ:</para>
+          <para id="id19289184">Clauses</para>
+          <para id="id19289188">so_nguyen_to(2):-!.</para>
+          <para id="id19289196">so_nguyen_to(N):-N&gt;0,</para>
+          <para id="id19289205">so_nguyen_to(M),</para>
+          <para id="id19289214">M&lt;N,</para>
+          <para id="id19289223">N MOD M &lt;&gt;0.</para>
+          <para id="id19289232">so_huu(“Nguyen Van A”, sach(“Do Xuan Loi”, “Cau truc DL”, “Khoa hoc Ky thuat”, nxb(8,1985))).</para>
+          <para id="id19289241">Chú ý: Nếu trong các tham số của một vị từ có biến thì biến này phải xuất hiện ít nhất 2 lần trong vị từ đó hoặc trong các vị từ dùng để suy diễn ra vị từ đó. Nếu chỉ xuất hiện một lần thì bắt buộc phải dùng biến tự do.</para>
+          <para id="id19289260">Ví dụ: Để diễn tả sự kiện: Tổ hợp chập 0 của N (N bất kỳ) bằng 1, ta không thể viết Tohop(N,0,1) vì biến N chỉ xuất hiện đúng một lần trong vị từ này, do đó ta phải viết Tohop(_,0,1) . </para>
+        </section>
+        <section id="id-0715418187382">
+          <title>Phần Goal</title>
+          <para id="id19289296">Bao gồm các mục tiêu mà ta yêu cầu Turbo Prolog xác định và tìm kết quả. Đây là phần không bắt buộc phải có. Nếu ta viết sẵn trong chương trình thì đó gọi là goal nội; Nếu không, khi chạy chương trình Turbo Prolog sẽ yêu cầu ta nhập goal vào, lúc này gọi là goal ngoại.</para>
+          <para id="id19289310">Cú pháp phần goal giống như cú pháp phần clauses. Tức là ta đưa vào một hoặc một số các vị từ. </para>
+          <para id="id19289319">Nếu tất cả các tham số của vị từ là hằng thì kết quả nhận được là Yes (đúng) hoặc No (sai). Nếu trong các tham số của vị từ có biến thì kết quả trả về sẽ là các giá trị của biến.</para>
+          <para id="id19289332">Ngoài các phần chủ yếu nói trên, ta có thể đưa vào các phần liên quan đến khai báo hằng, các tập tin liên quan hoặc chỉ thị dịch.</para>
+          <para id="id19289342">Ví dụ: </para>
+          <para id="id19289347">Constants</para>
+          <para id="id19289352">Pi = 3.141592653</para>
+        </section>
+        <section id="id-593345075316">
+          <title>Một số ví dụ về chương trình prolog</title>
+          <para id="id19289367">Ví dụ 1: Xét xem một số N có phải là số nguyên tố hay không.</para>
+          <para id="id19289378">domains</para>
+          <para id="id19289383">so_nguyen = integer</para>
+          <para id="id19289388">predicates</para>
+          <para id="id19289392">so_nguyen_to(so_nguyen)</para>
+          <para id="id19289397">Clauses</para>
+          <para id="id19289402">so_nguyen_to(2):-!.</para>
+          <para id="id19289410">so_nguyen_to(N):-N&gt;0,</para>
+          <para id="id19289418">so_nguyen_to(M),</para>
+          <para id="id19289427">M&lt;N,</para>
+          <para id="id19289436">N MOD M &lt;&gt;0.</para>
+          <para id="id19289445">goal</para>
+          <para id="id19289450">so_nguyen_to(13).</para>
+          <para id="id19289456">Ví dụ 2: Giả sử ta có bảng số liệu như sau:</para>
+          <table id="id19289466" summary="">
+            <tgroup cols="4">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <colspec colnum="4" colname="c4"/>
+              <tbody>
+                <row>
+                  <entry>Tên người</entry>
+                  <entry>giới tính</entry>
+                  <entry>Đặc điểm</entry>
+                  <entry>Tiêu chuẩn kết bạn</entry>
+                </row>
+                <row>
+                  <entry>lan</entry>
+                  <entry>nữ</entry>
+                  <entry>đẹp, khoẻ, tốt, </entry>
+                  <entry>khoẻ, thông minh, đẹp</entry>
+                </row>
+                <row>
+                  <entry>hồng</entry>
+                  <entry>nữ</entry>
+                  <entry>đẹp, thông minh, giàu</entry>
+                  <entry>khoẻ, thông minh, giàu</entry>
+                </row>
+                <row>
+                  <entry>thuỷ</entry>
+                  <entry>nữ</entry>
+                  <entry>tốt, khoẻ, giàu</entry>
+                  <entry>đẹp, khoẻ, thông minh</entry>
+                </row>
+                <row>
+                  <entry>anh</entry>
+                  <entry>nam</entry>
+                  <entry>khoẻ, giàu, thông minh</entry>
+                  <entry>đẹp, thông minh, tốt</entry>
+                </row>
+                <row>
+                  <entry>bình</entry>
+                  <entry>nam</entry>
+                  <entry>đẹp, khoẻ, thông minh</entry>
+                  <entry>đẹp, khoẻ</entry>
+                </row>
+                <row>
+                  <entry>hùng</entry>
+                  <entry>nam</entry>
+                  <entry>giàu, thông minh, khoẻ </entry>
+                  <entry>tốt, thông minh, khoẻ </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19907235">Tiêu chuẩn kết bạn là hai người khác phái, người này hội đủ các tiêu chuẩn của người kia và ngược lại. Hãy viết chương trình để tìm ra các cặp có thể kết bạn với nhau.</para>
+          <para id="id19907247">domains</para>
+          <para id="id19907251">ten, g_tinh = symbol</para>
+          <para id="id19907259">predicates</para>
+          <para id="id19907263">gioi_tinh(ten, g_tinh)</para>
+          <para id="id19907271">dep(ten)</para>
+          <para id="id19907279">tot(ten)</para>
+          <para id="id19907287">giau(ten)</para>
+          <para id="id19907295">thong_minh(ten)</para>
+          <para id="id19907302">khoe(ten)</para>
+          <para id="id19907310">thich(ten,ten)</para>
+          <para id="id19907318">ket_ban(ten,ten)</para>
+          <para id="id19907326">clauses</para>
+          <para id="id19907331">gioi_tinh(lan,nu).</para>
+          <para id="id19907338">gioi_tinh(hong,nu).</para>
+          <para id="id19907346">gioi_tinh(thuy,nu).</para>
+          <para id="id19907354">gioi_tinh(anh,nam). </para>
+          <para id="id19907362">gioi_tinh(binh,nam).</para>
+          <para id="id19907370">gioi_tinh(hung,nam).</para>
+          <para id="id19907381">dep(lan). </para>
+          <para id="id19907390">dep(hong). </para>
+          <para id="id19907399">dep(binh). </para>
+          <para id="id19907413">khoe(thuy).</para>
+          <para id="id19907420">khoe(lan).</para>
+          <para id="id19907428">khoe(binh).</para>
+          <para id="id19907436">khoe(anh).</para>
+          <para id="id19907444">khoe(hung).</para>
+          <para id="id19907454">tot(lan).</para>
+          <para id="id19907462">tot(thuy).</para>
+          <para id="id19907473">thong_minh(hong).</para>
+          <para id="id19907481">thong_minh(anh).</para>
+          <para id="id19907489">thong_minh(hung).</para>
+          <para id="id19907497">thong_minh(binh).</para>
+          <para id="id19907508">giau(hong).</para>
+          <para id="id19907515">giau(thuy).</para>
+          <para id="id19907523">giau(hung).</para>
+          <para id="id19907534">thich(lan,X):-khoe(X), dep(X), thong_minh(X).</para>
+          <para id="id19907542">thich(hong,X):-khoe(X), thong_minh(X), giau(X).</para>
+          <para id="id19907551">thich(thuy,X):-khoe(X), dep(X), thong_minh(X).</para>
+          <para id="id19907559">thich(ann,X):-dep(X), tot(X), thong_minh(X).</para>
+          <para id="id19907567">thich(binh,X):-dep(X), khoe(X).</para>
+          <para id="id19907575">thich(hung,X):-khoe(X), tot(X), thong_minh(X).</para>
+          <para id="id19907586">ket_ban(X,Y):- gioi_tinh(X,M),</para>
+          <para id="id19907594">gioi_tinh(Y,N),</para>
+          <para id="id19907605">M&lt;&gt;N,</para>
+          <para id="id19907612">thich(X,Y),</para>
+          <para id="id19907623">thich(Y,X).</para>
+        </section>
+      </section>
+      <section id="id-142046225889">
+        <title>Các nguyên tắc của ngôn ngữ Prolog</title>
+        <para id="id19907641">Việc giải quyết vấn đề trong ngôn ngữ Prolog chủ yếu dựa vào hai nguyên tắc sau: Đồng nhất, quay lui.</para>
+        <section id="id-531919759637">
+          <title>Đồng nhất</title>
+          <para id="id19907658">Một quan hệ có thể đồng nhất với một quan hệ nào đó cùng tên, cùng số lượng tham số, các đại lượng con cũng đồng nhất theo từng cặp.</para>
+          <para id="id19907668">Một hằng có thể đồng nhất với một hằng.</para>
+          <para id="id19907675">Một biến có thể đồng nhất với một hằng nào đó và có thể nhận luôn giá trị hằng đó.</para>
+          <para id="id19907683">Chẳng hạn trong ví dụ 2 nói trên nếu ta sử dụng goal dep(lan) thì có kết quả là Yes. Nếu ta dùng goal dep(X) thì sẽ có 3 kết quả: X=lan, X=hong và X=binh. </para>
+          <para id="id19907694">Khi ta dùng goal dep(lan) thì dep(lan) sẽ đồng nhất với sự kiện dep(lan) trong phần clauses và do hai vị từ đồng nhất với nhau và hai đối số hằng đồng nhất nhau nên kết quả là Yes.</para>
+          <para id="id19907706">Khi dùng goal dep(X) thì dep sẽ được đồng nhất với dep và biến X đồng nhất với hằng lan, do đó ta có kết quả X=lan. Tương tự X=hong và X=binh.</para>
+        </section>
+        <section id="id-231837898853">
+          <title>Quay lui</title>
+          <para id="id19907726">Giả sử hệ thống đang chứng minh goal g, trong đó g được mô tả như sau:</para>
+          <para id="id19907733">g :- g1, g2, …, gj-1, gj, …, gn.</para>
+          <para id="id19907767">Khi các gi kiểm chứng từ trái sang phải, đến gj là sai thì hệ thống sẽ quay lui lại gj-1 để tìm lời giải khác.</para>
+          <para id="id19907792">Chẳng hạn trong ví dụ 2 nói trên, khi ta yêu cầu Goal: thich(lan,X), ta được X=binh.</para>
+          <para id="id19907800">Vị từ thich(lan,X) sẽ được đồng nhất với thich(lan,X) trong phần clauses, theo đó hệ thống phải chứng minh thich(lan,X):-khoe(X), dep(X), thong_minh(X).</para>
+          <list id="id19907810" list-type="bulleted">
+            <item>Trước hết đồng nhất khoe(X) với khoe(thuy) =&gt; X=thuy.</item>
+            <item>Do dep(thuy) sai nên quay lui đồng nhất khoe(X) với khoe(lan) =&gt; X=lan.</item>
+            <item>Do dep(lan) đúng nên tiếp tục kiểm tra thong_minh(lan).</item>
+          </list>
+          <list id="id19907836" list-type="bulleted">
+            <item>Do thong_minh(lan) sai nên quay lui để đồng nhất khoe(X) với khoe(binh) để có X=binh, sau đó kiểm tra thấy dep(binh) và thong_minh(binh) đều đúng nên X=binh là một nghiệm. </item>
+          </list>
+        </section>
+      </section>
+      <section id="id-546855061543">
+        <title>Bộ ký tự, từ khoá</title>
+        <para id="id19907861">Prolog dùng bộ ký tự sau: các chữ cái và chữ số (A – Z, a – z, 0 – 9); các toán tử (+, -, *, /, &lt;, =, &gt;) và các ký hiệu đặc biệt.</para>
+        <para id="id19907870">Một số từ khoá:</para>
+        <list id="id19907875" list-type="enumerated">
+          <item>Trace: Khi có từ khoá này ở đầu chương trình, thì chương trình được thực hiện từng bước để theo dõi; dùng phím F10 để tiếp tục. </item>
+          <item>Fail: Khi ta dùng goal nội, chương trình chỉ cho ta một kết quả (mặc dù có thể còn những kết quả khác), để nhận về tất cả các kết quả khi chạy goal nội, ta dùng toán tử Fail.</item>
+          <item>! hay còn gọi là nhát cắt, goal ngoại luôn cho ta mọi kết quả, muốn nhận chỉ một kết quả từ goal ngoại, ta dùng ký hiệu !.</item>
+        </list>
+      </section>
+      <section id="id-415414690637">
+        <title>Các kiểu dữ liệu</title>
+        <para id="id19907940">Trong prolog có kiểu dữ liệu chuẩn và kiểu do người lập trình định nghĩa. </para>
+        <section id="id-442638165719">
+          <title>Kiểu dữ liệu chuẩn</title>
+          <para id="id19907955">Là kiểu dữ liệu do prolog định nghĩa sẵn. Prolog cung cấp các kiểu dữ liệu chuẩn là: char, integer, real, string và symbol.</para>
+          <list id="id19907965" list-type="enumerated">
+            <item>Char: Là kiểu ký tự. Hằng ký tự phải nằm giữa hai dấu nháy đơn.</item>
+          </list>
+          <para id="id19907984">Ví dụ: ‘a’, ‘#’.</para>
+          <list id="id19907989" list-type="enumerated">
+            <item>Integer: Là kiểu số nguyên, tập giá trị bao gồm các số nguyên từ -32768 đến 32767.</item>
+            <item>Real: Là kiểu số thực, tập giá trị bao gồm các số thực thuộc hai đoạn: đoạn các số âm từ -10307 đến -10-307 và đoạn số dương từ 10-307 đến 10307. </item>
+            <item>String: Là kiểu chuỗi ký tự. Hằng chuỗi ký tự phải nằm giữa hai dấu nháy kép.</item>
+          </list>
+          <para id="id19242829">Ví dụ: “Turbo prolog 2.0”</para>
+          <list id="id19242834" list-type="enumerated">
+            <item>Symbol: Là một kiểu sơ cấp, có hình thức giống chuỗi ký tự. Hằng symbol có hai dạng: Dãy các chữ, số và dấu gạch dưới viết liên tiếp, ký tự đầu phải viết thường (chẳng hạn: telephone_number); Dãy các ký tự ở giữa một cặp hai nháy kép (giống như chỗi ký tự)</item>
+            <item>Một số phép toán của các kiểu </item>
+          </list>
+          <para id="id19242866">Phép toán số học</para>
+          <table id="id19242871" summary="">
+            <tgroup cols="4">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <colspec colnum="4" colname="c4"/>
+              <tbody>
+                <row>
+                  <entry>Phép toán</entry>
+                  <entry>Ý nghĩa</entry>
+                  <entry>Kiểu của đối số</entry>
+                  <entry>Kiểu kết quả</entry>
+                </row>
+                <row>
+                  <entry>+</entry>
+                  <entry>Cộng hai số</entry>
+                  <entry>Integer, real</entry>
+                  <entry>giống kiểu đối số</entry>
+                </row>
+                <row>
+                  <entry>-</entry>
+                  <entry>Trừ hai số</entry>
+                  <entry>Integer, real</entry>
+                  <entry>giống kiểu đối số</entry>
+                </row>
+                <row>
+                  <entry>*</entry>
+                  <entry>Nhân hai số</entry>
+                  <entry>Integer, real</entry>
+                  <entry>giống kiểu đối số</entry>
+                </row>
+                <row>
+                  <entry>/</entry>
+                  <entry>Chia hai số</entry>
+                  <entry>Integer, real</entry>
+                  <entry>giống kiểu đối số</entry>
+                </row>
+                <row>
+                  <entry>Mod</entry>
+                  <entry>Phép chia lấy phần dư</entry>
+                  <entry>Integer</entry>
+                  <entry>Integer</entry>
+                </row>
+                <row>
+                  <entry>Div</entry>
+                  <entry>Phép chia lấy phần nguyên</entry>
+                  <entry>Integer</entry>
+                  <entry>Integer</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19243201">Phép toán quan hệ</para>
+          <table id="id19243206" summary="">
+            <tgroup cols="4">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <colspec colnum="4" colname="c4"/>
+              <tbody>
+                <row>
+                  <entry>Phép toán</entry>
+                  <entry>Ý nghĩa</entry>
+                  <entry>Kiểu của đối số</entry>
+                  <entry>Kết quả</entry>
+                </row>
+                <row>
+                  <entry>&lt;</entry>
+                  <entry>Nhỏ hơn</entry>
+                  <entry>Char, integer, real, string</entry>
+                  <entry>Yes hoặc No</entry>
+                </row>
+                <row>
+                  <entry>&lt;=</entry>
+                  <entry>Nhỏ hơn hay bằng</entry>
+                  <entry>Char, integer, real, string</entry>
+                  <entry>Yes hoặc No</entry>
+                </row>
+                <row>
+                  <entry>=</entry>
+                  <entry>Bằng</entry>
+                  <entry>Char, integer, real, string</entry>
+                  <entry>Yes hoặc No</entry>
+                </row>
+                <row>
+                  <entry>&gt;</entry>
+                  <entry>Lớn hơn</entry>
+                  <entry>Char, integer, real, string</entry>
+                  <entry>Yes hoặc No</entry>
+                </row>
+                <row>
+                  <entry>&gt;=</entry>
+                  <entry>Lớn hơn hay bằng</entry>
+                  <entry>Char, integer, real, string</entry>
+                  <entry>Yes hoặc No</entry>
+                </row>
+                <row>
+                  <entry>&lt;&gt; hay &gt;&lt;</entry>
+                  <entry>Khác</entry>
+                  <entry>Char, integer, real, string</entry>
+                  <entry>Yes hoặc No</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19243534">Các vị từ như các hàm toán học</para>
+          <table id="id19243540" summary="">
+            <tgroup cols="5">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <colspec colnum="4" colname="c4"/>
+              <colspec colnum="5" colname="c5"/>
+              <tbody>
+                <row>
+                  <entry>Vị từ</entry>
+                  <entry>Ý nghĩa</entry>
+                  <entry>Kiểu của đối số</entry>
+                  <entry>Kiểu kết quả</entry>
+                  <entry>Ví dụ</entry>
+                </row>
+                <row>
+                  <entry>Sin(X)</entry>
+                  <entry>Tính sin của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Tan(X)</entry>
+                  <entry>Tính tang của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Arctan(X)</entry>
+                  <entry>Tính arctang của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Exp(X)</entry>
+                  <entry>Tính eX</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Ln(X)</entry>
+                  <entry>Tính logarit cơ số e của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Log(X)</entry>
+                  <entry>Tính Logarit cơ số 10 của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>SQRT(X)</entry>
+                  <entry>Tính căn bậc hai của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>ROUND(X)</entry>
+                  <entry>Cho ta số nguyên là số X được làm tròn, dấu là dấu của X</entry>
+                  <entry>real</entry>
+                  <entry>integer</entry>
+                  <entry>round(2.3)=2round(2.5)=3round(-2.5)=-2round(-2.6)=-3</entry>
+                </row>
+                <row>
+                  <entry>TRUNC(X)</entry>
+                  <entry>Cho phần nguyên của số X, dấu là dấu của X</entry>
+                  <entry>real</entry>
+                  <entry>integer</entry>
+                  <entry>trunc(2.5)=2trunc(-2.6)=-2</entry>
+                </row>
+                <row>
+                  <entry>ABS(X)</entry>
+                  <entry>Cho ta trị tuyệt đối của X</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Random(X)</entry>
+                  <entry>Cho ta số thực X nằm trong khoảng [0, 1)</entry>
+                  <entry>real</entry>
+                  <entry>real</entry>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Random(Y, X)</entry>
+                  <entry>Cho ta số nguyên X nằm trong khoảng [0, Y)</entry>
+                  <entry>real</entry>
+                  <entry>integer</entry>
+                  <entry/>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19865942">Toán tử NOT(X) : Nếu X là Yes thì NOT(X) là No và ngược lại. </para>
+        </section>
+        <section id="id-988777318289">
+          <title>Các kiểu dữ liệu do người lập trình định nghĩa</title>
+          <list id="id19865962" list-type="enumerated">
+            <item>Kiểu mẩu tin: </item>
+          </list>
+          <para id="id19865975">Cú pháp: &lt;tên kiểu mẩu tin&gt; = tên mẩu tin (danh sách các kiểu phần tử)</para>
+          <para id="id19865988">Ví dụ: </para>
+          <para id="id19865993">Domains</para>
+          <para id="id19865997">ten, tac_gia, nha_xb, dia_chi = string</para>
+          <para id="id19866002">nam, thang, so_luong = integer</para>
+          <para id="id19866006">dien_tich = real</para>
+          <para id="id19866010">nam_xb = nxb(thang, nam)</para>
+          <para id="id19866015">do_vat = sach(tac_gia, ten, nha_xb, nam_xb); xe(ten, so_luong); nha(dia_chi, dien_tich)</para>
+          <para id="id19866022">predicates</para>
+          <para id="id19866027">so_huu(ten,do_vat)</para>
+          <para id="id19866033">clauses</para>
+          <para id="id19866037">so_huu(“Nguyen Van A”, sach(“Do Xuan Loi”, “Cau truc DL”, “Khoa hoc Ky thuat”, nxb(8,1985))).</para>
+          <para id="id19866046">so_huu(“Le thi B”, xe(“Dream II”, 2)).</para>
+          <para id="id19866054">so_huu(“Nguyen Huu C”, nha(“3/1 Ly Tu Trong, tp Can Tho”, 100.5))</para>
+          <list id="id19866062" list-type="enumerated">
+            <item>Kiểu danh sách </item>
+          </list>
+          <para id="id19866073">Cú pháp: &lt;tên kiểu danh sách&gt; = &lt;tên kiểu phần tử&gt;*</para>
+          <para id="id19866083">Ví dụ: </para>
+          <para id="id19866088">Domains </para>
+          <para id="id19866093">intlist = integer*</para>
+          <para id="id19866099">Một danh sách là một dãy các phần tử phân cách nhau bởi dấu phẩy và đặt trong cặp dấu ngoặc vuông.</para>
+          <para id="id19866108">Ví dụ:</para>
+          <para id="id19866112">[]% Danh sách rỗng</para>
+          <para id="id19866122">[1,2,3] % Danh sách gồm ba số nguyên 1, 2 và 3. </para>
+          <para id="id19866132">Cấu trúc của danh sách bao gồm hai phần: Phần đầu là phần tử đầu tiên của danh sách và phần đuôi là một danh sách của các phần tử còn lại.</para>
+          <para id="id19866142">Danh sách được viết theo dạng [X|Y] thì X là phần tử đầu và Y là danh sách đuôi. Chẳng hạn trong danh sách [1,2,3] thì đầu là số nguyên 1 và đuôi là danh sách [2,3].</para>
+          <para id="id19866154">Trong danh sách cũng có thể dùng biến tự do, chẳng hạn ta có thể viết [_|Y] để chỉ một danh sách có đầu là một phần tử nào đó và có đuôi là danh sách Y.</para>
+        </section>
+      </section>
+      <section id="id-36236661391">
+        <title>Các hàm xuất nhập chuẩn</title>
+        <section id="id-842833371843">
+          <title>Xuất ra màn hình</title>
+          <list id="id19866182" list-type="enumerated">
+            <item>Write( Arg1, Arg2, … ,Argn) in ra màn hình giá trị của các đối số.</item>
+            <item>Writef( Formatstring, Arg1, Arg2, … ,Argn) in ra màn hình giá trị của các đối số theo định dạng được chỉ định trong Formastring.</item>
+          </list>
+          <para id="id19866213">Trong đó Formastring là một chuỗi có thể là:</para>
+          <list id="id19866219" list-type="bulleted">
+            <item>“%d”: In số thập phân bình thường; đối số phải là char hoặc integer.</item>
+            <item>“%c”: Đối số là một số integer, in ký tự có mã Ascci là đối số đó, chẳng hạn writef(“%c”,65) được A.</item>
+            <item>“%e”: In số thực dưới dạng lũy thừa của 10.</item>
+            <item>“%x”: In số Hexa; đối số phải là char hoặc integer.</item>
+            <item>“%s”: In một chuỗi hoặc một symbol.</item>
+          </list>
+        </section>
+        <section id="id-367718272577">
+          <title>Nhập vào từ bàn phím</title>
+          <list id="id19866268" list-type="enumerated">
+            <item>Readln(X): Nhập một chuỗi ký tự vào biến X.</item>
+            <item>ReadInt(X): Nhập một số nguyên vào biến X.</item>
+            <item>ReadReal(X): Nhập một số thực vào biến X.</item>
+            <item>ReadChar(X): Nhập vào một ký tự vào biến X.</item>
+          </list>
+        </section>
+      </section>
+      <section id="id-11649894825">
+        <title>Kỹ thuật đệ quy</title>
+        <para id="id19866325">Đệ quy là kỹ thuật lập trình được sử dụng trong nhiều ngôn ngữ. Trong Turbo Prolog ta sử dụng đệ quy khi một vị từ được định nghĩa nhờ vào chính vị từ đó.</para>
+        <para id="id19866333">Như đã nói trong chương lập trình hàm, trong chương trình đệ quy phải có ít nhất một trường hợp dừng và lời gọi đệ quy phải chứa yếu tố dẫn đến trường hợp dừng. Trong Prolog, trường hợp dừng được thể hiện bằng một sự kiện, yếu tố dẫn đến trường hợp dừng thể hiện bằng một biến, liên hệ với biến ban đầu bởi một công thức. </para>
+        <para id="id19866348">Ví dụ 1: Tính n giai thừa.</para>
+        <para id="id19866354">Predicates</para>
+        <para id="id19866358">Facto (integer, integer)</para>
+        <para id="id19866364">Clauses</para>
+        <para id="id19866368">Facto(0,1):- !.</para>
+        <para id="id19866374">Facto(N, FactN) :- N &gt; 0, M = N – 1, facto(M, factM), factN = N*factM.</para>
+        <para id="id19866383">Ở ví dụ trên ta đã định nghĩa một vị từ dùng để tính giá trị giai thừa của một số tự nhiên, đối số thứ nhất là số cần tính giai thừa và đối số thứ hai dùng để nhận giá trị trả về.</para>
+        <para id="id19866392">Trường hợp dừng ở đây được xác đinh bởi sự kiện 0 giai thừa là 1.</para>
+        <para id="id19866399">Để tính N! ta tính M! với M= N-1. Yếu tố dẫn đến trường hợp dừng là biến M có giá trị bằng N-1.</para>
+        <para id="id19866406">Ví dụ 2: Xác định một phần tử trong danh sách các symbol</para>
+        <para id="id19866413">domains</para>
+        <para id="id19866417">symbol_list = symbol*</para>
+        <para id="id19866424">predicates</para>
+        <para id="id19866429">element1(integer,symbol_list,symbol)</para>
+        <para id="id19866438">element (integer,symbol_list,symbol)</para>
+        <para id="id19866449">clauses</para>
+        <para id="id19866453">% element1 không suy diễn ngược được</para>
+        <para id="id19866462">element1(1,[X|_],X).</para>
+        <para id="id19866475">element1(N,[_|L],Y):-M=N-1,</para>
+        <para id="id19866486">element1(M,L,Y).</para>
+        <para id="id19866496">% element có thể suy diễn ngược</para>
+        <para id="id19866504">element(1,[X|_],X).</para>
+        <para id="id19866513">element(N,[_|L],Y):-element(M,L,Y),</para>
+        <para id="id19866524">N=M+1. </para>
+        <para id="id19866540">Sự suy diễn thuận chiều là cho danh sách và vị trí, tìm được phần tử tại vị trí đó, chẳng hạn, nếu ta đưa vào goal element(2,[a,b,c,d],X) ta được X=b.</para>
+        <para id="id19866551">Sự suy diễn ngược ở đây là cho danh sách và phần tử, tìm được vị trí của phần tử đó, chẳng hạn, nếu ta đưa vào goal element(N,[a,b,c,d], b) ta được N=2. </para>
+        <para id="id19866562">Ví dụ 3: Sắp xếp một danh sách các số nguyên</para>
+        <para id="id19866568">domains</para>
+        <para id="id19866572">list=integer*</para>
+        <para id="id19866578">predicates</para>
+        <para id="id19866582">insert(integer,list,list)</para>
+        <para id="id19866588">sort(list,list)</para>
+        <para id="id19866597">clauses</para>
+        <para id="id19866601">insert(E,[],[E]).</para>
+        <para id="id19866610">insert(E,[A|B],[E,A|B]):-E&lt;=A.</para>
+        <para id="id19510176">insert(E,[A|B],[A|C]):-E&gt;A,insert(E,B,C).</para>
+        <para id="id19510191">sort([],[]).</para>
+        <para id="id19510199">sort([X|R1],L):-sort(R1,R),</para>
+        <para id="id19510210">insert(X,R,L).</para>
+      </section>
+    </section>
+  </content>
+</document>

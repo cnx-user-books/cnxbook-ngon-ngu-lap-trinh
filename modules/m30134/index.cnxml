@@ -1,0 +1,160 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Mở đầu</title>
+  <metadata>
+  <md:content-id>m30134</md:content-id><md:title>Mở đầu</md:title>
+  <md:abstract/>
+  <md:uuid>1ab806b4-ba15-472a-9d3b-088e98ded806</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-835216162268">
+      <title>TỔNG QUAN</title>
+      <section id="id-966204196114">
+        <title>Mục tiêu</title>
+        <para id="id20316539">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id20316546" list-type="bulleted">
+          <item>Khái niệm và phân loại các ngôn ngữ lập trình.</item>
+          <item>Vai trò của ngôn ngữ lập trình trong công nghệ phần mềm.</item>
+          <item>Lợi ích của việc nghiên cứu ngôn ngữ lập trình.</item>
+          <item>Các tiêu chuẩn để đánh giá ngôn ngữ lập trình. </item>
+        </list>
+      </section>
+      <section id="id-881288797976">
+        <title>Nội dung cốt lõi</title>
+        <list id="id20316587" list-type="bulleted">
+          <item>Khái niệm về ngôn ngữ lập trình.</item>
+          <item>Vai trò của ngôn ngữ lập trình.</item>
+          <item>Lợi ích của việc nghiên cứu ngôn ngữ lập trình.</item>
+          <item>Các tiêu chuẩn để đánh giá một ngôn ngữ lập trình tốt.</item>
+        </list>
+      </section>
+      <section id="id-729910700456">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id19456974">Kiến thức và kĩ năng lập trình căn bản</para>
+      </section>
+    </section>
+    <section id="id-232259686157">
+      <title>KHÁI NIỆM VỀ NGÔN NGỮ LẬP TRÌNH</title>
+      <para id="id19456991">Như chúng ta đã biết, máy tính bao gồm phần cứng là các thiết bị điện tử trong đó thông tin được biểu diễn dưới dạng số nhị phân và phần mềm bao gồm các chương trình được tạo ra bằng cách sử dụng các ngôn ngữ lập trình.</para>
+      <para id="id19457008">Như vậy ngôn ngữ lập trình (NNLT) là ngôn ngữ dùng để viết các chương trình cho máy tính. Cũng như các ngôn ngữ thông thường, NNLT cũng có từ vựng, cú pháp và ngữ nghĩa.</para>
+      <para id="id19457021">Theo tiến trình lịch sử phát triển, ngôn ngữ lập trình có thể được chia ra làm ba loại chủ yếu như sau: </para>
+      <para id="id19457039">Ngôn ngữ máy (machine language): Là các chỉ thị dưới dạng nhị phân, can thiệp trực tiếp vào trong các mạch điện tử. Chương trình được viết bằng ngôn ngữ máy thì có thể được thực hiện ngay không cần qua bước trung gian nào. Tuy nhiên chương trình viết bằng ngôn ngữ máy dễ sai sót, cồng kềnh và khó đọc, khó hiểu vì toàn những con số 0 và 1.</para>
+      <para id="id19457066">Hợp ngữ (assembly language): </para>
+      <para id="id19457072">Hợp ngữ là một bước tiến vượt bậc đưa ngôn ngữ lập trình thoát ra khỏi ngôn ngữ máy khó hiểu. Ngôn ngữ này xuất hiện vào những năm 1950, nó được thiết kế để máy tính trở nên thân thiện hơn với người sử dụng. Hợp ngữ đưa ra khái niệm biến (variable), nhờ đó mà ta có thể gán một ký hiệu cho một vị trí nào đó trong bộ nhớ mà không phải viết lại địa chỉ này dưới dạng nhị phân mỗi lần sử dụng. Hợp ngữ cũng chứa vài "phép toán giả", tức là ta có thể biểu biễn mã phép toán dưới dạng phát biểu (hay còn gọi là câu lệnh) thay vì dưới dạng nhị phân. Các câu lệnh bao gồm hai phần: phần mã lệnh (viết tựa tiếng Anh) chỉ phép toán cần thực hiện và phần tên biến chỉ địa chỉ chứa toán hạng của phép toán đó.</para>
+      <para id="id19457113">Ðể máy thực hiện được một chương trình viết bằng hợp ngữ thì chương trình đó phải được dịch sang ngôn ngữ máy. Công cụ thực hiện việc dịch đó được gọi là Assembler.</para>
+      <para id="id19457121">Ngôn ngữ cấp cao (High level language): Là ngôn ngữ được tạo ra và phát triển nhằm phản ánh cách thức người lập trình nghĩ và làm. Ngôn ngữ cấp cao rất gần với ngôn ngữ con người (Anh ngữ) nhưng chính xác như ngôn ngữ toán học. Nhờ ngôn ngữ cấp cao mà lĩnh vực lập trình trở nên phổ biến, rất nhiều người có thể viết được chương trình, và nhờ thế mà các phần mềm phát triển như vũ bão, phục vụ nhiều lĩnh vực của cuộc sống. Cùng với sự phát triển của các thế hệ máy tính, ngôn ngữ lập trình cấp cao cũng được phát triển rất đa dạng và phong phú, việc lập trình cho máy tính vì thế mà cũng có nhiều khuynh hướng khác nhau: lập trình cấu trúc, lập trình hướng đối tượng, lập trình logic, lập trình hàm... Một chương trình viết bằng ngôn ngữ cấp cao được gọi là chương trình nguồn (source programs). Ðể máy tính "hiểu" và thực hiện được các lệnh trong chương trình nguồn thì phải có một chương trình dịch để dịch chương trình nguồn (viết bằng ngôn ngữ cấp cao) thành chương trình đích.</para>
+      <para id="id19457170">Trong khuôn khổ tài liệu này, thuật ngữ ngôn ngữ lập trình dùng để chỉ ngôn ngữ lập trình cấp cao.</para>
+    </section>
+    <section id="id-789312974713">
+      <title>VAI TRÒ CỦA NGÔN NGỮ LẬP TRÌNH</title>
+      <para id="id19457187">Ðể thấy rõ vai trò của ngôn ngữ lập trình trong công nghệ phần mềm chúng ta hãy xét các giai đoạn chủ yếu để xây dựng một phần mềm. Các giai đoạn đó bao gồm:</para>
+      <list id="id19457195" list-type="bulleted">
+        <item>Xác định: Mục tiêu của giai đọan xác định là để hiểu rõ các yêu cầu của khách hàng. Kết quả của giai đọan này là mô hình thế giới thực được phản ánh thông qua một tài liệu đặc tả yêu cầu.</item>
+        <item>Phân tích: Mục tiêu của giai đoạn này là xác định chính xác hệ thống sẽ làm những gì theo quan điểm của người sử dụng. Kết quả của giai đoạn phân tích là một tài liệu đặc tả chức năng mô tả hệ thống sẽ có những chức năng gì.</item>
+        <item>Thiết kế: Mục tiêu của giai đọan thiết kế là xác định chính xác hệ thống sẽ làm việc như thế nào. Kết quả của giai đọan này là một tài liệu đặc tả thiết kế. Ðây là một tài liệu kỹ thuật mà những người thực hiện sẽ căn cứ vào đó mà tạo ra phần mềm.</item>
+        <item>Cài đặt: Là việc thực hiện cách giải quyết vấn đề đã được đề xuất bởi người thiết kế bằng một NNLT. Kết quả của giai đọan này là một hệ chương trình máy tính.</item>
+        <item>Tích hợp và kiểm thử hệ thống: Do các chuyên viên tin học thực hiện nhằm ghép nối các bộ phận của hệ thống và kiểm tra xem hệ thống có được thực hiện đúng theo thiết kế không.</item>
+        <item>Chấp nhận: Do các chuyên viên tin học cùng với khách hàng tiến hành nhằm xác nhận hệ thống chương trình bảo đảm các yêu cầu của người sử dụng.</item>
+        <item>Vận hành khai thác: Hệ thống được triển khai để sử dụng.</item>
+      </list>
+      <para id="id19457291">Ở trên chỉ trình bày một mô hình làm phần mềm, gọi là mô hình thác nước (water fall), ngoài ra còn có nhiều mô hình khác. Tuy nhiên trong tất cả các mô hình ấy đều phải có giai đoạn cài đặt. Trong đó NNLT đóng vai trò là một công cụ giúp con người thực hiện bước cài đặt này. Công cụ đó ngày càng được cải tiến hoàn thiện và có thể nói mọi tiến bộ trong tin học đều thể hiện ra trong NNLT. NNLT vừa là công cụ giúp các nhà tin học giải quyết các vấn đề thực tế nhưng đồng thời cũng là nơi mà những nghiên cứu mới nhất của tin học được đưa vào. Lĩnh vực này vừa mang tính truyền thống vừa mang tính hiện đại.</para>
+    </section>
+    <section id="id-471565017128">
+      <title>LỢI ÍCH CỦA VIỆC NGHIÊN CỨU NNLT</title>
+      <para id="id19457332">Trước khi nghiên cứu về NNLT, chúng ta cần thảo luận xem vì sao các sinh viên tin học và các nhà lập trình chuyên nghiệp cần phải nắm các khái niệm tổng quát về NNLT. Việc nghiên cứu tốt NNLT sẽ đạt được các lợi ích như sau:</para>
+      <section id="id-998622415795">
+        <title>Cho phép lựa chọn một NNLT phù hợp với dự án thực tế</title>
+        <para id="id19457355">Hiện nay có rất nhiều dự án công nghệ thông tin ứng dụng vào nhiều lĩnh vực khác nhau của cuộc sống. Do tính chất của từng dự án mà phần mềm có thể được cài đặt bằng các NNLT khác nhau. Với một vốn kiến thức rộng về NNLT, những người làm dự án có thể lựa chọn nhanh chóng một NNLT phù hợp với đề án thực tế. Chẳng hạn có thể lựa chọn ngôn ngữ lập trình Java cho các dự án lập trình truyền thông, hay hướng lập trình logic cho các dự án về trí tuệ nhân tạo.</para>
+      </section>
+      <section id="id-781807677198">
+        <title>Sử dụng một cách có hiệu quả các công cụ của ngôn ngữ</title>
+        <para id="id19457390">Các ngôn ngữ nói chung đều cung cấp những công cụ đặc biệt để tạo ra các tiện ích cho lập trình viên, nhưng khi sử dụng chúng không đúng đắn có thể sẽ gây ra những sai lầm lớn. Một ví dụ điển hình là phép đệ quy (recursion) - một công cụ lập trình đặc biệt có hiệu lực trong nhiều ngôn ngữ. Khi sử dụng đệ quy một cách đúng đắn thì có thể cài đặt một giải thuật đẹp đẽ và có hiệu quả. Nhưng trong trường hợp khác nó có thể gây ra một sự lãng phí thời gian chạy máy rất lớn cho một giải thuật đơn giản. Ðiều này có thể tránh được nếu như lập trình viên có một sự hiểu biết sâu sắc về ngôn ngữ lập trình và các cài đặt bên trong nó.</para>
+      </section>
+      <section id="id-380758337645">
+        <title>Làm tăng vốn kinh nghiệm khi xây dựng các chương trình</title>
+        <para id="id19457433">Nếu người lập trình đã có sự nghiên cứu một cách rộng rãi nhiều ngôn ngữ mà một trong chúng có cài đặt sẵn những công cụ nào đó thì anh ta có thể tự thiết lập những công cụ tương tự khi phải viết chương trình bởi một ngôn ngữ mà trong đó các công cụ như thế chưa được cài đặt.</para>
+      </section>
+      <section id="id-0239729757243">
+        <title>Tạo sự dễ dàng để học một ngôn ngữ mới</title>
+        <para id="id19457456">Mặc dù có nhiều NNLT khác nhau nhưng chúng đều có những nguyên tắc chung của NNLT. Rất nhiều ngôn ngữ có chung cú pháp (sai khác nhau chút ít về cách viết), có chung các kiểu dữ liệu (sai khác nhau chút ít về tên gọi). Việc nắm vững các nguyên lý cơ bản của NNLT sẽ là một điều kiện thuận lợi lớn để tiếp cận một cách nhanh chóng với một ngôn ngữ lập trình cụ thể mới. Thực tế cho thấy rằng với những người nắm vững NNLT, khi gặp một ngôn ngữ lập trình cụ thể mới, họ có thể vừa nghiên cứu ngôn ngữ mới này vừa áp dụng để lập trình giải quyết một bài toán theo yêu cầu.</para>
+      </section>
+      <section id="id-710155774696">
+        <title>Tạo tiền đề để thiết kế một ngôn ngữ mới</title>
+        <para id="id19457496">Việc thiết kế ngôn ngữ mới là một đòi hỏi của khoa học phát triển NNLT. Nếu chúng ta không nghiên cứu về NNLT thì không thể nào có kiến thức để xây dựng một ngôn ngữ mới.</para>
+      </section>
+    </section>
+    <section id="id-259231228405">
+      <title>CÁC TIÊU CHUẨN ÐÁNH GIÁ MỘT NGÔN NGỮ LẬP TRÌNH TỐT</title>
+      <para id="id19457518">Những yếu tố sau tạo nên một ngôn ngữ tốt, nó cũng là những tiêu chuẩn để người lập trình đánh giá ngôn ngữ này tốt hơn ngôn ngữ kia khi lựa chọn một ngôn ngữ để sử dụng. Ngoài ra khi thiết kế một ngôn ngữ lập trình mới, ta cũng phải quan tâm đến các tiêu chuẩn này để có được một ngôn ngữ tốt.</para>
+      <section id="id-477445065694">
+        <title>Tính dễ đọc</title>
+        <para id="id19457540">Tính dễ đọc của một NNLT là sự dễ dàng đọc hiểu một chương trình được viết bằng ngôn ngữ đó. Tính dễ đọc được đặc trưng bởi các thuộc tính sau:</para>
+        <para id="id19457551">1.- Sự giản dị. Một ngôn ngữ được gọi là có tính giản dị nếu ngôn ngữ đó có ít các thành phần cơ sở, tức là ít các yếu tố được định nghĩa trước. Các ngôn ngữ mà chúng ta có thể đạt được một phép toán bằng nhiều cách khác nhau thì không phải là một ngôn ngữ giản dị. Chẳng hạn trong ngôn ngữ C để tăng thêm một đơn vị cho biến count ta có thể sử dụng nhiều cách như count = count + 1, count += 1, count++ hoặc ++count. Các phép toán chồng (overload) cũng làm cho ngôn ngữ trở nên phức tạp. Chẳng hạn toán tử + có thể hiểu là cộng hai số nguyên, cộng hai số thực, hợp hai tập hợp hay ghép nối hai chuỗi ký tự...</para>
+        <para id="id19457588">2.- Cấu trúc điều khiển. Các lệnh có cấu trúc cho phép viết các chương trình sáng sủa, dễ đọc, dễ hiểu. Chúng ta có thể nhận thấy điều này trong các ngôn ngữ thuộc thập niên 1960 như BASIC, FORTRAN trong đó do thiếu các cấu trúc điều khiển nên chương trình phải sử dụng nhiều lệnh GOTO, rất khó theo dõi để hiểu chương trình. Ta hãy so sánh hai đoạn chương trình in ra màn hình 10 số tự nhiên đầu tiên được viết bằng ngôn ngữ BASIC (không có lệnh cấu trúc FOR) và ngôn ngữ Pascal.</para>
+        <para id="id19457609">
+          <figure id="id19457613">
+            <media id="id1167658175234" alt=""><image src="../../media/graphics1-9223.png" mime-type="image/png" height="136" width="550"/></media>
+          </figure>
+        </para>
+        <para id="id19457639">3.- Kiểu dữ liệu và cấu trúc dữ liệu. Xem xét kiểu dữ liệu và cấu trúc dữ liệu của một ngôn ngữ cũng góp phần đánh giá một ngôn ngữ có dễ đọc hay không. Chẳng hạn trong các ngôn ngữ không có kiểu dữ liệu logic thì phải sử dụng kiểu số để thay thế và do đó mà chương trình trở nên khó đọc. Ví dụ ta hay sử dụng biến found trong các chương trình tìm kiếm một phần tử x trong một mảng a gồm n phần tử. Nếu ngôn ngữ sử dụng có kiểu logic thì ta có thể gán cho found giá trị TRUE hoặc FALSE để biểu diễn trạng thái tìm thấy phần tử cần tìm hay không, ngược lại đối với các ngôn ngữ không có kiểu logic thì ta phải dùng kiểu số và gán cho found giá trị 1 hoặc 0. Ta hãy so sánh hai đoạn chương trình sau để xem đoạn chương trình nào dễ hiểu hơn.</para>
+        <figure id="id19457684">
+          <media id="id1167666493262" alt=""><image src="../../media/graphics2-802b.png" mime-type="image/png" height="98" width="600"/></media>
+        </figure>
+        <para id="id19457708">4.- Cú pháp. Cú pháp của ngôn ngữ có ảnh hưởng lớn đến sự dễ đọc hiểu của chương trình. Chúng ta xét một số thí dụ sau để thấy rõ vấn đề này.</para>
+        <list id="id19457725" list-type="bulleted">
+          <item>Một số ngôn ngữ quy định độ dài tối đa của danh biểu quá ngắn, chẳng hạn trong FORTRAN 77 độ dài tối đa của danh biểu là 6, do đó tên biến nhiều khi phải viết tắt nên khó đọc hiểu.</item>
+          <item>Việc sử dụng từ khóa cũng góp phần làm cho ngôn ngữ trở nên dễ đọc. Chẳng hạn trong ngôn ngữ Pascal chỉ sử dụng một từ khóa end để kết thúc một khối, kết thúc một lệnh case hay kết thúc một lệnh hợp thành do đó chương trình trở nên khó đọc, trong khi Ada dùng các từ khóa end if để kết thúc lệnh if, end loop để kết thúc lệnh vòng lặp thì chương trình dễ đọc hơn.</item>
+        </list>
+      </section>
+      <section id="id-723629462641">
+        <title>Tính dễ viết</title>
+        <para id="id19457765">Tính dễ viết của một ngôn ngữ là khả năng sử dụng ngôn ngữ đó để viết một chương trình cho một vấn đề nào đó một cách dễ dàng hay không. Thông thường các ngôn ngữ dễ đọc thì đều dễ viết. Tính dễ viết phải được xem xét trong ngữ cảnh của vấn đề mà ngôn ngữ được sử dụng để giải quyết. Theo đó không thế so sánh tính dễ viết của hai ngôn ngữ cho cùng một bài toán mà một trong hai được thiết kế để dành riêng giải quyết bài toán đó. Ví dụ để giải quyết bài toán quản trị dữ liệu, chúng ta không thể so sánh Pascal với một hệ quản trị cơ sở dữ liệu như Foxpro, Access hay Oracle.</para>
+        <para id="id19457795">Sau đây là một số yếu tố quan trọng nhất ảnh hưởng tới tính dễ viết của ngôn ngữ.</para>
+        <para id="id19457804">1.- Sự giản dị. Nếu một ngôn ngữ có quá nhiều cấu trúc thì một số người lập trình sẽ không quen sử dụng hết tất cả chúng. Tốt nhất là có một số nhỏ các cấu trúc ban đầu và một quy tắc để kết hợp chúng thành các cấu trúc phức tạp hơn. </para>
+        <para id="id19457827">2.- Hỗ trợ cho trừu tượng. Một cách ngắn gọn, trừu tượng (abstraction) là khả năng để định nghĩa và sử dụng các cấu trúc hoặc các phép toán phức tạp theo cách thức mà nó cho phép bỏ qua các chi tiết. Một ví dụ về trừu tượng là chương trình con, từ chương trình gọi, chúng ta gọi chương trình con để thực hiện một tác vụ nào đó mà không cần biết các cài đặt chi tiết bên trong chương trình con đó. Thực chất trừu tượng hóa chính là làm cho chương trình sáng sủa hơn.</para>
+        <para id="id19457849">3.- Khả năng diễn đạt. Là những công cụ của ngôn ngữ mà người lập trình có thể sử dụng để diễn đạt giải thuật một cách dễ dàng. Nói cách khác, một ngôn ngữ có khả năng diễn đạt là ngôn ngữ cung cấp cho người lập trình những công cụ sao cho người lập trình có thể nghĩ sao thì viết chương trình như vậy. Chẳng hạn lệnh lặp FOR trong Pascal dễ sử dụng cho cấu trúc lặp với số lần lặp xác định hơn là lệnh WHILE.</para>
+      </section>
+      <section id="id-762136456019">
+        <title>Ðộ tin cậy</title>
+        <para id="id19457877">Ðộ tin cậy của một ngôn ngữ lập trình là khả năng của ngôn ngữ hỗ trợ người lập trình tạo ra các chương trình đúng đắn. Độ tin cậy được thể hiện bởi các đặc trưng sau:</para>
+        <para id="id19457891">1.- Kiểm tra kiểu. Là kiểm tra lỗi về kiểu của chương trình trong giai đoạn dịch hoặc trong khi thực hiện. Kiểm tra kiểu là một yếu tố quan trọng đảm bảo độ tin cậy của ngôn ngữ. Kiểm tra kiểu sẽ báo cho người lập trình biết các lỗi về kiểu và yêu cầu họ có các sửa chữa cần thiết để có một chương trình đúng.</para>
+        <para id="id19457917">2.- Xử lý ngoại lệ (Exception Handing). Là một công cụ cho phép chương trình phát hiện các lỗi trong thời gian thực hiện, tạo khả năng để sửa chữa chúng và sau đó tiếp tục thực hiện mà không phải dừng chương trình. </para>
+        <para id="id19457941">3.- Sự lắm tên (Aliasing): Khi có hai hay nhiều tên cùng liên kết tới một ô nhớ ta gọi là sự lắm tên. Chẳng hạn các biến con trỏ trong ngôn ngữ Pascal cùng trỏ đến một ô nhớ. Sự lắm tên có thể làm giảm độ tin cậy do người lập trình không kiểm soát được giá trị được lưu trữ trong ô nhớ. Hãy xét ví dụ sau trong Pascal</para>
+        <figure id="id19457966">
+          <media id="id7336562" alt=""><image src="../../media/graphics3-e243.png" mime-type="image/png" height="202" width="602"/></media>
+        </figure>
+        <para id="id19457990">Kết quả thực hiện đoạn chương trình này là in ra hai dòng:</para>
+        <para id="id19457997">50 và 50</para>
+        <para id="id19451686">20 và 20</para>
+        <para id="id19451691">Trong khi nhiều người lầm tưởng hai dòng sẽ in ra là:</para>
+        <para id="id19451698">50 và 50</para>
+        <para id="id19451702">50 và 20</para>
+      </section>
+      <section id="id-922253021595">
+        <title>Chi phí</title>
+        <para id="id19451715">Chi phí của một ngôn ngữ cũng thường được quan tâm như là một tiêu chuẩn để đánh giá ngôn ngữ. Chi phí ở đây phải được hiểu là cả tiền bạc và thời gian. Chi phí này bao gồm:</para>
+        <list id="id19451727" list-type="bulleted">
+          <item>Chi phí đào tạo lập trình viên sử dụng ngôn ngữ. Chi phí này phụ thuộc vào sự giản dị của ngôn ngữ.</item>
+          <item>Chi phí cài đặt chương trình. Chi phí này phụ thuộc vào tính dễ viết của ngôn ngữ.</item>
+          <item>Chi phí dịch chương trình.</item>
+          <item>Chi phí thực hiện chương trình.</item>
+          <item>Chi phí bảo trì chương trình.</item>
+          <item>Chi phí mua trình biên dịch</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-0310273460458">
+      <title>CÂU HỎI ÔN TẬP</title>
+      <list id="id19451784" list-type="enumerated">
+        <item>Vai trò của ngôn ngữ lập trình trong công nghệ phần mềm là gì?</item>
+        <item>Nêu các lợi ích của việc nghiên cứu ngôn ngữ lập trình.</item>
+        <item>Nêu tên các tiêu chuẩn để đánh giá một ngôn ngữ lập trình tốt.</item>
+        <item>Nêu tên các yếu tố ảnh hưởng đến tính dễ đọc.</item>
+        <item>Nêu tên các yếu tố ảnh hưởng đến tính dễ viết.</item>
+        <item>Nêu tên các yếu tố ảnh hưởng đến độ tin cậy.</item>
+        <item>Thế nào là sự lắm tên?</item>
+        <item>Chi phí của ngôn ngữ lập trình bao gồm những chi phí nào? </item>
+      </list>
+    </section>
+  </content>
+</document>

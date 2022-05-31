@@ -1,0 +1,609 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Lập trình hàm</title>
+  <metadata>
+  <md:content-id>m30662</md:content-id><md:title>Lập trình hàm</md:title>
+  <md:abstract/>
+  <md:uuid>77ae6cd8-5908-442e-bd2c-23ffa6657140</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-804430383791">
+      <title>TỔNG QUAN</title>
+      <section id="id-570303742284">
+        <title>Mục tiêu</title>
+        <para id="id19631836">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id19631843" list-type="bulleted">
+          <item>Khái niệm về lập trình hàm.</item>
+          <item>Kỹ thuật lập trình đệ qui.</item>
+          <item>Các cấu trúc cơ bản của ngôn ngữ LISP</item>
+        </list>
+      </section>
+      <section id="id-152812491271">
+        <title>Nội dung cốt lõi</title>
+        <list id="id19631874" list-type="bulleted">
+          <item>Lập trình hàm.</item>
+          <item>Căn bản về ngôn ngữ lập trình LISP.</item>
+        </list>
+      </section>
+      <section id="id-511938709397">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id19631900">Kiến thức và kĩ năng lập trình căn bản.</para>
+      </section>
+    </section>
+    <section id="id-366349054021">
+      <title>NGÔN NGỮ LẬP TRÌNH HÀM</title>
+      <section id="id-959646535536">
+        <title>Giới thiệu</title>
+        <para id="id19631923">Hầu hết các ngôn ngữ lập trình từ trước đến nay được xây dựng dựa trên nguyên lý kiến trúc máy tính Von Neumann. Lớp chủ yếu trong các ngôn ngữ đó là các ngôn ngữ ra lệnh. Ðơn vị làm việc trong một chương trình là câu lệnh. Kết quả của từng câu lệnh được tổ hợp lại thành kết quả của cả chương trình. Các ngôn ngữ này bao gồm: FORTRAN, COBOL, Pasacl, Ada... Mặc dù ngôn ngữ ra lệnh đã được hầu hết người lập trình chấp nhận nhưng sự liên hệ chặt chẽ với kiến trúc máy tính là một hạn chế đến việc phát triển phần mềm.</para>
+        <para id="id19631950">Ngôn ngữ lập trình hàm được thiết kế dựa trên các hàm toán học là một trong những ngôn ngữ không ra lệnh quan trọng nhất. Trong đó LISP là một ngôn ngữ tiêu biểu.</para>
+      </section>
+      <section id="id-157797765681">
+        <title>Hàm toán học</title>
+        <para id="id19631972">Hàm là một sự tương ứng giữa các phần tử của một tập hợp (miền xác định) với các phần tử của một tập hợp khác (miền giá trị). Ðịnh nghĩa hàm xác định miền xác định, miền giá trị và quy tắc tương ứng giữa các phần tử của miền xác định với các phần tử của miền giá trị. Thông thường sự tương ứng được mô tả bởi một biểu thức. Hàm toán học có hai đặc trưng cơ bản là:</para>
+        <list id="id19631990" list-type="bulleted">
+          <item>Thứ tự đánh giá biểu thức được điều khiển bởi sự đệ quy và biểu thức điều kiện chứ không phải bằng cách lặp lại và liên tiếp như trong các ngôn ngữ ra lệnh.</item>
+          <item>Hàm toán học không có hiệu ứng lề cho nên với cùng một tập đối số, hàm toán học luôn cho cùng một kết quả.</item>
+        </list>
+        <para id="id19632016">Ðịnh nghĩa hàm thường được viết bởi tên hàm, danh sách các tham số nằm trong cặp dấu ngoặc và sau đó là biểu thức, ví dụ: lap_phuong(x)  x*x*x trong đó x là một số thực. Miền xác định, miền giá trị là các tập số thực.</para>
+        <para id="id19632033">Lúc áp dụng, một phần tử cụ thể của miền xác định gọi là đối sẽ thay thế cho tham số trong định nghĩa hàm. Kết quả hàm thu được bằng cách đánh giá biểu thức hàm. Ví dụ lap_phuong(2.0) cho giá trị là 8.0. Trong định nghĩa hàm, x đại diện cho mọi phần tử của miền xác định. Trong lúc áp dụng, nó được cho một giá trị (chẳng hạn 2.0), giá trị của nó không thay đổi sau đó. Ðiều này trái ngược với biến trong lập trình có thể nhận các giá trị khác nhau trong quá trình thực hiện chương trình.</para>
+        <para id="id19632059">Trong định nghĩa hàm, ta bắt cặp tên hàm với biểu thức x*x*x. Ðôi khi người ta sử dụng hàm không tên, trong trường hợp đó người ta sử dụng biểu thức lambda. Giá trị của biểu thức lambda chính là hàm của nó. Ví dụ (x)x*x*x. Tham số trong biểu thức lambda được gọi là biến kết ghép. Khi biểu thức lambda được đánh giá đối với một tham số đã cho, người ta nói rằng biểu thức được áp dụng cho tham số đó. </para>
+      </section>
+      <section id="id-655981111078">
+        <title>Dạng hàm</title>
+        <para id="id19632096">Dạng hàm là sự tổ hợp của các hàm. Dạng hàm phổ biến nhất là hàm hợp. Nếu f được định nghĩa là hàm hợp của g và h, được viết là f  g.h thì việc áp dụng f được định nghĩa là sự áp dụng h sau đó áp dụng g lên kết quả.</para>
+        <para id="id19632116">Xây dựng (construction) là một dạng hàm mà các tham số của chúng là những hàm. Người ta ký hiệu một xây dựng bằng cách để các hàm tham số vào trong cặp dấu ngoặc vuông. Khi áp dụng vào một đối số thì các hàm tham số sẽ được áp dụng vào đối đó và tập hợp các kết quả vào trong một danh sách. Ví dụ: G(x)  x*x, H(x)  2*x và I(x)  x/2 thì [G,H,I](4) có kết quả là (16,8,2).</para>
+        <para id="id19632160">Áp dụng cho tất cả là một dạng hàm mà nó lấy một hàm đơn như là một tham số. Áp dụng cho tất cả được ký hiệu là . Nếu áp dụng vào một danh sách các đối thì áp dụng cho tất cả sẽ áp dụng hàm tham số cho mỗi một giá trị và tập hợp các kết quả vào trong một danh sách. Ví dụ</para>
+        <para id="id19632179">Cho h(x)  x*x thì (h, (2,3,4)) có kết quả là (4,9,16)</para>
+      </section>
+      <section id="id-763151465656">
+        <title>Bản chất của ngôn ngữ lập trình hàm</title>
+        <para id="id19632210">Mục đich của việc thiết kế ngôn ngữ lập trình hàm là mô phỏng các hàm toán học một cách nhiều nhất có thể được. Trong ngôn ngữ ra lệnh, một biểu thức được đánh giá và kết quả của nó được lưu trữ trong ô nhớ được biểu diễn bởi một biến trong chương trình. Ngược lại, trong ngôn ngữ lập trình hàm không sử dụng biến và do đó không cần lệnh gán. Ðiều này giải phóng người lập trình khỏi mối quan tâm về ô nhớ của máy tính trong khi thực hiên chương trình. Không có biến cho nên không có cấu trúc lặp (vì cấu trúc lặp được điều khiển bởi biến). Các lệnh lặp lại sẽ được xử lý bằng giải pháp đệ quy. Chương trình là các định nghĩa hàm và các áp dụng hàm. Sự thực hiện là việc đánh giá các áp dụng hàm. Sự thực hiện một hàm luôn cho cùng một kết quả khi ta cho nó cùng một đối số. Điều này gọi là trong suốt tham khảo (referential transparancy). Nó cho thấy rằng ngữ nghĩa của ngôn ngữ lập trình hàm đơn giản hơn ngữ nghĩa của ngôn ngữ lập trình ra lệnh và ngôn ngữ hàm bao gồm cả những nét đặc biệt của ngôn ngữ ra lệnh.</para>
+        <para id="id19632264">Ngôn ngữ hàm cung cấp một tập hợp các hàm nguyên thủy, một tập các dạng hàm để xây dựng các hàm phức tạp từ các hàm đã có. Ngôn ngữ cũng cung cấp một phép toán áp dụng hàm và các cấu trúc lưu trữ dữ liệu. Một ngôn ngữ hàm được thiết kế tốt là một ngôn ngữ có tập hợp nhỏ các hàm nguyên thủy. Phần sau chúng ta làm quen với một ngôn ngữ lập trình hàm khá nổi tiếng là ngôn ngữ LISP.</para>
+      </section>
+    </section>
+    <section id="id-529305824354">
+      <title>NGÔN NGỮ LISP</title>
+      <section id="id-43008743098">
+        <title>Giới thiệu:</title>
+        <para id="id19632296">Ðược J. MAC CARTHY viết năm 1958, LISP là một trong những ngôn ngữ lập trình sớm nhất. Ðầu năm những năm 80, LISP được phát triển mạnh nhờ những áp dụng trong lĩnh vực trí tuệ nhân tạo. LISP có các ưu điểm chính như sau:</para>
+        <list id="id19632308" list-type="bulleted">
+          <item>Cú pháp đơn giản. Trong LISP chỉ có một cấu trúc duy nhất là cấu trúc danh sách (LISP là ngôn ngữ xử lý danh sách: LISP = LISt Processing language), không có lệnh, không có từ khóa, tất cả các hàm đều được viết dưới dạng danh sách.</item>
+          <item>Là một ngôn ngữ mạnh nhờ tính tương đương giữa dữ liệu và chương trình: dữ liệu và chương trình đều là danh sách, chúng có thể thao tác nhờ chung một công cụ.</item>
+          <item>Mềm dẻo và dễ phát triển.</item>
+        </list>
+      </section>
+      <section id="id-34531622042">
+        <title>Các khái niệm cơ bản</title>
+        <section id="id-218236291277">
+          <title>Nguyên tử (atom)</title>
+          <para id="id19632361">Nguyên tử là một đối tượng cơ bản của LISP, nguyên tử có thể là số hoặc ký hiệu.</para>
+          <list id="id19632373" list-type="bulleted">
+            <item>Số. Dữ liệu số trong LISP cũng giống như trong một số ngôn ngữ lập trình khác như Pascal, C… </item>
+          </list>
+          <para id="id19632390">Ví dụ về các hằng số: 5, -17, 5.35, 3/4, 118.2E+5,...</para>
+          <list id="id19632396" list-type="bulleted">
+            <item>Ký hiệu (symbol) là một chuỗi các ký tự (trừ các ký tự đặc biệt, dấu ngoặc và khoảng trống). Các hằng ký hiệu được viết mở đầu bằng dấu nháy đơn ‘.</item>
+          </list>
+          <para id="id19632416">Ví dụ về các hằng ký hiệu: ‘a, ‘anh, ‘anh_ba,... </para>
+          <para id="id19632423">Một số ký hiệu được định nghĩa trước như: T (về mặt logic, được hiểu là TRUE), NIL (về mặt logic, được hiểu là FALSE).</para>
+          <para id="id19632434">Hằng ký hiệu số được xem như là một số, chẳng hạn ‘5 = 5.</para>
+        </section>
+        <section id="id-334566869261">
+          <title>Danh sách</title>
+          <para id="id19632449">Danh sách là một dãy có phân biệt thứ tự của các phần tử cách nhau ít nhất một khoảng trắng và đặt nằm trong cặp dấu ngoặc đơn (). </para>
+          <para id="id19632459">Phần tử của danh sách có thể là một nguyên tử hoặc là một danh sách.</para>
+          <para id="id19632467">Hằng danh sách được mở đầu bằng dấu nháy đơn ‘.</para>
+          <para id="id19632474">Ví dụ về các hằng danh sách:</para>
+          <list id="id19632480" list-type="bulleted">
+            <item>‘()Danh sách rỗng, tương đương ký hiệu NIL.</item>
+            <item>‘(a 5 c)Danh sách gồm 3 phần tử.</item>
+            <item>‘(3 (b c) d (e (f g)))Danh sách gồm 4 phần tử, trong đó phần tử thứ 2 và phần tử thứ 4 lại là các danh sách.</item>
+          </list>
+        </section>
+        <section id="id-00600028294337">
+          <title>Biểu thức</title>
+          <para id="id19632522">Biểu thức là một nguyên tử hoặc một danh sách. Biểu thức luôn có một giá trị mà việc định trị nó theo nguyên tắc sau:</para>
+          <list id="id19632532" list-type="bulleted">
+            <item>Nếu biểu thức là một số, thì giá trị của biểu thức là giá trị của số đó.</item>
+          </list>
+          <para id="id19632544">Ví dụ:</para>
+          <para id="id19632549">&gt; 25</para>
+          <para id="id19632553">= 25</para>
+          <list id="id19632558" list-type="bulleted">
+            <item>Nếu biểu thức là một ký hiệu thì giá trị của biểu thức có thể là</item>
+          </list>
+          <list id="id19632570" list-type="bulleted">
+            <item>Được xác định trước bởi LISP (chẳng hạn t có giá trị là T (TRUE) và nil có giá trị là NIL một danh sách rỗng) hoặc</item>
+            <item>Một giá trị dữ liệu của người sử dụng hoặc trong chương trình được gán cho một biến. Biến không cần phải khai báo.</item>
+          </list>
+          <para id="id19632597">Ví du:</para>
+          <para id="id19632602">&gt; (setq a 3) ; Gán số 3 cho biến có tên a</para>
+          <para id="id19632610">= 3</para>
+          <para id="id19632614">&gt; a ; hỏi giá trị của ký hiệu “a” </para>
+          <para id="id19632627">= 3</para>
+          <list id="id19632631" list-type="bulleted">
+            <item>Nếu biểu thức là một danh sách có dạng (E0 E1 ... En) thì giá trị của biểu thức được xác định theo cách sau đây:</item>
+          </list>
+          <list id="id19632661" list-type="bulleted">
+            <item>Phần tử đầu tiên E0 phải là một hàm đã được LISP nhận biết.</item>
+            <item>Các phần tử E1, E2, ..., En được định trị tuần tự từ trái sang phải. Giả sử ta có các giá trị tương ứng là V1, V2, ..., Vn</item>
+            <item>Hàm E0 được áp dụng cho các đối V1, V2, ..., Vn. Giá trị của hàm E0 chính là giá trị của biểu thức.</item>
+          </list>
+          <para id="id19632754">Ví dụ</para>
+          <para id="id19632759">&gt; (+ 5 3 6)</para>
+          <para id="id19632763">= 14</para>
+          <para id="id19632768">&gt; ( + 4 (+ 3 5))</para>
+          <para id="id19632775">= 12</para>
+          <list id="id19632780" list-type="bulleted">
+            <item>Chú ý: Nếu biểu thức dùng hàm QUOTE hoặc dấu nháy đơn sẽ không được đánh giá</item>
+          </list>
+          <para id="id19632797">Ví dụ:</para>
+          <para id="id19632801">&gt; ‘(+ 1 2)</para>
+          <para id="id19632808">= (+ 1 2)</para>
+        </section>
+      </section>
+      <section id="id-250707877082">
+        <title>Các hàm</title>
+        <para id="id19632822">Một chương trình của LISP là một hàm hoặc một hàm hợp. Các hàm có thể do LISP định nghĩa trước hoặc do lập trình viên tự định nghĩa.</para>
+        <section id="id-213357555628">
+          <title>Một số hàm định nghĩa trước</title>
+          <list id="id19632840" list-type="bulleted">
+            <item>Các hàm số học: +, -, *, /, 1+, 1-, MOD, SQRT tác động lên các biểu thức số và cho kết quả là một số.</item>
+          </list>
+          <para id="id19632853">Ví dụ:</para>
+          <para id="id19632858">&gt; (+ 5 6 2)</para>
+          <para id="id19632870">= 13</para>
+          <para id="id19632874">&gt; (- 8 3)</para>
+          <para id="id19632883">= 5</para>
+          <para id="id19632887">&gt; (- 8 3 1)</para>
+          <para id="id19632899">= 4</para>
+          <para id="id19632903">&gt;(1+ 5) ; Tương đương (+ 5 1)</para>
+          <para id="id19632917">= 6</para>
+          <para id="id19632921">&gt; (1- 5) ; Tương đương (- 5 1)</para>
+          <para id="id19632937">= 4</para>
+          <para id="id19632941">&gt;(MOD 14 3)</para>
+          <para id="id19632950">= 2</para>
+          <para id="id19632954">&gt;(sqrt 9) ; Lấy căn bậc hai của 9</para>
+          <para id="id19632960">= 3</para>
+          <list id="id19632964" list-type="bulleted">
+            <item>Các hàm so sánh các số &lt;, &gt;, &lt;=, &gt;=, = và /=, cho kết quả là T hoặc NIL</item>
+          </list>
+          <para id="id19632976">Ví dụ:</para>
+          <para id="id19632981">&gt;(&lt; 4 5)</para>
+          <para id="id19632990">= T</para>
+          <para id="id19632994">&gt;(&gt; 4 (* 2 3))</para>
+          <para id="id19633008">= NIL</para>
+          <list id="id19633012" list-type="bulleted">
+            <item>(EQ s1 s2) so sánh xem hai ký hiệu s1 và s2 có giống nhau hay không?</item>
+          </list>
+          <para id="id19633024">Ví dụ:</para>
+          <para id="id19633028">&gt;(eq ‘tuong ‘tuong)</para>
+          <para id="id19633037">= T</para>
+          <para id="id19633041">&gt;(eq ‘tuong ‘duong)</para>
+          <para id="id19633051">= NIL</para>
+          <para id="id19633055">&gt;(eq ‘5 5 )</para>
+          <para id="id19633066">= T</para>
+          <list id="id19633071" list-type="bulleted">
+            <item>(EQUAL o1 o2) so sánh xem đối tượng bất kỳ o1 và o2 có giống nhau hay không?</item>
+          </list>
+          <para id="id19633082">Ví dụ:</para>
+          <para id="id19633087">&gt;(equal ‘(a b c) ‘(a b c))</para>
+          <para id="id19633103">= T</para>
+          <para id="id19633107">&gt;(equal ‘(a b c) ‘( b a c))</para>
+          <para id="id19633123">= NIL</para>
+          <para id="id19633128">&gt;(equal ‘a ‘a)</para>
+          <para id="id19633135">= T</para>
+          <list id="id19633139" list-type="bulleted">
+            <item>Các hàm thao tác trên danh sách: CAR, CDR, CONS và LIST</item>
+          </list>
+          <list id="id19633149" list-type="bulleted">
+            <item>(CAR L) nhận vào danh sách L, trả về phần tử đầu tiên của L.</item>
+          </list>
+          <para id="id19633161">Ví du:</para>
+          <para id="id19633165">&gt; (CAR '(1 2 3)) </para>
+          <para id="id19633178">= 1 </para>
+          <para id="id19633185">&gt; (CAR 3) </para>
+          <para id="id19633198">Error: bad argument type - 3 </para>
+          <para id="id19633203">&gt;(CAR nil) </para>
+          <para id="id19633213">= NIL</para>
+          <para id="id19633218">&gt; (CAR '((a b) 1 2 3)) </para>
+          <para id="id19633230">= (A B)</para>
+          <list id="id19633234" list-type="bulleted">
+            <item>(CDR L) nhận vào danh sách L, trả về một danh sách bằng phần còn lại của danh sách L sau khi bỏ đi phần tử đầu tiên.</item>
+          </list>
+          <para id="id19633250">Ví dụ:</para>
+          <para id="id19633254">&gt;(cdr '(1 2 3)) </para>
+          <para id="id19633267">= (2 3) </para>
+          <para id="id19633274">&gt;(cdr 3) </para>
+          <para id="id19633284">Error: bad argument type - 3 </para>
+          <para id="id19633289">&gt;(cdr nil) </para>
+          <para id="id19633299">= NIL </para>
+          <para id="id19633307">&gt;(cdr '(1)) </para>
+          <para id="id19633317">= NIL</para>
+          <para id="id19633321">&gt;(CAR (CDR ‘(a b c)))</para>
+          <para id="id19633331">= B</para>
+          <list id="id19633335" list-type="bulleted">
+            <item>Viết gộp các hàm: Ta có thể dùng hàm C..A/D..R để kết hợp nhiều CAR và CDR (có thể thay thế việc lồng nhau tới 4 cấp)</item>
+          </list>
+          <para id="id19633353">Ví du: </para>
+          <para id="id19633357">(CADR ‘(a b c))</para>
+          <para id="id19633366">= B</para>
+          <list id="id19633370" list-type="bulleted">
+            <item>(CONS x L) nhận vào phần tử x và danh sách L, trả về một danh sách, có được bằng cách thêm phần tử x vào đầu danh sách L</item>
+          </list>
+          <para id="id19633384">Ví du:</para>
+          <para id="id19633389">&gt;(CONS 3 '(1 2 3)) </para>
+          <para id="id19633403">= (3 1 2 3) </para>
+          <para id="id19633420">&gt;(CONS 3 nil) </para>
+          <para id="id19633432">= (3) </para>
+          <para id="id19633440">&gt;(CONS '(a b) '(1 2 3)) </para>
+          <para id="id19633454">= ((A B) 1 2 3) </para>
+          <list id="id19633461" list-type="bulleted">
+            <item>(LIST E1 E2 ... En) nhận vào n biểu thức E1, E2, ..., En, trả về danh sách bao gồm n phần tử V1, V2, ..., Vn, trong đó Vi là giá trị của biểu thức Ei (i=1..n) .</item>
+          </list>
+          <para id="id19633542">Ví du:</para>
+          <para id="id19633546">&gt;(list 1 2) </para>
+          <para id="id19633556">= (1 2) </para>
+          <para id="id19633564">&gt;(list 'a 'b) </para>
+          <para id="id19633574">= (A B) </para>
+          <para id="id19633581">&gt;(list 'a 'b (+ 2 3 5))</para>
+          <para id="id19633597">= (A B 10)</para>
+          <list id="id19633601" list-type="bulleted">
+            <item>Các vị từ kiểm tra</item>
+          </list>
+          <list id="id19633611" list-type="bulleted">
+            <item>(ATOM a) xét xem a có phải là một nguyên tử.</item>
+          </list>
+          <list id="id19633621" list-type="bulleted">
+            <item>(NUMBERP n) xét xem n có phải là một số.</item>
+            <item>(LISTP L) xét xem L có phải là một danh sách.</item>
+            <item>(SYMBOLP S) xét xem S có phải là một ký hiệu.</item>
+            <item>(NULL L) nhận vào 1 danh sách L. Nếu L rỗng thì trả về kết quả là T, ngược lại thì trả về kết quả là NIL.</item>
+          </list>
+          <para id="id19633656">Ví du:</para>
+          <para id="id19633660">&gt;(atom 'a) </para>
+          <para id="id19633668">= T </para>
+          <para id="id19633679">&gt;(numberp 4) </para>
+          <para id="id19633687">= T </para>
+          <para id="id19633694">&gt;(symbolp 'a) </para>
+          <para id="id19633702">= T </para>
+          <para id="id19633710">&gt;(listp '(1 2))</para>
+          <para id="id19633716">= T</para>
+          <para id="id19633720">&gt;(symbolp NIL) </para>
+          <para id="id19633728">= T </para>
+          <para id="id19633736">&gt;(listp NIL)</para>
+          <para id="id19633740">= T</para>
+          <para id="id19633745">&gt;(null NIL)</para>
+          <para id="id19633749">= T</para>
+          <para id="id19633753">&gt;(null ‘(a b))</para>
+          <para id="id19633760">= NIL</para>
+          <para id="id19633765">&gt;(null 10)</para>
+          <para id="id19633770">= NIL</para>
+          <list id="id19633774" list-type="bulleted">
+            <item>Các hàm logic AND, OR và NOT</item>
+          </list>
+          <list id="id19633784" list-type="bulleted">
+            <item>(AND E1 E2... En) nhận vào n biểu thức E1, E2,... En. Hàm AND định trị các biểu thức E1 E2... En từ trái sang phải. Nếu gặp một biểu thức là NIL thì dừng và trả về kết quả là NIL. Nếu tất cả các biểu thức đều khác NIL thì trả về giá trị của biểu thức En.</item>
+          </list>
+          <para id="id19633855">Ví dụ:</para>
+          <para id="id19633860">&gt;(AND (&gt; 3 2) (= 3 2) (+ 3 2)) </para>
+          <para id="id19633881">= NIL </para>
+          <para id="id19633889">&gt;(AND (&gt; 3 2) (- 3 2) (+ 3 2)) </para>
+          <para id="id19633906">= 5 </para>
+          <list id="id19633913" list-type="bulleted">
+            <item>(OR E1 E2 ... En) nhận vào n biểu thức E1, E2,... En. Hàm OR định giá các biểu thức E1 E2... En từ trái sang phải. Nếu gặp một biểu thức khác NIL thì dừng và trả về kết quả là giá trị của biểu thức đó. Nếu tất cả các biểu thức đều là NIL thì trả về kết quả là NIL.</item>
+          </list>
+          <para id="id19634011">Ví du:</para>
+          <para id="id19634016">&gt;(OR (= 3 2) (+ 2 1) (list 1 2)) </para>
+          <para id="id19634037">= 3 </para>
+          <para id="id19634044">&gt;(OR (= 2 1) (Cdr ‘(a) ) (listp 3 )) </para>
+          <para id="id19373086">= NIL </para>
+          <list id="id19373094" list-type="bulleted">
+            <item>(NOT E) nhận vào biểu thức E. Nếu E khác NIL thì trả về kết quả là NIL, ngược lại thì trả về kết quả là T.</item>
+          </list>
+          <list id="id19373107" list-type="bulleted">
+            <item>Các hàm điều khiển</item>
+          </list>
+          <list id="id19373119" list-type="bulleted">
+            <item>(IF E1 E2 E3) nhận vào 3 biểu thức E1, E2 và E3. Nếu E1 khác NIL thì hàm trả về giá trị của E2 ngược lại trả về giá trị của E3</item>
+            <item>(IF E1 E2) tương đương (IF E1 E2 NIL)</item>
+            <item>Nếu E2 khác NIL thì (IF E1 E2 E3) tương đương (OR (AND E1 E2) E3)</item>
+          </list>
+          <list id="id19373281" list-type="bulleted">
+            <item>(COND(ÐK1E1)</item>
+          </list>
+          <para id="id19373303">(ÐK2E2)</para>
+          <para id="id19373323">..................</para>
+          <para id="id19373330">(ÐKnEn)</para>
+          <para id="id19373350">[(TEn+1)]</para>
+          <para id="id19634070">)</para>
+          <para id="id19634077">Nếu ĐK1 khác NIL thì trả về kết quả là giá trị của E1, ngược lại sẽ xét ĐK2. Nếu ĐK2 khác NIL thì trả về kết quả là giá trị của E2, ngược lại sẽ xét ĐK3...</para>
+          <para id="id19634120">......</para>
+          <para id="id19634125">Nếu ĐKn khác NIL thì trả về kết quả là giá trị của En, ngược lại sẽ trả về NIL hoặc trả về kết quả là giá trị của En+1 (trong trường hợp ta sử dụng (T En+1))</para>
+          <list id="id19634161" list-type="bulleted">
+            <item>(PROGN E1 E2 ... En) nhận vào n biểu thức E1, E2,... En. Hàm định trị các biểu thức E1, E2,... En từ trái sang phải và trả về kết quả là giá trị của biểu thức En.</item>
+            <item>(PROG1 E1 E2 ... En) nhận vào n biểu thức E1, E2,... En. Hàm định trị các biểu thức E1, E2,... En từ trái sang phải và trả về kết quả là giá trị của biểu thức E1.</item>
+          </list>
+        </section>
+        <section id="id-822624492681">
+          <title>Hàm do người lập trình định nghĩa</title>
+          <para id="id19634301">Cú pháp định nghĩa hàm là:</para>
+          <para id="id19634306">(defun &lt;tên hàm&gt; &lt;danh sách các tham số hình thức&gt;</para>
+          <para id="id19634313">&lt;biểu thức&gt;</para>
+          <para id="id19634319">)</para>
+          <para id="id19634323">Ví dụ 1: Ðịnh nghĩa hàm lấy bình phương của số a</para>
+          <para id="id19634330">(defun binh_phuong (a)</para>
+          <para id="id19634334">(* a a)</para>
+          <para id="id19634342">)</para>
+          <para id="id19634350">Sau khi nạp hàm này cho LISP, ta có thể sử dụng như các hàm đã được định nghĩa trước.</para>
+          <para id="id19634358">&gt;(binh_phuong 5)</para>
+          <para id="id19634363">= 25</para>
+          <para id="id19634367">&gt;(binh_phuong (+ 5 2))</para>
+          <para id="id19634372">= 49</para>
+          <para id="id19634376">Ví dụ 2: Ðịnh nghĩa hàm DIV chia số a cho số b, lấy phần nguyên. </para>
+          <para id="id19634384">Trước hết ta có: a DIV b = (a – a MOD b)/b</para>
+          <para id="id19634390">(defun DIV (a b) </para>
+          <para id="id19634399">(/ (- a (MOD a b)) b)</para>
+          <para id="id19634414">)</para>
+        </section>
+      </section>
+      <section id="id-712055621433">
+        <title>Ðệ quy</title>
+        <para id="id19634426">Một hàm đệ quy là một hàm có lời gọi chính nó trong biểu thức định nghĩa hàm. Mô tả một đệ quy bao gồm:</para>
+        <list id="id19634436" list-type="bulleted">
+          <item>Có ít nhất một trường hợp “dừng” để kết thúc việc gọi đệ quy.</item>
+          <item>Lời gọi đệ quy phải bao hàm yếu tố dẫn đến các trường hợp “dừng”.</item>
+        </list>
+        <para id="id19634456">Ví dụ 1: Viết hàm tính n giai thừa</para>
+        <para id="id19634462">Công thức đệ quy tính n giai thừa là 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mtext>n! </m:mtext><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="true">{</m:mo><m:mtable><m:mtr><m:mtd><m:mrow><m:mrow><m:mtext>1 neu n</m:mtext><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow/></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mtext>n*</m:mtext><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mn>1</m:mn></m:mrow><m:mo stretchy="false">)</m:mo><m:mi>!</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"n! "= left lbrace  matrix {
+"1 neu n"=0 {} ##
+"n*" \( n - 1 \) !
+}  right none } {}</m:annotation></m:semantics></m:math></para>
+        <para id="id19634571">Hàm (giai_thua N) viết bằng ngôn ngữ LISP:</para>
+        <para id="id19634577">(defun giai_thua (n)</para>
+        <para id="id19634582">(if (= n 0) 1 ; trường hợp “dừng”</para>
+        <para id="id19634593"> (* n (giai_thua (1- n))); n-1 là yếu tố dẫn đến trường hợp dừng</para>
+        <para id="id19634613">) ; If</para>
+        <para id="id19634620">)</para>
+        <para id="id19634624">Ví dụ 2: Viết hàm DIV chia a cho b lấy phần nguyên, viết bằng đệ quy.</para>
+        <para id="id19634632">Công thức đệ quy: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mtext>a DIV b</m:mtext><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="true">{</m:mo><m:mtable><m:mtr><m:mtd><m:mrow><m:mrow><m:mtext>0 neu a</m:mtext><m:mo stretchy="false">&lt;</m:mo><m:mi>b</m:mi></m:mrow><m:mrow/></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mrow><m:mn>1</m:mn><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">−</m:mo><m:mi>b</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mtext> DIV </m:mtext><m:mi>b</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{"a DIV b"=  left lbrace  matrix {
+"0 neu a"&lt;b {} ##
+1+ \( a - b \) " DIV "b
+}  right none } {}</m:annotation></m:semantics></m:math></para>
+        <para id="id19634743">Hàm (DIV a b) viết bằng LISP:</para>
+        <para id="id19634749">(defun DIV (a b)</para>
+        <para id="id19634753">(if (&lt; a b) 0 ; Trường hợp “dừng”</para>
+        <para id="id19634764"> (1+ (DIV (- a b) b)); a-b là yếu tố dẫn đến trường hợp dừng</para>
+        <para id="id19634787">) ; If</para>
+        <para id="id19634794">)</para>
+        <para id="id19634799">Ví dụ 3: Viết hàm (phan_tu i L), nhận vào số nguyên dương i và danh sách L. Hàm trả về phần tử thứ i trong danh sách L hoặc thông báo “không tồn tại”.</para>
+        <para id="id19634814">Công thức đệ quy: </para>
+        <para id="id19634819">
+          <m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mstyle fontsize="12pt">
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mtext>Phan tu thu i trong DS L </m:mtext>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mrow>
+                        <m:mo stretchy="true">{</m:mo>
+                        <m:mtable>
+                          <m:mtr>
+                            <m:mtd>
+                              <m:mrow>
+                                <m:mtext/>
+                                <m:mi fontstyle="italic">Khong</m:mi>
+                                <m:mi fontstyle="italic">ton</m:mi>
+                                <m:mi fontstyle="italic">tai</m:mi>
+                                <m:mtext> neu DS L rong</m:mtext>
+                                <m:mrow/>
+                              </m:mrow>
+                            </m:mtd>
+                          </m:mtr>
+                          <m:mtr>
+                            <m:mtd>
+                              <m:mrow>
+                                <m:mrow>
+                                  <m:mtext>Phan tu dau tien cua L neu i </m:mtext>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mtext> 1</m:mtext>
+                                </m:mrow>
+                                <m:mrow/>
+                              </m:mrow>
+                            </m:mtd>
+                          </m:mtr>
+                          <m:mtr>
+                            <m:mtd>
+                              <m:mrow>
+                                <m:mtext>Phan tu thu </m:mtext>
+                                <m:mo stretchy="false">(</m:mo>
+                                <m:mrow>
+                                  <m:mi>i</m:mi>
+                                  <m:mo stretchy="false">−</m:mo>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                                <m:mo stretchy="false">)</m:mo>
+                                <m:mtext> trong DS  </m:mtext>
+                                <m:mi fontstyle="italic">duoi</m:mi>
+                                <m:mtext> cua L</m:mtext>
+                              </m:mrow>
+                            </m:mtd>
+                          </m:mtr>
+                        </m:mtable>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mstyle>
+                <m:mrow/>
+              </m:mrow>
+              <m:annotation encoding="StarMath 5.0"> size 12{"Phan tu thu i trong DS L "=  left lbrace  matrix {
+""Khong ton tai" neu DS L rong" {} ##
+"Phan tu dau tien cua L neu i "=" 1" {} ##
+"Phan tu thu " \( i - 1 \) " trong DS  "duoi" cua L"
+}  right none } {}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="id19634951">Hàm (phan_tu i L) viết bằng LISP:</para>
+        <para id="id19634962">(defun phan_tu(i L)</para>
+        <para id="id19634968">(cond</para>
+        <para id="id19634973">((Null L) “Khong ton tai”)</para>
+        <para id="id19634981">((= i 1) (car L)); trường hợp dừng thứ hai</para>
+        <para id="id19634993">(T (phan_tu (1- i) (cdr L)))</para>
+        <para id="id19635006">) ; cond</para>
+        <para id="id19635014">)</para>
+        <para id="id19635018">Trong chương trình trên, (null L) là trường hợp “dừng” thứ nhất; (= i 1) là trường hợp “dừng” thứ hai; (cdr L) là yếu tố dẫn đến trường hợp “dừng” thứ nhất và (1- i) yếu tố dẫn đến trường hợp “dừng” thứ hai.</para>
+      </section>
+      <section id="id-85250598237">
+        <title>Các hàm nhập xuất</title>
+        <list id="id19635044" list-type="bulleted">
+          <item>(LOAD &lt;Tên tập tin&gt;)</item>
+        </list>
+        <para id="id19635054">Nạp một tập tin vào cho LISP và trả về T nếu việc nạp thành công, ngược lại trả về NIL. Tên tập tin là một chuỗi kí tự có thể bao gồm cả đường dẫn đến nơi lưu trữ tập tin đó. Tên tập tin theo quy tắc của DOS, nghĩa là chỉ có tối đa 8 ký tự trong phần tên và 3 ký tự phần mở rộng và không chứa các ký tự đặc biệt. </para>
+        <para id="id19635078">Ta có thể sử dụng LOAD để nạp một tập tin chương trình của LISP trước khi gọi thực hiện các hàm đã được định nghĩa trong tập tin đó.</para>
+        <para id="id19635090">Ví dụ:</para>
+        <para id="id19635094">&gt;(Load “D:\btlisp\bai1.lsp”)</para>
+        <list id="id19635100" list-type="bulleted">
+          <item>(READ) </item>
+        </list>
+        <para id="id19635108">Ðọc dữ liệu từ bàn phím cho đến khi gõ phím Enter, trả về kết quả là dữ liệu được nhập từ bàn phím.</para>
+        <list id="id19635115" list-type="bulleted">
+          <item>(PRINT E) </item>
+        </list>
+        <para id="id19635124">In ra màn hình giá trị của biểu thức E, xuống dòng và trả về giá trị của E.</para>
+        <list id="id19635132" list-type="bulleted">
+          <item>(PRINC E) </item>
+        </list>
+        <para id="id19635141">In ra màn hình giá trị của biểu thức E (không xuống dòng) và trả về giá trị của E.</para>
+        <list id="id19635149" list-type="bulleted">
+          <item>(TERPRI) </item>
+        </list>
+        <para id="id19635158">Ðưa con trỏ xuống dòng và trả về NIL.</para>
+      </section>
+      <section id="id-00242485376701">
+        <title>Biến toàn cục và biến cục bộ</title>
+        <section id="id-619653319251">
+          <title>Biến toàn cục </title>
+          <para id="id19635179">Biến toàn cục (global variables) là biến mà phạm vi của nó là tất cả các hàm. Biến toàn cục sẽ tự động giải phóng khi chương trình dịch LISP kết thúc. </para>
+          <list id="id19635191" list-type="bulleted">
+            <item>Hàm (SETQ &lt;tên biến&gt; &lt;biểu thức&gt;)</item>
+          </list>
+          <para id="id19635201">Gán trị của &lt;biểu thức&gt; cho &lt;tên biến&gt; và trả về kết quả là giá trị của &lt;biểu thức&gt;.</para>
+          <para id="id19635210">Ví dụ:</para>
+          <para id="id19635214">&gt;(setq x (* 2 3))</para>
+          <para id="id19635225">= 6</para>
+          <para id="id19635230">&gt; x ; biến x vẫn còn tồn tại và có giá trị là 6</para>
+          <para id="id19635238">= 6</para>
+        </section>
+        <section id="id-967868803091">
+          <title>Biến cục bộ </title>
+          <para id="id19635251">Biến cục bộ (local variables) là biến mà phạm vi của nó chỉ nằm trong hàm mà nó được tạo ra. Biến cục bộ sẽ tự động giải phóng hàm tạo ra nó kết thúc. </para>
+          <list id="id19635263" list-type="bulleted">
+            <item>(LET ( (var1 E1) (var2 E2) ... (vark Ek)) Ek+1 ... En) </item>
+          </list>
+          <para id="id19635273">Ta thấy hàm này có 2 phần: phần gán trị cho các biến và phần định trị các biểu thức.</para>
+          <para id="id19635281">Gán trị của biểu thức Ei cho biến cục bộ vari tương ứng và thực hiện (PROGN Ek+1 ... En).</para>
+          <para id="id19635310">Ví dụ:</para>
+          <para id="id19635315">&gt;(Let ((a 3) (b 5)) (* a b) (+ a b))</para>
+          <para id="id19635337">= 8</para>
+          <para id="id19635341">&gt; a ; biến a lúc này đã được giải phóng nên LISP sẽ thông báo lỗi</para>
+          <para id="id19635353">error: unbound variable - A</para>
+        </section>
+        <section id="id-673639773715">
+          <title>Biến cục bộ che biến toàn cục</title>
+          <para id="id19635367">Trong lập trình hàm, người ta rất hạn chế sử dụng biến, nếu thật sự cần thiết thì nên sử dụng biến cục bộ. Tuy nhiên việc khai báo biến cục bộ trong hàm LET gây khó khăn cho việc viết chương trình hơn là sử dụng biến toàn cục. Để khắc phục tình trạng này, ta sẽ kết hợp cả hai hàm LET và SETQ để sử dụng biến cục bộ che biến toàn cục. Cách làm như sau: </para>
+          <list id="id19635381" list-type="bulleted">
+            <item>Trong phần gán trị cho biến của LET ta tạo ra một biến và gán cho nó một giá trị bất kỳ, chẳng hạn số 0.</item>
+            <item>Trong phần định trị các biểu thức, ta có thể sử dụng SETQ để gán trị cho biến đã tạo ra ở trên, biến này sẽ là một biến cục bộ chứ không còn là toàn cục nữa.</item>
+            <item>Cụ thể chúng ta có thể viết:</item>
+          </list>
+          <para id="id19635414">(LET ( (var E1)…..)</para>
+          <para id="id19635425">…….</para>
+          <para id="id19635433">(SETQ var E2)</para>
+          <para id="id19635445">……</para>
+          <para id="id19635452">)</para>
+          <para id="id19635456">Với cách làm này thì biến var trong hàm SETQ sẽ trở thành biến cục bộ.</para>
+          <para id="id19635464">Ví dụ: Giả sử ta đã định nghĩa được hàm (ptb2 a b c), giải phương trình bậc hai ax2+bx+c = 0. Bây giờ ta viết hàm (giai_ptb2) cho phép nhập các hệ số a, b, c từ bàn phím và gọi hàm (ptb2 a b c) để thực hiện việc giải phương trình. Có hai phương pháp để viết hàm này.</para>
+          <para id="id19635496">Phương pháp 1: dùng các biến toàn cục a, b, c</para>
+          <para id="id19635502">(defun giai_ptb2 ()</para>
+          <para id="id19635507">(progn</para>
+          <para id="id19635512">(print “Chương trình giải phương trình bậc hai“)</para>
+          <para id="id19635521">(princ “Nhập hệ số a: “) (setq a (read))</para>
+          <para id="id19635531">(princ “Nhập hệ số b: “) (setq b (read))</para>
+          <para id="id19635541">(princ “Nhập hệ số c: “) (setq c (read))</para>
+          <para id="id19635551">(ptb2 a b c)</para>
+          <para id="id19635564">)</para>
+          <para id="id19635570">)</para>
+          <para id="id19635574">Sau khi thực hiện chương trình này, thì các biến toàn cục a, b và c vẫn còn.</para>
+          <para id="id19635581">Phương pháp 2: dùng các biến cục bộ d, e, f</para>
+          <para id="id19635588">(defun giai_ptb2 ()</para>
+          <para id="id19635592">(let ((d 0) (e 0) (f 0))</para>
+          <para id="id19635605">(print “Chương trình giải phương trình bậc hai“)</para>
+          <para id="id19635614">(princ “Nhập hệ số a: “) (setq d (read))</para>
+          <para id="id19635624">(princ “Nhập hệ số b: “) (setq e (read))</para>
+          <para id="id19635634">(princ “Nhập hệ số c: “) (setq f (read))</para>
+          <para id="id19635644">(ptb2 d e f)</para>
+          <para id="id19635657">)</para>
+          <para id="id19635662">)</para>
+          <para id="id19635666">Sau khi thực hiện chương trình này, thì các biến cục bộ d, e và f được giải phóng.</para>
+        </section>
+      </section>
+      <section id="id-248325920359">
+        <title>Hướng dẫn sử dụng LISP </title>
+        <section id="id-999748819213">
+          <title>Sử dụng XLISP</title>
+          <para id="id19635693">XLISP là một trình thông dịch, chạy dưới hệ điều hành Windows. Chỉ cần chép tập tin thực thi XLISP.EXE có dung lượng 288Kb vào máy tính của bạn là có thể thực hiện được.</para>
+          <para id="id19635705">Để thực hiện các hàm, chỉ cần gõ trực tiếp hàm đó vào sau dấu chờ lệnh (&gt;) của XLISP. Trong trường hợp không có dấu chờ lệnh, hãy dùng menu Run/Top level hoặc Ctrl-C để làm xuất hiện dấu chờ lệnh.</para>
+          <para id="id19635721">Việc định nghĩa một hàm cũng có thể gõ trực tiếp vào sau dấu chờ lệnh. Tuy nhiên cách làm này sẽ khó sửa chữa hàm đó và do vậy ta thường định nghĩa các hàm trong một tập tin chương trình, sau đó nạp vào cho XLISP để sử dụng.</para>
+          <para id="id19635736">Ta có thể lưu trữ lại tình trạng làm việc hiện hành vào trong tập tin .WKS bằng cách dùng menu File/Save workspace và sau đó có thể khôi phục lại bằng cách dùng menu File/Restore workspace. </para>
+        </section>
+        <section id="id-461412121213">
+          <title>Soạn thảo tập tin chương trình</title>
+          <para id="id19635741">Do XLISP không có công cụ để soạn thảo chương trình nên ta có thể sử dụng Notepad để soạn thảo tập tin chương trình.</para>
+          <para id="id19290084">Trong một tập tin chương trình ta có thể định nghĩa nhiều hàm.</para>
+          <para id="id19290092">Lưu tập tin chương trình có tên theo quy định của DOS (8.3) với phần mở rộng .LSP và để trong cặp dấu nháy kép. </para>
+        </section>
+        <section id="id-217658614207">
+          <title>Nạp hàm tự định nghĩa cho XLISP</title>
+          <para id="id19290111">Có hai phương pháp để nạp các hàm tự định nghĩa cho XLISP:</para>
+          <list id="id19290118" list-type="bulleted">
+            <item>Phương pháp 1: Copy và dán khối</item>
+          </list>
+          <list id="id19290128" list-type="bulleted">
+            <item>Trong Notepad, đánh dấu khối một hàm tự định nghĩa và copy khối (Edit/Copy hoặc Ctrl-C).</item>
+            <item>Trong XLISP, dán khối tại dấu chờ lệnh (Edit/Paste hoặc Ctrl-Ins).</item>
+            <item>Với phương pháp này thì khi viết các hàm, không nên viết một dòng lệnh quá dài.</item>
+            <item>Nếu khối hàm dán vào không có lỗi thì tên hàm sẽ xuất hiện và ta có thể sử dụng được hàm đó.</item>
+            <item>Phương pháp này rất phù hợp với việc kiểm thử từng hàm. </item>
+          </list>
+          <list id="id19290172" list-type="bulleted">
+            <item>Phương pháp 2: Mở tập tin chương trình</item>
+          </list>
+          <list id="id19290185" list-type="bulleted">
+            <item>Trong XLISP, sử dụng menu File-Open/Load để mở tập tin chương trình chứa các hàm đã được viết và lưu trữ bởi Notepad. Chúng ta cũng có thể sử dụng hàm (LOAD &lt;tên tập tin&gt;) để mở tập tin chương trình.</item>
+            <item>Nếu việc mở thành công thì có thể gọi thực hiện bất kỳ hàm nào đã có trong tập tin chương trình.</item>
+            <item>Nếu có một hàm viết sai dấu ngoặc thì việc mở tập tin sẽ thất bại và do đó ta không thể dùng bất kỳ hàm nào trong tập tin đó.</item>
+            <item>Phương pháp này thích hợp với việc nạp nhiều hàm đã được kiểm chứng trong một tập tin chương trình để sử dụng. </item>
+          </list>
+        </section>
+        <section id="id-8024235517">
+          <title>Một số thông báo lỗi thường gặp</title>
+          <list id="id19290238" list-type="bulleted">
+            <item>Unbound function: Hàm không có.</item>
+            <item>Bad function: Hàm sai.</item>
+            <item>Too many arguments: Thừa tham số.</item>
+            <item>Too few arguments: Thiếu tham số.</item>
+            <item>Misplaced close paren: Thừa dấu ngoặc đóng/ Thiếu dấu ngoặc mở.</item>
+            <item>EOF reached beore expression end: Thừa dấu ngoặc mở/ Thiếu dấu ngoặc đóng.</item>
+            <item>Not a number: Đối số của hàm phải là một số.</item>
+            <item>Bad argument type: Kiểu của tham số sai. </item>
+          </list>
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

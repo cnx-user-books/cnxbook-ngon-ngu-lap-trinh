@@ -1,0 +1,867 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Kiểu dữ liệu có cấu trúc</title>
+  <metadata>
+  <md:content-id>m29848</md:content-id><md:title>Kiểu dữ liệu có cấu trúc</md:title>
+  <md:abstract/>
+  <md:uuid>fec2719f-dae9-4332-a250-4d4c52b08bee</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-545234319402">
+      <title>TỔNG QUAN</title>
+      <section id="id-882391160272">
+        <title>Mục tiêu</title>
+        <para id="id19474375">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id19474382" list-type="bulleted">
+          <item>Khái niệm về kiểu dữ liệu có cấu trúc.</item>
+          <item>Đặc tả và phương pháp cài đặt kiểu dữ liệu có cấu trúc.</item>
+          <item>Các đặc tả, phương pháp tổ chức lưu trữ, cài đặt các phép toán của một số kiểu dữ liệu có cấu trúc như: vecto, mảng nhiều chiều, mẩu tin, chuỗi ký tự… </item>
+        </list>
+      </section>
+      <section id="id-0745977329496">
+        <title>Nội dung cốt lõi</title>
+        <list id="id19474419" list-type="bulleted">
+          <item>Kiểu dữ liệu có cấu trúc.</item>
+          <item>Các đặc tả, phương pháp lưu trữ, hình thức truy xuất, cài đặt các phép toán của một số kiểu dữ liệu có cấu trúc.</item>
+        </list>
+      </section>
+      <section id="id-377812698314">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id19474449">Kiến thức và kĩ năng lập trình căn bản, kiến thức chương 2.</para>
+      </section>
+    </section>
+    <section id="id-698876184476">
+      <title>ÐỊNH NGHĨA KIỂU DỮ LIỆU CÓ CẤU TRÚC</title>
+      <para id="id19474465">Kiểu dữ liệu có cấu trúc hay còn gọi là cấu trúc dữ liệu (CTDL) là một kiểu dữ liệu mà các ÐTDL của nó là các ÐTDL có cấu trúc. </para>
+      <para id="id19474475">Như vậy CTDL là một tập hợp các ÐTDL có cấu trúc cùng với tập hợp các phép toán thao tác trên các ÐTDL đó. Các kiểu dữ liệu như mảng, mẩu tin, chuỗi, ngăn xếp (stacks), danh sách, con trỏ, tập hợp và tập tin là các CTDL.</para>
+    </section>
+    <section id="id-828219857196">
+      <title>SỰ ÐẶC TẢ KIỂU CẤU TRÚC DỮ LIỆU</title>
+      <section id="id-551918170816">
+        <title>Sự đặc tả các thuộc tính</title>
+        <para id="id19474509">Các thuộc tính chủ yếu của CTDL bao gồm:</para>
+        <section id="id-801578050254">
+          <title>Số lượng phần tử</title>
+          <para id="id19474523">Số lượng các phần tử của một CTDL cho biết kích thước của CTDL, số lượng này có thể cố định hoặc thay đổi tuỳ loại CTDL.</para>
+          <para id="id19474533">Một CTDL được gọi là có kích thước cố định nếu số lượng các phần tử không thay đổi trong thời gian tồn tại của nó. </para>
+          <para id="id19474554">Ví dụ các kiểu mảng, mẩu tin là các CTDL có kích thước cố định.</para>
+          <para id="id19474562">Một CTDL được gọi là có kích thước thay đổi nếu số lượng các phần tử thay đổi một cách động trong thời gian tồn tại của nó. </para>
+          <para id="id19474584">Ví dụ ngăn xếp, danh sách, tập hợp, chuỗi ký tự và tập tin là các CTDL có kích thước thay đổi. Các phép toán cho phép thêm hoặc bớt các phần tử của cấu trúc làm thay đổi kích thước của cấu trúc.</para>
+          <para id="id19474597">Kiểu của mỗi một phần tử</para>
+          <para id="id19474602">Mỗi một phần tử của CTDL có một kiểu dữ liệu nào đó, ta gọi là kiểu phần tử. Kiểu phần tử có thể là một kiểu dữ liệu sơ cấp hoặc một CTDL. Các phần tử trong cùng một CTDL có thể có kiểu phần tử giống nhau hoặc khác nhau.</para>
+          <para id="id19474617">Một CTDL được gọi là đồng nhất nếu tất cả các phần tử của nó đều có cùng một kiểu. </para>
+          <para id="id19474641">Ví dụ mảng, chuỗi ký tự, tập hợp và tập tin là các CTDL đồng nhất .</para>
+          <para id="id19474648">Một CTDL được gọi là không đồng nhất nếu các phần tử của nó có kiểu khác nhau.</para>
+          <para id="id19474675">Ví dụ mẩu tin là CTDL không đồng nhất.</para>
+        </section>
+        <section id="id-891276955159">
+          <title>Tên để dùng cho các phần tử được lựa chọn</title>
+          <para id="id19474691">Ðể lựa chọn một phần tử của CTDL cho một xử lý nào đó người ta thường sử dụng một tên. Ðối với cấu trúc mảng, tên có thể là một chỉ số nguyên hoặc một dãy chỉ số; đối với mẩu tin, tên là một tên trường. Một số kiểu cấu trúc dữ liệu như ngăn xếp và tập tin cho phép truy nhập đến chỉ một phần tử đặc biệt (phần tử đầu tiên hoặc phần tử hiện hành).</para>
+        </section>
+        <section id="id-172786189746">
+          <title>Số lượng lớn nhất các phần tử</title>
+          <para id="id19474721">Ðối với CTDL có kích thước thay đổi như chuỗi ký tự hoặc ngăn xếp, đôi khi người ta quy định thuộc tính kích thước tối đa của cấu trúc để giới hạn số lượng các phần tử của cấu trúc.</para>
+        </section>
+        <section id="id-866074416639">
+          <title>Tổ chức cấu trúc</title>
+          <para id="id19474738">Tổ chức phổ biến nhất là một dãy tuần tự của các phần tử. Vector (mảng một chiều), mẩu tin, chuỗi ký tự, ngăn xếp, danh sách và tập tin là các CTDL có tổ chức kiểu này.</para>
+          <para id="id19474750">Một số cấu trúc còn được mở rộng thành dạng "nhiều chiều" ví dụ mảng nhiều chiều, mẩu tin mà các phần tử của nó là các mẩu tin, danh sách mà các phần tử của nó là danh sách.</para>
+        </section>
+      </section>
+      <section id="id-911896825356">
+        <title>Các phép toán trên cấu trúc dữ liệu</title>
+        <para id="id19474773">Một số các phép toán đặc thù của CTDL:</para>
+        <section id="id-418039463542">
+          <title>Phép toán lựa chọn phần tử của cấu trúc</title>
+          <para id="id19474788">Phép toán lựa chọn một phần tử là phép toán truy nhập đến một phần tử của CTDL và làm cho nó có thể được xử lý bởi một phép toán khác. </para>
+          <para id="id19474802">Có hai loại lựa chọn:</para>
+          <para id="id19474807">Lựa chọn ngẫu nhiên (hay còn gọi là lựa chọn trực tiếp) là sự lựa chọn một phần tử tùy ý của cấu trúc dữ liệu được truy nhập thông qua một cái tên. </para>
+          <para id="id19474826">Ví dụ để lựa chọn một phần tử nào đó của mảng, ta chỉ ra chỉ số của phần tử đó, để lựa chọn một phần tử của mẩu tin ta sử dụng tên của phần tử đó.</para>
+          <para id="id19474838">Lựa chọn tuần tự là sự lựa chọn trong đó phần tử được lựa chọn là một phần tử đứng sau các phần tử đã được lựa chọn khác theo tuần tự của việc xử lý hoặc là lựa chọn một phần tử đặc biệt nào đó. </para>
+          <para id="id19474859">Ví dụ lựa chọn tuần tự các phần tử trong một tập tin hay lựa chọn một phần tử trên đỉnh của ngăn xếp.</para>
+        </section>
+        <section id="id-101772320029">
+          <title>Các phép toán thao tác trên toàn bộ cấu trúc dữ liệu</title>
+          <para id="id19474878">Là các phép toán có thể nhận các CTDL làm các đối số và sản sinh ra kết quả là các CTDL mới. Chẳng hạn phép gán một mẩu tin cho một mẩu tin khác hoặc phép hợp hai tập hợp.</para>
+        </section>
+        <section id="id-0524589744279">
+          <title>Thêm / bớt các phần tử</title>
+          <para id="id19474899">Là các phép toán cho phép thêm vào CTDL hoặc loại bỏ khỏi CTDL một số phần tử. Các phép toán này sẽ làm thay đổi số lượng các phần tử trong một CTDL. Việc thêm vào hay loại bỏ một phần tử thường phải chỉ định một vị trí nào đó.</para>
+        </section>
+        <section id="id-575313088105">
+          <title>Tạo / hủy CTDL</title>
+          <para id="id19474922">Là các phép toán tạo ra hoặc xóa bỏ một CTDL.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-551661079866">
+      <title>SỰ CÀI ÐẶT CÁC CẤU TRÚC DỮ LIỆU</title>
+      <section id="id-56805427133">
+        <title>Biểu diễn bộ nhớ</title>
+        <para id="id19474948">Sự biểu diễn bộ nhớ cho một CTDL bao gồm:</para>
+        <para id="id19474954">- Bộ nhớ cho các phần tử của cấu trúc.</para>
+        <para id="id19474960">- Bộ mô tả để lưu trữ một số hoặc tất cả các thuộc tính của cấu trúc.</para>
+        <para id="id19474968">Có hai phương pháp để biểu diễn bộ nhớ là:</para>
+        <section id="id-524838683827">
+          <title>Biểu diễn tuần tự </title>
+          <para id="id19474983">Biểu diễn tuần tự là sự biểu diễn, trong đó CTDL được lưu trữ như một khối các ô nhớ liên tiếp nhau, bắt đầu bằng bộ mô tả sau đó là các phần tử. </para>
+          <para id="id19474997">Ðây là phương pháp được dùng cho các CTDL có kích thước cố định hoặc có kích thước thay đổi nhưng đồng nhất. Chẳng hạn có thể dùng biểu diễn tuần tự để biểu diễn cho mảng, mẩu tin,…</para>
+        </section>
+        <section id="id-394745810004">
+          <title>Biểu diễn liên kết </title>
+          <para id="id19475014">Biểu diễn liên kết là sự biểu diễn, trong đó CTDL được lưu trữ trong nhiều khối ô nhớ tại các vị trí khác nhau trong bộ nhớ, mỗi khối liên kết với khối khác thông qua một con trỏ gọi là con trỏ liên kết. </para>
+          <para id="id19475031">Phương pháp này thường được sử dụng cho các CTDL có kích thước thay đổi. Chẳng hạn có thể dùng biểu diễn liên kết để biểu diễn cho danh sách, ngăn xếp,…</para>
+          <figure id="id19475047">
+            <media id="id12221533" alt=""><image src="../../media/graphics1-c662.png" mime-type="image/png" height="460" width="545"/></media>
+          </figure>
+        </section>
+      </section>
+      <section id="id-42573965147">
+        <title>Cài đặt các phép toán trên cấu trúc dữ liệu</title>
+        <para id="id19475082">Phép toán lựa chọn một phần tử là phép toán cơ bản nhất trong các phép toán trên CTDL. Như trên đã trình bày, có hai cách lựa chọn là lựa chọn ngẫu nhiên và lựa chọn tuần tự và hai cách biểu diễn bộ nhớ là biểu diễn tuần tự và biêu diễn liên kết. Vì vậy ở đây chúng ta sẽ xét cách thực hiện mỗi một phương pháp lựa chọn với mỗi một phương pháp biểu diễn bộ nhớ.</para>
+        <section id="id-102471522681">
+          <title>Ðối với biểu diễn tuần tự</title>
+          <para id="id19475103">Như trên đã trình bày, trong cách biểu diễn tuần tự, một khối ô nhớ liên tục sẽ được cấp phát để lưu trữ tòan bộ CTDL. Trong đó, vị trí đầu tiên của khối ô nhớ được gọi là địa chỉ cơ sở. Khoảng cách từ địa chỉ cơ sở đến vị trí của phần tử cần lựa chọn được gọi là độ dời của phần tử.</para>
+          <para id="id19475132">Cách thức truy xuất, được cho bởi tên hoặc chỉ số của phần tử (chẳng hạn chỉ số của một phần tử của mảng), sẽ xác định cách tính độ dời của phần tử như thế nào. </para>
+          <para id="id19475144">Để lựa chọn ngẫu nhiên một phần tử cần phải xác định vị trí thực của phần tử (tức là địa chỉ của ô nhớ lưu trữ phần tử đó) theo công thức:</para>
+          <para id="id19475160">Vị trí thực của phần tử = Ðịa chỉ cơ sở + độ dời của phần tử. </para>
+          <para id="id19475174">Lựa chọn tuần tự một dãy các phần tử của cấu trúc có thể theo các bước:</para>
+          <para id="id19475188">- Ðể chọn phần tử đầu tiên ta dùng cách tính địa chỉ cơ sở cộng với độ dời như đã nói ở trên.</para>
+          <para id="id19475197">- Ðối với các phần tử tiếp theo trong dãy, cộng kích thước của phần tử hiện hành với vị trí của phần tử hiện hành để được vị trí của phần tử kế tiếp.</para>
+        </section>
+        <section id="id-312069695643">
+          <title>Ðối với biểu diễn liên kết</title>
+          <para id="id19475216">Như trên đã trình bày, các khối ô nhớ trong biểu diễn liên kết được bố trí rời rạc nhau, khối này nối với khối kia bằng con trỏ và lúc đầu chỉ nắm được con trỏ tới khối đầu tiên. Do đó việc đi đến các khối luôn phải xuất phát từ khối đầu tiên.</para>
+          <para id="id19475231">Để lựa chọn ngẫu nhiên một phần tử trong cấu trúc liên kết cần phải duyệt một dãy các khối, từ khối đầu tiên đến khối cần lựa chọn.</para>
+          <para id="id19475246">Lựa chọn tuần tự một dãy các phần tử được thực hiện bằng cách lựa chọn phần tử đầu tiên như đã nói ở trên và sau đó từ phần tử hiện hành, duyệt theo con trỏ để đến phần tử kế tiếp.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-189352016155">
+      <title>VÉCTƠ </title>
+      <section id="id-941475776222">
+        <title>Định nghĩa véctơ</title>
+        <para id="id19475282">Véctơ (còn gọi là mảng một chiều) là một CTDL bao gồm một số cố định các phần tử có kiểu giống nhau được tổ chức thành một dãy tuần tự các phần tử. </para>
+        <para id="id19475314">Như vậy véctơ là một CTDL có kích thước cố định và đồng nhất.</para>
+      </section>
+      <section id="id-912524916184">
+        <title>Sự đặc tả và cú pháp</title>
+        <section id="id-174862872872">
+          <title>Đặc tả thuộc tính của véctơ</title>
+          <para id="id19475337">Các thuộc tính của một véctơ là:</para>
+          <para id="id19475343">- Số lượng các phần tử, luôn được chỉ rõ bằng cách cho tập chỉ số. Tập chỉ số này thông thường được cho bởi một miền con các số nguyên, trong trường hợp đó, số lượng các phần tử bằng số nguyên cuối cùng - số nguyên đầu tiên + 1. Một cách tổng quát thì tập chỉ số có thể là kiểu liệt kê nào đó, trong trường hợp này, số lượng phần tử bằng số giá trị trong kiểu liệt kê. Cũng có những ngôn ngữ chỉ định rõ số lượng các phần tử như ngôn ngữ C chẳng hạn. </para>
+          <para id="id19475388">- Kiểu dữ liệu của mỗi một phần tử, thường được viết rõ trong khai báo.</para>
+          <para id="id19475405">- Chỉ số được sử dụng để lựa chọn mỗi một phần tử. Nếu tập chỉ số được cho bởi một miền con của tập các số nguyên thì số nguyên đầu tiên chỉ định phần tử đầu tiên số nguyên thứ 2 chỉ định phần tử thứ 2 ...Nếu tập chỉ số là một liệt kê thì giá trị đầu tiên trong liệt kê là chỉ số của phần tử đầu tiên. Nếu ngôn ngữ chỉ định rõ số lượng các phần tử thì 0 là chỉ số của phần tử đầu tiên.</para>
+          <para id="id19475427">Khai báo véctơ trong Pascal là ARRAY [&lt;tập chỉ số&gt;] OF &lt;kiểu phần tử&gt;.</para>
+          <para id="id19475438">Ví dụ VAR a: ARRAY[1..10] OF real; </para>
+          <para id="id19475444">Khai báo này xác định 1 véctơ a có 10 phân tử là các số real. Các phần tử này được lựa chọn bởi các chỉ số từ 1 đến 10.</para>
+          <para id="id19475454">Miền giá trị của chỉ số không nhất thiết bắt đầu từ 1, ví dụ </para>
+          <para id="id19475461">Var b: ARRAY [-5..10] OF integer; Với khai báo này thì b là một véctơ có 16 phần tử (10 – (-5) + 1 = 16). Các phần tử được lựa chọn nhờ các chỉ số từ -5 đến 10.</para>
+          <para id="id19475472">Miền giá trị của chỉ số không nhất thiết là miền con của số nguyên, nó có thể là một liệt kê bất kỳ (hoặc 1 miền con của một liệt kê). Ví dụ:</para>
+          <para id="id19475485">Type</para>
+          <para id="id19475490">Ngay = (Chu_nhat, Hai, Ba, Tu, Nam, Sau, Bay);</para>
+          <para id="id19475495">var </para>
+          <para id="id19475500">c : ARRAY [Ngay] OF Integer ;</para>
+          <para id="id19475504">Khai báo này xác đinh véctơ c có 7 phần tử là các số integer, các phần tử của c được lựa chọn nhờ các “chỉ số” từ Chu_nhat đến Bay. </para>
+          <para id="id19475514">Khai báo véctơ trong ngôn ngữ C là &lt;kiểu phần tử&gt; &lt;tên biến&gt; [&lt;số lượng phần tử&gt;].</para>
+          <para id="id19475528">Ví dụ int d[10];</para>
+          <para id="id19475533">Khai báo này xác định véctơ d có 10 phần tử các số int, các phần tử này được lựa chọn nhờ các chỉ số từ 0 đến 9. </para>
+        </section>
+        <section id="id-719030999051">
+          <title>Đặc tả các phép toán trên véctơ</title>
+          <para id="id19475553">Các phép toán trên véctơ bao gồm:</para>
+          <para id="id19475558">Phép toán lựa chọn một phần tử của véctơ là phép lấy chỉ số, được viết bằng tên của véctơ theo sau là chỉ số của phần tử được lựa chọn đặt trong cặp dấu []. Như vậy phép lựa chọn một phần tử của véctơ là phép lựa chọn trực tiếp.</para>
+          <para id="id19475592">Ví dụ, với các khai báo trong các ví dụ thuộc phần đặc tả thuộc tính nói trên,</para>
+          <para id="id19475600">Các phần tử của véctơ a được lựa chọn bằng cách viết a[1], a[2], …, a[10].</para>
+          <para id="id19475608">Các phần tử của véctơ b được lựa chọn bằng cách viết b[-5], b[-4], …, b[10].</para>
+          <para id="id19475616">Các phần tử của véctơ c được lựa chọn bằng cách viết c[Chu_nhat], c[Hai], …, c[Bay].</para>
+          <para id="id19475624">Các phần tử của véctơ d được lựa chọn bằng cách viết d[0], d[1], …, d[9].</para>
+          <para id="id19475632">Chỉ số có thể là một hằng hoặc một biến (nói chung là một biểu thức), ví dụ a[i] hay a[i+2]. Nhờ chỉ số là một biểu thức nên việc lập trình trở nên đơn giản hơn nhiều nhờ tính khái quát của chỉ số. </para>
+          <para id="id19475645">Ví dụ để in ra giá trị của 10 phần tử trong véctơ a, thay vì ta phải viết 10 lệnh in các phần tử cụ thể theo kiểu writeln(a[1]); writeln(a[2]); writeln(a[3]); … ta chỉ cần viết một lệnh for i:=1 to 10 do writeln(a[i]); </para>
+          <para id="id19475659">Các phép toán khác trên véctơ bao gồm các phép toán tạo và hủy bỏ véctơ, gán hai véctơ cho nhau và các phép toán thực hiện như các phép toán số học trên từng cặp 2 véctơ có cùng kích thước. Chẳng hạn phép cộng 2 véctơ (cộng các phần tử tương ứng). Tùy thuộc vào ngôn ngữ mà các phép toán này có hoặc không có.</para>
+        </section>
+      </section>
+      <section id="id-051762789979">
+        <title>Cài đặt một véctơ</title>
+        <section id="id-569814858466">
+          <title>Biểu diễn bộ nhớ</title>
+          <para id="id19475696">Biểu diễn bộ nhớ tuần tự được sử dụng để biễu diễn cho một véctơ. </para>
+          <para id="id19475710">Mô hình sau minh họa cho sự biểu diễn bộ nhớ của véctơ A : ARRAY[LB..UB] OF &lt;kiểu phần tử&gt;.</para>
+          <figure id="id19475721">
+            <media id="id7135229" alt=""><image src="../../media/graphics2-f780.png" mime-type="image/png" height="216" width="540"/></media>
+          </figure>
+          <para id="id19475745">Khối ô nhớ để lưu trữ một véctơ có hai phần: bộ mô tả và bộ nhớ dành cho các phần tử của véctơ. Trong bộ mô tả lưu trữ kiểu dữ liệu của cấu trúc (véctơ A), cận dưới của tập chỉ số (LB - Lower Bound), cận trên của tập chỉ số (UB - Upper Bound), kiểu dữ liệu của phần tử và kích thước mỗi phần tử (E). Bộ nhớ dành cho các phần tử của véctơ lưu trữ liên tiếp các phần tử, từ phần tử đầu tiên (A[LB]) cho đến phần tử cuối cùng (A[UB]). Do các phần tử có cùng một kiểu nên các ô nhớ dành cho các phần tử có kích thước bằng nahu.</para>
+          <para id="id19475774">Ðịa chỉ của ô nhớ đầu tiên trong khối gọi là địa chỉ cơ sở.</para>
+        </section>
+        <section id="id-49125643886">
+          <title>Giải thuật thực hiện các phép toán</title>
+          <para id="id19475789">Phép toán lựa chọn một phần tử được thực hiện bằng cách tính vị trí của phần tử cần lựa chọn theo công thức:</para>
+          <para id="id19475808">Vị trí của phần tử thứ i =  + D + (i - LB) * E</para>
+          <para id="id19475830">Trong đó i là chỉ số của phần tử cần lựa chọn,  là địa chỉ cơ sở của khối ô nhớ (địa chỉ word hoặc byte đầu tiên của khối ô nhớ dành cho véctơ) D là kích thước của bộ mô tả, LB là cận dưới của tập chỉ số và E là kích thước của mỗi một đối tượng dữ liệu thành phần (số word hoặc byte cần thiết để lưu trữ một phần tử). </para>
+          <para id="id19475853">Nếu chỉ số là một giá trị của kiểu liệt kê chứ không phải số nguyên thì hiệu i-LB phải được tính toán một cách thích hợp (chẳng hạn sử dụng hiệu của hai số thứ tự tương ứng của i và LB trong liệt kê).</para>
+          <para id="id19475867">Phép gán một véctơ cho một véctơ khác có cùng thuộc tính được thực hiện bằng cách sao chép nội dung trong khối ô nhớ biểu diễn véctơ thứ nhất sang khối ô nhớ biểu diễn véctơ thứ hai. </para>
+          <para id="id19475883">Các phép toán trên toàn bộ véctơ được thực hiện bằng cách sử dụng các vòng lặp xử lý tuần tự các phần tử của véctơ.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-659225052759">
+      <title>MẢNG NHIỀU CHIỀU </title>
+      <para id="id19475904">Ma trận (mảng hai chiều) được xem như là một véctơ của các véctơ. Một mảng 3 chiều được xem như là một véctơ của các ma trận...</para>
+      <section id="id-394449556169">
+        <title>Sự đặc tả và cú pháp</title>
+        <section id="id-609669440771">
+          <title>Đặc tả thuộc tính</title>
+          <para id="id19475929">Mảng nhiều chiều tương tự như véctơ nhưng chỉ có một thuộc tính khác véctơ là mỗi một chiều phải có một tập chỉ số tương ứng. </para>
+          <para id="id19475940">Chẳng hạn khai báo cho một mảng hai chiều có thể đươc viết dưới dạng</para>
+          <para id="id19475947">ARRAY[LB1..UB1, LB2..UB2] OF &lt;Kiểu phần tử&gt;</para>
+          <para id="id19475960">Trong đó tập chỉ số 1 có các giá trị từ LB1 đến UB1, tập chỉ số 2 có các giá trị từ LB2 đến UB2. </para>
+          <para id="id19475969">Như vậy số lượng các phần tử của mảng hai chiều sẽ là (UB1-LB1+1)*(UB2-LB2+1)</para>
+          <para id="id19475984">Ví dụ sự khai báo của Pascal:</para>
+          <para id="id19475990">M= array [1..3, -1..2] of Integer;</para>
+          <para id="id19475994">Sự khai báo này cho ta thấy mảng M có hai chiều, chiều thứ nhất được xác định bởi tập chỉ số 1..3 và chiều thứ hai được xác định bởi tập chỉ số -1..2. Có thể xem đây là một ma trận có 3 dòng và 4 cột, như vậy sẽ có 12 phần tử, mỗi phần tử có thể lưu trữ một số integer.</para>
+          <para id="id19476008">Đối với các mảng có số chiều nhiều hơn hai thì cách làm cũng tương tự như mảng hai chiều.</para>
+        </section>
+        <section id="id-187115950339">
+          <title>Đặc tả phép toán</title>
+          <para id="id19476023">Phép lựa chọn một phần tử được thực hiện bằng cách chỉ ra tên mảng và chỉ số của mỗi một chiều. </para>
+          <para id="id19476040">Chẳng hạn để lựa chọn một phân tử của ma trận ta viết tên ma trận, theo sau là cặp chỉ số dòng, cột phân cách nhau bởi dấu phẩy và đặt trong cặp dấu [], ví dụ M[2,0]. </para>
+          <para id="id19476054">Như vậy phép lựa chọn một phần tử của mảng nhiều chiều là phép lựa chọn trực tiếp.</para>
+        </section>
+      </section>
+      <section id="id-142833180785">
+        <title>Sự cài đặt</title>
+        <section id="id-386022147617">
+          <title>Sự biểu diễn bộ nhớ</title>
+          <para id="id19476092">Sự biểu diễn bộ nhớ đối với mảng nhiều chiều tương tự như sự biểu diễn bộ nhớ đối với véctơ. Nghĩa là cũng sử dụng sự biểu diễn tuần tự và khố ô nhớ được chia làm hai phần: bộ mô tả và bộ nhớ cho các phần tử. Bộ mô tả của mảng giống bộ mô tả của véctơ ngoại trừ mỗi một chiều có một cận dưới và cận trên của tập chỉ số của chiều đó. Trong bộ nhớ dành cho các phần tử ta cũng lưu trữ liên tiếp các phần tử theo một trật tự nào đó. </para>
+          <para id="id19476122">Với ma trận, về mặt logic thì ma trận là một bảng gồm m dòng và n côt, mỗi một ô là một phần tử, nhưng bộ nhớ lại chỉ gồm các ô liên tiếp nhau, vì thế ta phải lưu trữ ma trận theo trật tự dòng hoặc theo trật tự cột.</para>
+          <para id="id19476153">Lưu trữ theo trật tự dòng có nghĩa là trong bộ nhớ dành cho các phần tử ta lưu trữ tuần tự các phần tử trong dòng thứ nhất, tiếp đến là các phần tử trong dòng thứ hai... cho đên dòng cuối cùng.</para>
+          <para id="id19476177">Lưu trữ theo trật tự cột nghĩa là trong bộ nhớ dành cho các phần tử ta lưu trữ tuần tự các phần tử trong cột thứ nhất, tiếp đến là các phần tử trong cột thứ hai... cho đến cột cuối cùng.</para>
+          <para id="id19476202">Chẳng hạn với khai báo M: ARRAY [1..3,-1..2] OF Integer; ta có hình ảnh biểu diễn </para>
+          <para id="id19476212">trong bộ nhớ như các hình sau:</para>
+          <figure id="id19476221">
+            <media id="id8305596" alt=""><image src="../../media/graphics3-72e5.png" mime-type="image/png" height="356" width="600"/></media>
+          </figure>
+          <figure id="id19476249">
+            <media id="id5202939" alt=""><image src="../../media/graphics4.png" mime-type="image/png" height="358" width="600"/></media>
+          </figure>
+        </section>
+        <section id="id-0942798169131">
+          <title>Giải thuật thực hiện phép toán</title>
+          <para id="id19476282">Ðể thực hiện phép toán lựa chọn phần tử, ta sử dụng công thức tính vị trí của phần tử trong bộ nhớ. </para>
+          <para id="id19476288">Với cách lưu trữ theo trật tự dòng của ma trận M, để tính vị trí của M[i,j], đầu tiên ta xác định số dòng cần nhảy qua: (i-LB1) nhân với độ dài của mỗi dòng để xác định vị trí bắt đầu của dòng thứ i và sau đó tìm vị trí thứ J trong dòng này như đối với 1 véctơ. Như vậy, vị trí của phần tử M[i,j] được tính bởi:</para>
+          <para id="id19476303">Vị trí của M [i,j] =  + D + (i-LB1) x S + (j-LB2) x E</para>
+          <para id="id19476325">Trong đó: là địa chỉ cơ sở.</para>
+          <para id="id19476344">D là độ lớn của bộ mô tả.</para>
+          <para id="id19476353">S là độ lớn của mỗi dòng = (UB2 - LB2 +1) x E.</para>
+          <para id="id19476362">LB1 là cận dưới của chỉ số thứ nhất.</para>
+          <para id="id19476368">LB2,UB2 tương ứng là cận dưới và cận trên của chỉ số thứ hai.</para>
+          <para id="id19476375">Tương tự ta có thể thành lập công thức tính vị trí của phần tử M[i,j] trong trường hợp ma trận M được tổ chức lưu trữ theo trật tự cột.</para>
+          <para id="id19367715">Tổng quát hóa công thức này cho mảng nhiều chiều hơn là một điều đơn giản.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-817957012107">
+      <title>MẨU TIN</title>
+      <section id="id-409545461936">
+        <title>Định nghĩa mẩu tin</title>
+        <para id="id19367743">Mẩu tin là một CTDL bao gồm một số cố định các phần tử có kiểu khác nhau.</para>
+        <para id="id19367754">Như vậy, mẩu tin là một CTDL có kích thước cố định và không đồng nhất. Các phần tử của mẩu tin được gọi là các trường.</para>
+      </section>
+      <section id="id-5632282776">
+        <title>Sự đặc tả và cú pháp</title>
+        <section id="id-721345754368">
+          <title>Đặc tả thuộc tính</title>
+          <para id="id19367790">Các thuộc tính của một mẩu tin phải được chỉ rõ trong phép khai báo, chúng bao gồm:</para>
+          <para id="id19367799">1. Số lượng các phần tử. </para>
+          <para id="id19367805">2. Kiểu dữ liệu của các phần tử (Các phần tử có thể có kiểu khác nhau).</para>
+          <para id="id19367813">3. Mỗi phần tử được cho bởi tên phần tử (tên trường).</para>
+          <para id="id19367820">Cú pháp khai báo mẩu tin của Pascal:</para>
+          <para id="id19367826">Nhan_vien: RECORD</para>
+          <para id="id19367831">Ma: Integer; {Mã nhân viên}</para>
+          <para id="id19367838">Ho_ten: String[25];</para>
+          <para id="id19367843">Tuoi: Integer; {Tuổi}</para>
+          <para id="id19367850">Luong: Real; {Hệ số lương}</para>
+          <para id="id19367857">END</para>
+          <para id="id19367865">Việc khai báo này đặc tả một mẩu tin có 4 phần tử của các kiểu Integer, Real và String. Mỗi phần tử có một tên: Ma, Ho_ten, Tuoi và Luong. Ðể chọn một phần tử của mẩu tin ta sử dụng tên của phần tử (trường) đó, chẳng hạn trong Pascal, Nhan_vien.Luong là để truy xuất tới phần tử Luong của mẩu tin Nhan_vien.</para>
+        </section>
+        <section id="id-23098329263">
+          <title>Đặc tả phép toán</title>
+          <para id="id19367888">Lựa chọn một phần tử là phép toán cơ bản cuả mẩu tin. Phép toán này được thực hiện bằng cách chỉ ra tên trực kiện của phần tử. </para>
+          <para id="id19367898">Ví dụ để lựa chọn phần tử thứ 4 của mẩu tin Nhan_vien ta viết: Nhan_vien.Luong.</para>
+          <para id="id19367906">Phép toán lựa chọn một phần tử của mẩu tin là sự lựa chọn trực tiếp.</para>
+          <para id="id19367919">Mặc dù đều là lựa chọn trực tiếp, nhưng có khác biệt so với cách lựa chọn phần tử của véctơ. Điểm khác biệt ở đây là: đối với véctơ, ta có thể sử dụng giá trị của một biểu thức làm chỉ số, chẳng hạn VECTO[i+1], còn đối với mẩu tin thì bắt buộc phải chỉ rõ tên trực kiện, chứ không thể là biểu thức.</para>
+          <para id="id19367934">Ngoài phép toán lựa chọn phần tử, phép gán các mẩu tin có cùng cấu trúc là một phép toán phổ biến được các ngôn ngữ đưa vào. Chẳng hạn Nhan_vien := InputRec trong đó InputRec có các thuộc tính giống hệt Nhan_vien.</para>
+        </section>
+      </section>
+      <section id="id-305148620404">
+        <title>Sự cài đặt</title>
+        <section id="id-532797256342">
+          <title>Biểu diễn bộ nhớ</title>
+          <para id="id19367964">Biểu diễn bộ nhớ tuần tự được sử dụng để lưu trữ một mẩu tin. Một khối liên tục các ô nhớ được dùng để lưu trữ cho một mẩu tin, trong khối đó, mỗi ô biểu diễn cho một trường. Có thể cũng cần sử dụng bộ mô tả riêng cho từng trường để lưu trữ thuộc tính của các trường đó. Do các trường có kiểu khác nhau nên ô nhớ dành cho chúng cũng có kích thước khác nhau. </para>
+        </section>
+        <section id="id-630392679364">
+          <title>Giải thuật thực hiên phép toán</title>
+          <para id="id19367998">Việc lựa chọn phần tử được thực hiện một cách dễ dàng vì tên trường được biết đến thông qua việc dịch chứ không phải được tính toán thông qua việc thực hiện như đối với véctơ. Việc khai báo mẩu tin còn cho phép xác định kích thước và vị trí của nó trong ô nhớ thông qua việc dịch. Kết quả là độ dời của phần tử bất kỳ có thể được tính thông qua việc dịch. </para>
+          <para id="id19368013">Chẳng hạn với mẩu tin Nhan_vien, các phần tử của nó được lưu trữ trong bộ nhớ như sau:</para>
+          <para id="id19368021"><table id="id19368043" summary=""><tgroup cols="2"><colspec colnum="1" colname="c1"/><colspec colnum="2" colname="c2"/><tbody><row><entry>22901</entry><entry> Ma</entry></row><row><entry>Nguyen Van A</entry><entry> Ho_ten</entry></row><row><entry>20</entry><entry> Tuoi</entry></row><row><entry>2.18</entry><entry> Luong</entry></row></tbody></tgroup></table>Vị trí của một phần tử bất kỳ được tính một cách dễ dàng. Chẳng hạn</para>
+          <para id="id19368191">Vị trí của Tuoi =  + Kích thước của Ma + Kích thước của Ho_ten.</para>
+          <para id="id19368205">Trong đó  là địa chỉ cơ sở của khối ô nhớ biểu diễn cho Nhan_vien.</para>
+          <para id="id19368218">Phép toán gán toàn bộ một mẩu tin cho một mẩu tin khác có cùng cấu trúc được thực hiện một cách đơn giản là copy nội dung khối ô nhớ biểu diễn cho mẩu tin thứ nhất sang khối ô nhớ biểu diễn cho mẩu tin thứ 2.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-532359668216">
+      <title>MẨU TIN CÓ CẤU TRÚC THAY ÐỔI</title>
+      <section id="id-598924357777">
+        <title>Ðặc tả và khai báo</title>
+        <para id="id19368250">Trước hết ta xét ví dụ sau:</para>
+        <para id="id19368256">Giả sử trong một xí nghiệp có hai loại công nhân là công nhân trong biên chế và công nhân hợp đồng. Ðối với công nhân trong biên chế thì lương sẽ được tính bằng số ngày công * mức lương tối thiểu * hệ số /20, những ngày nghỉ bảo hiểm xã hội, họ được trả lương bảo hiểm xã hội. Ngược lại công nhân hợp đồng chỉ được trả lương bằng số ngày công * đơn giá công nhật và họ không được trả lương bảo hiểm xã hội.</para>
+        <para id="id19368270">Ta thấy, hai loại công nhân này có những thông tin chung là họ tên, số ngày công, tiền lương và loại công nhân (biên chế hay hợp đồng). Mỗi loại công nhân lại có các thông tin riêng. Đối với công nhân trong biên chế, ta cần thêm các thông tin: hệ số lương và số ngày nghỉ bảo hiểm xã hội. Đối với công nhân hợp đồng, ta cần thêm thông tin về đơn giá công nhật. </para>
+        <para id="id19368288">Nếu sử dụng mẩu tin bình thường để lưu trữ thông tin về hai loại công nhân này, ta cần tất cả 7 trường để lưu trữ 4 thông tin chung và 3 thông tin riêng. Khối ô nhớ cần cấp phát phải đủ để lưu trữ cả 7 trường nhưng việc sử dụng khối ô nhớ lại bị dư, do đối với công nhân biên chế ta chỉ cần 6 trường, đối với công nhân hợp đồng ta chỉ cần 5 trường! </para>
+        <section id="id-339286992428">
+          <title>Đặc tả thuộc tính</title>
+          <para id="id19368313">Ðể giải quyết vấn đề lãng phí bộ nhớ, trong một số ngôn ngữ lập trình có một loại CTDL gọi là mẩu tin có cấu trúc thay đổi.</para>
+          <para id="id19368320">Mỗi một cấu trúc sẽ có một số trường giống nhau cho mọi loại mẩu tin và một số trường khác nhau cho từng loại mẩu tin. Các trường giống nhau gọi là phần chung hay phần tĩnh, các trường khác nhau này gọi là phần động hay phần thay đổi của mẩu tin. </para>
+          <para id="id19368335">Chẳng hạn đối với bài toán nêu trên thì mỗi công nhân được lưu trong một mẩu tin, có các trường thuộc phần chung đó là Ho_Ten, Ngay_Cong, Tien_Luong. Ngoài ra tùy thuộc vào loại công nhân là biên chế hay hợp đồng mà có các trường riêng. Ðối với công nhân trong biên chế ta cần thêm các trường He_So và Nghi_Bhxh để lưu trữ hệ số lương và số ngày nghỉ bảo hiểm xã hội. Ðối với công nhân hợp đồng ta chỉ cần thêm một trường là Gia_Cong_Nhat để lưu trữ giá công nhật cho mỗi người. </para>
+          <para id="id19368361">Khai báo trong Pascal như sau: </para>
+          <para id="id19368369">TYPE</para>
+          <para id="id19368374">loai_cong_nhan = (bien_che,hop_dong);</para>
+          <para id="id19368381">VAR </para>
+          <para id="id19368388">Cong_Nhan : RECORD</para>
+          <para id="id19368399">ho_ten: String[20];</para>
+          <para id="id19368407">ngay_cong: Real;</para>
+          <para id="id19368414">luong: Real;</para>
+          <para id="id19368422">CASE loai: loai_cong_nhan OF</para>
+          <para id="id19368429">bien_che:</para>
+          <para id="id19368437">(he_so: Real;</para>
+          <para id="id19368444">nghi_bhxh:Real);</para>
+          <para id="id19368452">hop_dong:</para>
+          <para id="id19368459">(gia_cong_nhat: Real);</para>
+          <para id="id19368467">END;</para>
+          <para id="id19368475">Khai báo trên định nghĩa một mẩu tin có cấu trúc thay đổi. Mẩu tin luôn luôn có các trường Ho_Ten, Ngay_Cong, Luong và Loai. Khi giá trị của Loai = "bien_che" thì mẩu tin còn có các trường He_So và Nghi_Bhxh, trong khi đó nếu giá trị của Loai = "hop_dong" thì nó lại có trường Gia_Cong_Nhat.</para>
+        </section>
+        <section id="id-130271986638">
+          <title>Đặc tả phép toán</title>
+          <para id="id19368498">Phép toán lựa chọn các phần tử của mẩu tin có cấu trúc thay đổi cũng giống như mẩu tin bình thường. Chẳng hạn ta có thể sử dụng Cong_Nhan.Luong, Cong_Nhan.He_So hay Cong_Nhan.Gia_Cong_Nhat. Tuy nhiên các trường thuộc phần động chỉ tồn tại trong một thời điểm nhất định do đó khi chúng ta truy xuất tới một tên trường mà nó không tồn tại thì sẽ bị lỗi. Trường Loai trong ví dụ trên là rất quan trọng vì nó chỉ ra phần động nào của mẩu tin được sử dụng trong quá trình thực hiện chương trình. Người đọc có thể tham khảo ví dụ tương đối hoàn chỉnh viết bằng Pascal.</para>
+          <para id="id19368527">uses crt;</para>
+          <para id="id19368531">Const luong_toi_thieu = 290000;</para>
+          <para id="id19368535">Type</para>
+          <para id="id19368540">Loai_cong_nhan = (bien_che, hop_dong);</para>
+          <para id="id19368547">Cong_nhan = Record</para>
+          <para id="id19368554">ho_ten : String[20];</para>
+          <para id="id19368562">Ngay_cong : real;</para>
+          <para id="id19368573">luong : real;</para>
+          <para id="id19368581">Case loai: Loai_cong_nhan of</para>
+          <para id="id19368588">bien_che: (He_so, so_ngay_nghi_BHXH : real);</para>
+          <para id="id19368596">hop_dong: (don_gia: real);</para>
+          <para id="id19368604">end;</para>
+          <para id="id19368611">danh_sach_cong_nhan = Array[1..10] of cong_nhan;</para>
+          <para id="id19368619">Var</para>
+          <para id="id19368624">n : integer; ho_so : danh_sach_cong_nhan;</para>
+          <para id="id19368631">{Nhập danh sách công nhân, và các thông tin liên quan đến lao động}</para>
+          <para id="id19368645">Procedure Nhap (var ho_so: danh_sach_cong_nhan; var n: integer);</para>
+          <para id="id19368651">Var</para>
+          <para id="id19368655">i: integer;</para>
+          <para id="id19368662">loaicn : char;</para>
+          <para id="id19368670">Begin</para>
+          <para id="id19368674">write('So cong nhan: '); readln(n);</para>
+          <para id="id19368682">For i:=1 to n do with ho_so[i] do begin</para>
+          <para id="id19368690">Writeln('Cong nhan ',i);</para>
+          <para id="id19368700">Write('Ho va Ten: '); readln(ho_ten);</para>
+          <para id="id19368705">Write('Loai cong nhan: A la bien che, B la hop dong ');</para>
+          <para id="id19368710">readln(loaicn);</para>
+          <para id="id19368714">If Upcase(loaicn) ='A' then loai := bien_che else loai := hop_dong;</para>
+          <para id="id19368723">write('So ngay cong: '); readln(ngay_cong);</para>
+          <para id="id19368731">if loai = bien_che then begin</para>
+          <para id="id19368738">write('He so: '); readln(he_so);</para>
+          <para id="id19368745">write('So ngay nghi bao hiem: '); readln(so_ngay_nghi_BHXH);</para>
+          <para id="id19368754">end else begin</para>
+          <para id="id19368761">write('Don gia hop dong: '); readln(don_gia);</para>
+          <para id="id19368769">end;</para>
+          <para id="id19368777">end; { with Ho_so[i] }</para>
+          <para id="id19368788">end; {nhap}</para>
+          <para id="id19368792">{Tính lương cho từng công nhân, theo công thức của từng loại công nhân}</para>
+          <para id="id19368811">Procedure Tinh_luong (var ho_so: danh_sach_cong_nhan; n: integer); </para>
+          <para id="id19368816">Var</para>
+          <para id="id19368821">i : integer; luong_binh_quan: real;</para>
+          <para id="id19368828">begin</para>
+          <para id="id19368833">for i:=1 to n do with ho_so[i] do begin</para>
+          <para id="id19368848">if loai = bien_che then begin {tính lương của công nhân biên chế}</para>
+          <para id="id19368864">luong_binh_quan := he_so * luong_toi_thieu/20;</para>
+          <para id="id19368872">luong := ngay_cong * luong_binh_quan + </para>
+          <para id="id19368882">so_ngay_nghi_BHXH * luong_binh_quan*0.80;</para>
+          <para id="id19368887">end else {tính lương của công nhân hợp đồng} </para>
+          <para id="id19368894">luong := ngay_cong * don_gia;</para>
+          <para id="id19368906">end; { with Ho_so[i] }</para>
+          <para id="id19368916">end; {Tinh_luong }</para>
+          <para id="id19368932">Procedure In_luong (ho_so: danh_sach_cong_nhan; n: integer); </para>
+          <para id="id19368937">Var</para>
+          <para id="id19368941">i : integer; </para>
+          <para id="id19368949">begin</para>
+          <para id="id19368953">for i:=1 to n do with ho_so[i] do begin</para>
+          <para id="id19368969">Write(ho_ten:25);</para>
+          <para id="id19368977">If loai = bien_che then write('Bien che':10)</para>
+          <para id="id19368985">else write('Hop dong':10);</para>
+          <para id="id19368992">write(ngay_cong:5:1);</para>
+          <para id="id19369000">if loai = bien_che then begin</para>
+          <para id="id19369008">write(he_so:5:1);</para>
+          <para id="id19369016">write(so_ngay_nghi_BHXH:5:1);</para>
+          <para id="id19369024">end else</para>
+          <para id="id19369031">write(don_gia:10:2);</para>
+          <para id="id19369039">writeln(luong:10:2);</para>
+          <para id="id19369046">end; { with Ho_so[i] }</para>
+          <para id="id19369058">end; { In_luong }</para>
+          <para id="id19369065">begin {Chuong trinh chinh}</para>
+          <para id="id19369082">nhap(ho_so,n);</para>
+          <para id="id19369089">tinh_luong(ho_so,n);</para>
+          <para id="id19369097">in_luong(ho_so,n);</para>
+          <para id="id19369104">readln;</para>
+          <para id="id19369112">end.</para>
+        </section>
+      </section>
+      <section id="id-669089257276">
+        <title>Cài đặt mẩu tin có cấu trúc thay đổi</title>
+        <section id="id-80476568523">
+          <title>Biểu diễn bộ nhớ</title>
+          <para id="id19369134">Biểu diễn tuần tự sẽ được sử dụng để biểu diễn cho một mẩu tin có cấu trúc thay đổi. </para>
+          <para id="id19369147">Thông qua việc dịch, tổng bộ nhớ cần để lưu các phần tử của mỗi một phần động được xác định và bộ nhớ được cấp phát đủ để lưu trữ mẩu tin với phần động lớn nhất. Chẳng hạn với mẩu tin cong_nhan ta có mô hình lưu trữ như trong hình vẽ sau:</para>
+          <table id="id19369165" summary="">
+            <tgroup cols="3">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <tbody>
+                <row>
+                  <entry>Ho_ten </entry>
+                  <entry/>
+                  <entry> Ho_ten</entry>
+                </row>
+                <row>
+                  <entry>Ngay_cong </entry>
+                  <entry/>
+                  <entry> Ngay_cong</entry>
+                </row>
+                <row>
+                  <entry>Luong </entry>
+                  <entry/>
+                  <entry> Luong</entry>
+                </row>
+                <row>
+                  <entry>Loai </entry>
+                  <entry/>
+                  <entry> Loai</entry>
+                </row>
+                <row>
+                  <entry>He_so </entry>
+                  <entry/>
+                  <entry> Gia_cong_nhat</entry>
+                </row>
+                <row>
+                  <entry>Nghi_bhxh </entry>
+                  <entry/>
+                  <entry> Không sử dụng</entry>
+                </row>
+                <row>
+                  <entry>Công nhân biên chế</entry>
+                  <entry/>
+                  <entry>Công nhân hợp đồng</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19369438">Vì khối ô nhớ đủ lớn để lưu trữ phần động lớn nhất nên có đủ chỗ cho bất kỳ một phần động nào nhưng đối với những phần động nhỏ hơn sẽ không sử dụng tới một số ô nhớ đã được cấp phát.</para>
+          <para id="id19369454">Với mẩu tin có cấu trúc thay đổi, rõ ràng ta đã tiết kiệm được một số ô nhớ so với mẩu tin bình thường. </para>
+        </section>
+        <section id="id-572639235583">
+          <title>Giải thuật thực hiện phép toán</title>
+          <para id="id19369473">Lựa chọn một phần tử của phần động cũng giống như lựa chọn một phần tử bình thường, qua việc dịch thì độ dời của phần tử được lựa chọn sẽ được tính toán và qua việc thực hiện thì độ dời được cọng vào địa chỉ cơ sở của khối để xác định vị trí của phần tử.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-459626623919">
+      <title>CHUỖI KÝ TỰ:</title>
+      <para id="id19369498">Chuỗi ký tự là cấu trúc dữ liệu bao gồm một dãy các ký tự.</para>
+      <para id="id19369505">Như vậy, kiểu chuỗi ký tự là một kiểu đồng nhất, còn về kích thước thì có thể cố định hoặc thay đổi tùy theo ngôn ngữ. Kiểu dữ liệu chuỗi ký tự là một kiểu quan trọng mà hầu hết các ngôn ngữ đều có.</para>
+      <section id="id-988628020739">
+        <title>Ðặc tả và cú pháp:</title>
+        <section id="id-377473869033">
+          <title>Đặc tả thuộc tính</title>
+          <para id="id19369533">Tùy ngôn ngữ, có thể có 3 cách đặc tả đối với kiểu chuỗi ký tự:</para>
+          <para id="id19369540">a/ Ðộ dài được khai báo cố định: Chuỗi ký tự có thể có độ dài (kích thước) cố định được khai báo trong chương trình. Mọi giá trị được gán cho đối tượng dữ liệu chuỗi đều có cùng độ dài như vậy. Khi một chuỗi thực được gán cho đối tượng dữ liệu mà độ dài của chuỗi thực khác độ dài được khai báo thì sẽ có sự điều chỉnh độ dài của chuỗi thực bằng cách cắt bớt các ký tự dư hoặc thêm vào các ký tự trắng để có được một chuỗi có độ dài đúng như khai báo. </para>
+          <para id="id19369572">Ðây là kỹ thuật cơ bản được dùng trong COBOL trong đó từ khóa PICTURE được dùng để xác định số lượng ký tự, ví dụ: Last_Name PICTURE X(20) khai báo biến chuỗi ký tự Last_Name chứa một chuỗi 20 ký tự. </para>
+          <para id="id19369580">Trong Pascal (chuẩn) kiểu dữ liệu chuỗi ký tự không có. Thay vào đó kiểu chuổi ký tự được biểu diễn như là một véctơ của các ký tự Last_Name: PACKED ARRAY [1..20] OF Char.</para>
+          <para id="id19369592">b/ Ðộ dài thay đổi trong một giới hạn đã được khai báo: Chuỗi ký tự có thể có độ dài cực đại được khai báo trước trong chương trình nhưng giá trị thực của đối tượng dữ liệu được lưu trữ có thể là chuỗi có độ dài ngắn hơn, thậm chí có thể là chuỗi rỗng. Trong quá trình thực hiện độ dài của giá trị chuỗi của đối tượng dữ liệu có thể thay đổi, nó cũng sẽ bị cắt nếu vượt giới hạn đã khai báo. </para>
+          <para id="id19369619">Ðây là kỹ thuật được dùng trong PL/1 (và cả trong Turbo Pascal).</para>
+          <para id="id19369624">c/ Ðộ dài không giới hạn: Chuỗi ký tự có thể có độ dài bất kỳ và độ dài có thể thay đổi một cách động thông qua quá trình thực hiện. </para>
+          <para id="id19369652">Ðây là kỹ thuật được dùng trong SNOBOL4.</para>
+          <para id="id19369657">Trong ba phương pháp nói trên thì hai phương pháp đầu cho phép cấp phát bộ nhớ cho mỗi một đối tượng dữ liệu chuỗi được xác định tại thời gian dịch. Ðối vơi phương pháp thứ ba thì sử dụng cấp phát bộ nhớ động tại thời gian thực hiện. Các phương pháp khác nhau cũng đòi hỏi các phép toán khác nhau trên chuỗi. Sau đây là một số phép toán chủ yếu.</para>
+        </section>
+        <section id="id-378034386331">
+          <title>Đặc tả phép toán</title>
+          <para id="id19369681">Trên chuỗi ký tự, thường có các phép toán sau:</para>
+          <para id="id19369687">a/ Phép ghép nối (concatennation)</para>
+          <para id="id19369693">Ghép là phép toán nhập hai chuỗi ký tự tạo ra một chuỗi mới ví dụ nếu "//" là ký hiệu của phép ghép thì "BLOCK"//"HEAD" cho ra "BLOCKHEAD". Turbo Pascal sử dụng toán tử “+” cho phép toán ghép chuỗi. </para>
+          <para id="id19369706">b/ Các phép toán quan hệ trên chuỗi</para>
+          <para id="id19369712">Các phép toán quan hệ thông thường như bằng, nhỏ hơn, lớn hơn... trên kiểu ký tự có thể được mở rộng cho chuỗi ký tự. Tập hợp các ký tự cơ bản luôn luôn có một thứ tự. Mở rộng thứ tự này cho chuỗi ký tự thành thứ tự alphabe trong đó chuỗi A nhỏ hơn chuỗi B nếu ký tự đầu tiên của A nhỏ hơn ký tự đầu tiên của B hoặc hai ký tự đầu tiên tương ứng của chúng bằng nhau và ký tự thư hai của A nhỏ hơn ký tự thứ hai của B... Nếu chuỗi A ngắn hơn chuỗi B thì A được mở rộng bằng cách thêm vào các ký tự trắng cho dài bằng B để so sánh.</para>
+          <para id="id19369743">c/ Chọn chuỗi con dùng chỉ số chỉ vị trí của ký tự</para>
+          <para id="id19369750">Nhiều ngôn ngữ cung cấp một phép toán chọn chuỗi con của một chuỗi bằng cách cho vị trí của ký tự đầu tiên và ký tự cuối cùng của nó (hoặc vị trí của ký tự đầu tiên và chiều dài của chuỗi con). Ví dụ trong FORTRAN, lệnh NEXT = STR(6:10) là gán 5 ký tự, bắt đầu từ vị trí thứ 6 đến vị trị thứ 10 của chuỗi STR cho biến chuỗi NEXT.</para>
+          <para id="id19369768">d/ Ðịnh dạng nhập - xuất</para>
+          <para id="id19369773">Ðịnh dạng nhập xuất là phép toán dùng để thay đổi dạng nhập vào hoặc xuất ra của các chuỗi ký tự. Nhập xuất có định dạng là nét nổi bật của FORTRAN và PL/1.</para>
+          <para id="id19369784">e/ Chọn chuỗi con dùng so mẫu</para>
+          <para id="id19369789">Thông thường người ta không biết vị trí của một chuỗi con cần chọn trong một chuỗi lớn hơn nhưng quan hệ của nó với một chuỗi con khác thì có thể biết. Ví dụ chuỗi các chữ số sau dấu chấm thập phân hay chuỗi đứng sau một khoảng trống. Phép so mẫu có một đối số thứ nhất để xác định dạng của chuỗi con cần chọn (chẳng hạn độ dài của nó). Ðối số thứ hai của phép toán so mẫu là chuỗi ký tự dùng để tìm trong chuỗi (chẳng hạn dấu chấm thập phân). Như vậy kết quả của phép toán so mẫu là chọn được một chuỗi con bắt đầu từ sau dấu chấm thập phân và có độ dài đã cho.</para>
+        </section>
+      </section>
+      <section id="id-806306583782">
+        <title>Cài đặt</title>
+        <section id="id-109914203995">
+          <title>Biểu diễn bộ nhớ </title>
+          <para id="id19369837">Mỗi một phương pháp đặc tả chuỗi có một cách biểu diễn bộ nhớ tương ứng.</para>
+          <para id="id19369848">Ðối với chuỗi có độ dài được khai báo cố định thì dùng véctơ của các ký tự. Ví dụ chuỗi được khai báo có độ dài 8 và được dùng để lưu trữ chuỗi EINSTEIN (cũng có 8 ký tự):</para>
+          <table id="id19369859" summary="">
+            <tgroup cols="8">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <colspec colnum="4" colname="c4"/>
+              <colspec colnum="5" colname="c5"/>
+              <colspec colnum="6" colname="c6"/>
+              <colspec colnum="7" colname="c7"/>
+              <colspec colnum="8" colname="c8"/>
+              <tbody>
+                <row>
+                  <entry>E</entry>
+                  <entry>I</entry>
+                  <entry>N</entry>
+                  <entry>S</entry>
+                  <entry>T</entry>
+                  <entry>E</entry>
+                  <entry>I</entry>
+                  <entry>N</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19369956">Ðối với chuỗi có độ dài thay đổi trong một giới hạn đã được khai báo thì vẫn dùng véctơ của các ký tự, trong đó sử dụng hai ô làm bộ mô tả chứa giá trị thể hiện độ dài lớn nhất đã được khai báo và độ dài hiện hành của chuỗi. Ví dụ chuỗi được khai báo có độ dài 12 và được dùng để lưu trữ chuỗi EINSTEIN (có 8 ký tự):</para>
+          <table id="id19369980" summary="">
+            <tgroup cols="14">
+              <colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+              <colspec colnum="3" colname="c3"/>
+              <colspec colnum="4" colname="c4"/>
+              <colspec colnum="5" colname="c5"/>
+              <colspec colnum="6" colname="c6"/>
+              <colspec colnum="7" colname="c7"/>
+              <colspec colnum="8" colname="c8"/>
+              <colspec colnum="9" colname="c9"/>
+              <colspec colnum="10" colname="c10"/>
+              <colspec colnum="11" colname="c11"/>
+              <colspec colnum="12" colname="c12"/>
+              <colspec colnum="13" colname="c13"/>
+              <colspec colnum="14" colname="c14"/>
+              <tbody>
+                <row>
+                  <entry>12</entry>
+                  <entry>8</entry>
+                  <entry>E</entry>
+                  <entry>I</entry>
+                  <entry>N</entry>
+                  <entry>S</entry>
+                  <entry>T</entry>
+                  <entry>E</entry>
+                  <entry>I</entry>
+                  <entry>N</entry>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                </row>
+                <row>
+                  <entry>Độ dài khai báo</entry>
+                  <entry>Độ dài thực</entry>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry/>
+                  <entry namest="c11" nameend="c14">Các ô dư không sử dụng</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para id="id19370210">Ðối với chuỗi có độ dài không giới hạn thì sử dụng biểu diễn bộ nhớ liên kết với bộ mô tả chứa độ dài hiện tại của chuỗi.</para>
+          <figure id="id19370223">
+            <media id="id6241748" alt=""><image src="../../media/graphics5.png" mime-type="image/png" height="71" width="569"/></media>
+          </figure>
+        </section>
+        <section id="id-784501887837">
+          <title>Giải thuật thực hiện các phép toán</title>
+          <para id="id19370256">Thông thường phần cứng hỗ trợ cho việc biểu diễn chuỗi có độ dài cố định nhưng đối với các biểu diễn khác cho chuỗi thì phải được mô phỏng bởi phần mềm. Các phép toán ghép, chọn chuỗi con và so mẫu phải mô phỏng bởi phần mềm.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-256003094409">
+      <title>CẤU TRÚC DỮ LIỆU CÓ KÍCH THƯỚC THAY ÐỔI</title>
+      <para id="id19370282">CTDL có kích thước thay đổi là một cấu trúc mà trong đó số lượng các phần tử có thể thay đổi một cách động trong quá trình thực hiện chương trình.</para>
+      <para id="id19370296">Một số kiểu chủ yếu của cấu trúc dữ liệu có kích thước thay đổi là:</para>
+      <section id="id-748763019712">
+        <title>Danh sách và cấu trúc danh sách</title>
+        <para id="id19370312">Danh sách là một CTDL tuyến tính với số lượng thay đổi của các phần tử có kiểu giống nhau. </para>
+        <para id="id19370324">Nếu các phần tử của một danh sách lại là một danh sách thì được gọi là cấu trúc danh sách (list structures). </para>
+        <para id="id19370336">Các phần tử có thể được thêm vào hoặc xóa khỏi một danh sách. Các phần tử có thể được lựa chọn từ một danh sách nhưng vì vị trí của phần tử trong danh sách có thể bị thay đổi do phép thêm và xóa các phần tử nên không thể sử dụng chỉ số để xác định phần tử. Thay vào đó, việc lựa chọn dựa trên cơ sở của mối quan hệ của vị trí của phần tử với danh sách chẳng hạn phần tử đầu, hai, ba, kế hặc cuối. Biểu diễn bộ nhớ liên kết cho danh sách và cấu trúc danh sách được dùng một cách phổ biến để phù hợp với sự thay đổi số lượng các phần tử.</para>
+      </section>
+      <section id="id-564155347098">
+        <title>Ngăn xếp và hàng đợi</title>
+        <para id="id19370374">Ngăn xếp là một danh sách mà trong đó việc lựa chọn, thêm, xóa phần tử được thực hiện ở 1 đầu của danh sách.</para>
+        <para id="id19370386">Do việc thêm, xóa phần tử chỉ được thực hiện ở một đầu của ngăn xếp, nên phần tử được đưa vào sau, sẽ được lấy ra trước. Do vậy ngăn xếp còn được gọi là cấu trúc dữ liệu kiểu LIFO (Last In, First Out). </para>
+        <para id="id19370411">Hàng đợi là một danh sách mà trong đó việc lựa chọn, và xóa phần tử được thực hiện ở một đầu còn việc thêm phần tử được thực hiện ở đầu khác của danh sách.</para>
+        <para id="id19370427">Do việc xóa phần tử được thực hiện ở một đầu (đầu của hàng) còn việc thêm phần tử được thực hiện ở cuối hàng, nên phần tử được đưa vào trước, sẽ được lấy ra trước. Do vậy hàng đợi còn được gọi là cấu trúc dữ liệu kiểu FIFO (First In, First Out). </para>
+        <para id="id19370453">Cả hai phương pháp biểu diễn tuần tự và liên kết đều được dùng cho ngăn xếp và hàng đợi.</para>
+      </section>
+    </section>
+    <section id="id-60529321054">
+      <title>CON TRỎ</title>
+      <section id="id-598545679466">
+        <title>Cấp phát tĩnh, cấp phát động và con trỏ</title>
+        <para id="id19370480">Cấp phát bộ nhớ (gọi tắt là cấp phát) là sự dành riêng các ô nhớ của bộ nhớ cho chương trình sử dụng.</para>
+        <para id="id19370489">Thông thường các ô nhớ được cấp phát để lưu trữ giá trị dữ liệu của biến. Có hai phương pháp cấp phát là cấp phát tĩnh và cấp phát động.</para>
+        <para id="id19370510">Cấp phát tĩnh là sự cấp phát ô nhớ cho ÐTDL được thực hiện trong quá trình dịch. </para>
+        <para id="id19370521">Trong khi biên dịch, thông qua sự khai báo biến, bộ dịch xác định được kiểu dữ liệu của ÐTDL nên sẽ dành sẵn một khối ô nhớ đủ lớn để lưu trữ ÐTDL của kiểu này.</para>
+        <para id="id19370533">Người lập trình sử dụng ô nhớ được cấp phát thông qua tên biến.</para>
+        <para id="id19370541">Khi khối chương trình, nơi khai báo biến kết thúc thì ô nhớ đã được cấp phát sẽ được tự động giải phóng.</para>
+        <para id="id19370550">Ưu điểm</para>
+        <para id="id19370554">Ưu điểm của cấp phát tĩnh là người lập trình dễ sử dụng, cụ thể là người lập trình chỉ cần khai báo biến, chương trình dịch sẽ tự động cấp phát và sau đó tự động giải phóng.</para>
+        <para id="id19370571">Nhược điểm</para>
+        <para id="id19370576">Nhược điểm của cấp phát tĩnh là việc sử dụng bộ nhớ không tối ưu, cụ thể là có thể cấp phát nhiều ô nhớ nhưng sử dụng không hết hoặc cấp phát thiếu.</para>
+        <para id="id19370595">Cấp phát động là sự cấp phát trong khi thực hiện chương trình. </para>
+        <para id="id19370606">Người lập trình phải viết lệnh cấp phát trong chương trình, khi thực hiện lệnh này thì bộ nhớ mới được cấp phát.</para>
+        <para id="id19370615">Sử dụng cấp phát động, người lập trình có thể ra lệnh giải phóng để thu hồi ô nhớ.</para>
+        <para id="id19370624">Ðể có thể cấp phát động, ta cần có một biến con trỏ hay còn gọi là biến kiểu tham chiếu. Biến con trỏ là một ÐTDL sơ cấp chứa địa chỉ của khối ô nhớ được cấp phát.</para>
+        <para id="id19370632">Người lập trình sử dụng ô nhớ được cấp phát thông qua biến con trỏ.</para>
+        <para id="id19370640">Ưu điểm </para>
+        <para id="id19370648">Ưu điểm nổi bật của cấp phát động là sử dụng bộ nhớ một cách tối ưu.</para>
+        <para id="id19370661">Nhược điểm </para>
+        <para id="id19370670">Nhược điểm của cấp phát động là sự lắm tên, có thể có nhiều tên biến con trỏ cùng tham chiếu đến một ô nhớ và do vậy làm giảm độ tin cậy của chương trình. Ngoài ra cũng gặp khó kăn khi sử dụng cấp phát động. </para>
+      </section>
+      <section id="id-0229467341254">
+        <title>Sự đặc tả</title>
+        <section id="id-599040751147">
+          <title>Đặc tả thuộc tính</title>
+          <para id="id19370708">Có hai loại con trỏ khác nhau:</para>
+          <para id="id19370714">Con trỏ chỉ có thể tham chiếu tới các ÐTDL cùng kiểu</para>
+          <para id="id19370720">Ðây là phương pháp được dùng trong Pascal và Ada.</para>
+          <para id="id19370726">Ví dụ trong Pascal:</para>
+          <para id="id19370731">Var p: ^integer chỉ ra rằng p là một biến con trỏ chứa địa chỉ của ô nhớ lưu trữ được một số integer. </para>
+          <para id="id19370740">Var q: ^VECT chỉ ra rằng q là một biến con trỏ chứa địa chỉ của khối ô nhớ của ÐTDL thuộc kiểu véctơ VECT nào đó.</para>
+          <para id="id19370750">Con trỏ có thể tham chiếu tới các ÐTDL khác kiểu nhau</para>
+          <para id="id19370757">Ðây là cách được dùng trong các ngôn ngữ như SNOBOL4, nơi mà đối tượng dữ liệu mang bộ mô tả kiểu trong quá trình thực hiện và phép kiểm tra kiểu động được sử dụng. </para>
+        </section>
+        <section id="id-94822833423">
+          <title>Đặc tả phép toán</title>
+          <para id="id19370775">Các phép toán bao gồm:</para>
+          <para id="id19370781">Phép toán cấp phát ô nhớ động: Phép toán này dùng để cấp phát ô nhớ cho đối tượng dữ liệu mới và trả địa chỉ của ô nhớ đó về trong biến con trỏ. Ðây là phép toán quan trọng nhất của kiểu con trỏ. Phép toán này có hai điểm khác biệt với việc tạo ra đối tượng dữ liệu tĩnh (bằng cách khai báo) là: Ðối tượng dữ liệu được tạo ra không cần có tên vì nó được truy xuất thông qua con trỏ và đối tượng dữ liệu có thể được tạo ra một cách động trong quá trình thực hiện chương trình. Trong Pascal và Ada thì phép toán này có tên là NEW. Ví dụ NEW(p).</para>
+          <para id="id19370814">Phép toán truy xuất ô nhớ được cấp phát động: Ðể truy xuất đến giá trị dữ liệu lưu trong khối ô nhớ cấp phát động ta phải sử dụng địa chỉ của khối ô nhớ thông qua tên con trỏ (vì khối ô nhớ này không có tên). Ví dụ q^[5] là phần tử thứ 5 của véctơ Vect được trỏ bởi q.</para>
+          <para id="id19370835">Phép toán thu hồi ô nhớ được cấp phát động: Phép toán này cho phép giải phóng ô nhớ đã cấp phát. Trong Pascal, dùng phép toán DISPOSE.</para>
+          <para id="id19370849">Ví dụ sau trong Pascal minh hoạ tổng hợp các điều nói trên:</para>
+          <para id="id19370856">Type </para>
+          <para id="id19370861">Vect = ARRAY[1..10] of Integer;</para>
+          <para id="id19370866">{Lúc này bộ nhớ cho Vect chưa được cấp phát}</para>
+          <para id="id19370875">VAR </para>
+          <para id="id19370880">p: ^Vect; </para>
+          <para id="id19370884">{Khai báo p là một biến con trỏ chứa địa chỉ của khối ô nhớ lưu trữ ÐTDL thuộc kiểu véctơ Vect. Khi dịch đến đây thì ô nhớ cho p sẽ được cấp phát}</para>
+          <para id="id19370898">Begin</para>
+          <para id="id19370903">NEW(p); </para>
+          <para id="id19370910">{Cấp phát ô nhớ cho véctơ và trả địa chỉ của ô nhớ này cho biến con trỏ p (hay còn nói p trỏ tới khối ô nhớ này)}</para>
+          <para id="id19370919">p^[5] := 20; {Truy xuất đến phần tử thứ 5 của véctơ}</para>
+          <para id="id19370932">writeln(p^[5]);</para>
+          <para id="id19370940">Dispose(p); {Giải phóng ô nhớ đã cấp cho véctơ}</para>
+          <para id="id19370954">End. </para>
+        </section>
+      </section>
+      <section id="id-015866703446">
+        <title>Sự cài đặt</title>
+        <para id="id19370972">Có hai phương pháp biểu diễn bộ nhớ được sử dụng để biểu diễn cho một giá trị con trỏ:</para>
+        <section id="id-566303147662">
+          <title>Ðịa chỉ tuyệt đối</title>
+          <para id="id19370988">Giá trị con trỏ là địa chỉ ô nhớ thực của khối ô nhớ của ÐTDL.</para>
+          <para id="id19370996">Phương pháp này rất hiệu quả, bởi vì giá trị con trỏ tự nó quy định sự truy xuất trực tiếp tới đối tượng dữ liệu bằng cách dùng phép toán truy xuất bộ nhớ của phần cứng.</para>
+        </section>
+        <section id="id-84045239596">
+          <title>Ðịa chỉ tương đối</title>
+          <para id="id19371017">Ðây là phương pháp cấp phát một vùng nhớ rộng với địa chỉ cơ sở của nó. Giá trị con trỏ là độ dời của ÐTDL. Ðịa chỉ của ÐTDL được tính bằng cách lấy địa chỉ cơ sở + độ dời của ÐTDL (tức là giá trị của con trỏ).</para>
+          <para id="id19371027">Phương pháp này thuận tiện cho việc quản lý bộ nhớ nhưng truy xuất đến ÐTDL chậm vì phải tính địa chỉ của khối ô nhớ biểu diễn cho ÐTDL.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-477681480788">
+      <title>TẬP HỢP</title>
+      <section id="id-925515459878">
+        <title>Ðặc tả</title>
+        <section id="id-217844864929">
+          <title>Đặc tả thuộc tính</title>
+          <para id="id19371064">Tập hợp là một cấu trúc dữ liệu đồng nhất và có kích thước thay đổi.</para>
+          <para id="id19371072">Trong một tập hợp người ta không quan tâm đến thứ tự của các phần tử; giá trị các phần tử khác nhau.</para>
+        </section>
+        <section id="id-465610605627">
+          <title>Đặc tả phép toán</title>
+          <para id="id19371089">Các phép toán cơ bản trên tập hợp là:</para>
+          <para id="id19371095">1/ Kiểm tra sự tồn tại của một phần tử</para>
+          <para id="id19371102">Phép toán này dùng để xác định xem một giá trị X nào đó có phải là một phần tử của tập hợp S hay không.</para>
+          <para id="id19371110">2/ Thêm và bớt các phần tử cho tập hợp</para>
+          <para id="id19371116">Thêm giá trị X vào trong tập S, với điều kiện nó chưa là một phần tử của tập hợp. Xóa một giá trị dữ liệu X của tập S nếu nó là một phần tử của S. Hai phép toán này sẽ làm thay đổ kích thước của tập hợp.</para>
+          <para id="id19371130">3/ Phép hợp, giao và hiệu của 2 tập hợp</para>
+          <para id="id19371136">Đây là các phép toán được định nghĩa tương tự như trong toán học.</para>
+        </section>
+      </section>
+      <section id="id-260112645687">
+        <title>Cài đặt</title>
+        <para id="id19371152">Ðể cài đặt một tập hợp, ta có thể sử dụng một trong hai phương pháp sau:</para>
+        <section id="id-414607137143">
+          <title>Véctơ bit</title>
+          <para id="id19371165">Biểu diễn bộ nhớ</para>
+          <para id="id19371170">Tập hợp được biểu diễn bởi một chuỗi các bit. Cách tiếp cận này phù hợp cho một không gian nhỏ. Chẳng hạn ta có một không gian gồm n phần tử được đánh số thứ tự e1, e2, ... en. Một tập hợp các phần tử được chọn từ không gian này được biểu diễn bởi một véctơ có n bit, trong đó nếu bit thứ i có giá trị 1 thì phần tử ei thuộc vào tập hợp, ngược lại bit thứ i có giá trị 0 thì ei không thuộc tập hợp. </para>
+          <para id="id19371219">Giải thuật thực hiện các phép toán</para>
+          <para id="id19371224">Với cách biểu diễn này, việc thêm một phần tử vào trong tập hợp được thực hiện bằng cách cho bit tương ứng giá trị bằng 1. Việc xóa một phần tử trong tập hợp được thực hiện bằng cách cho bit tương ứng giá trị bằng 0. Phép kiểm tra một phần tử có thuộc tập hợp hay không được thực hiện bằng cách kiểm tra bit tương ứng có giá trị là 1 hay 0. Phép hợp của hai tập hợp tương ứng với phép toán logic OR của hai véctơ bit. Phép giao của hai tập hợp tương ứng với phép toán logic AND của hai véctơ bit. Hiệu của hai tập hợp tương ứng với phép toán logic AND của véctơ bit thứ nhất với phần bù của véctơ bit thứ hai. Các phép toán logic trên các véctơ bit đều được hỗ trợ bởi phần cứng.</para>
+          <para id="id19371259">Ví dụ Ta có một không gian bao gồm 5 phần tử 1,2,3,4,5. Khi đó</para>
+          <para id="id19371272">Tập hợp A = {1,2,4,5} được biểu diễn bởi véctơ (1,1,0,1,1)</para>
+          <para id="id19371279">Tập hợp B = {2,3,4} được biểu diễn bởi véctơ (0,1,1,1,0)</para>
+          <para id="id19371286">Do đó A
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ union } {}</m:annotation></m:semantics></m:math>B sẽ là tập {1,2,3,4,5} bởi vì (1,1,0,1,1) OR (0,1,1,1,0) = (1,1,1,1,1)</para>
+          <para id="id19371337">A
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ intersection } {}</m:annotation></m:semantics></m:math>B sẽ là tập hơp {2,4} bởi vì (1,1,0,1,1) AND (0,1,1,1,0) = (0,1,0,1,0)</para>
+          <para id="id19371389">A\B sẽ là tập hơp {1,5} bởi vì phần bù của (0,1,1,1,0) là (1,0,0,0,1) và</para>
+          <para id="id19371400">(1,1,0,1,1) AND (1,0,0,0,1) = (1,0,0,0,1)</para>
+          <para id="id19371406">Ưu điểm</para>
+          <para id="id19371410">Dễ dàng cài đặt các phép toán trên tập hợp với tốc độ thực hiện nhanh nhờ sử dụng các phép toán của phần cứng.</para>
+          <para id="id19371420">Nhược điểm</para>
+          <para id="id19371424">Không thể biểu diễn cho tập hợp mà các phần tử của nó có thể lấy từ một không gian lớn, có số lượng các phần tử bất kỳ.</para>
+        </section>
+        <section id="id-683593814618">
+          <title>Bảng băm</title>
+          <para id="id19371444">Biểu diễn bộ nhớ</para>
+          <para id="id19371449">Phương pháp này thích hợp cho các không gian lớn. Theo đó mỗi tập hợp được biểu diễn bởi một bảng băm (bảng băm mở). Mỗi phần tử của tập hợp được lưu trữ trong các lô (bucket) của bảng băm nhờ vào hàm băm (mỗi lô là một danh sách liên kết, mỗi phần tử của danh sách chứa môt phần tử của tập hợp). </para>
+          <para id="id19371464">Giải thuật thực hiện các phép toán</para>
+          <para id="id19371469">Phép toán kiểm tra sự tồn tại của một phần tử trong tập hợp được thực hiện bằng cách sử dụng phép tìm kiếm một phần tử trong bảng băm.</para>
+          <para id="id19371480">Các phép toán thêm và bớt một phần tử của tập hợp được thực hiện bằng cách sử dụng các phép toán tương ứng là xen và xoá một phần tử của bảng băm. </para>
+          <para id="id19371491">Các phép toán hợp, giao và hiệu của hai tập hợp đòi hỏi phải có một sự cài đặt công phu hơn.</para>
+          <para id="id19371500">Ưu điểm</para>
+          <para id="id19371504">Có thể biểu diễn cho tập hợp bất kỳ, không giới hạn về kích thước.Các phép toán kiểm tra một phần tử thuộc tập hợp, thêm và bớt một phần tử thực hiện dễ dàng và khá hiệu quả.</para>
+          <para id="id19371517">Nhược điểm</para>
+          <para id="id19371522">Khó khăn trong việc cài đặt các phép toán hợp, giao và hiệu của hai tập hợp.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-137495714867">
+      <title>TẬP TIN</title>
+      <para id="id19371540">Tập tin là một CTDL có 2 tính chất đặc biệt.</para>
+      <para id="id19371546">1/ Lưu trữ trong bộ nhớ ngoài như đĩa hay băng từ do đó có thể lớn hơn hầu hết các CTDL khác.</para>
+      <para id="id19371555">2/ Thời gian tồn tại của nó lâu dài.</para>
+      <para id="id19371561">Tập tin tuần tự là một kiểu phổ biến nhất của tập tin nhưng nhiều ngôn ngữ còn cung cấp tập tin truy xuất trực tiếp và tập tin tuần tự có chỉ mục.</para>
+      <section id="id-108698800094">
+        <title>Tập tin tuần tự </title>
+        <section id="id-196601209988">
+          <title>Sự đặc tả</title>
+          <para id="id19371588">Tập tin tuần tự là một CTDL bao gồm một dãy tuyến tính các phần tử có cùng kiểu. Ðộ dài của tập tin là không giới hạn. Kiểu phần tử có thể là kiểu sơ cấp hoặc kiểu cấu trúc có kích thước cố định như mảng hoặc mẩu tin. Kiểu cấu trúc có kích tước thay đổi thông thường không thể là phần tử của tập tin (do đó không có tập tin của tập tin hay tập tin của ngăn xếp).</para>
+          <para id="id19371609">Một cách phổ biến, tập tin có thể được truy nhập theo một trong hai mode: READ hoặc WRITE. Trong cả hai mode này đều có một con trỏ tập tin (file position pointer) dùng để xác định vị trí của phần tử nào đó hoặc sau phần tử cuối cùng. Trong mode WRITE, con trỏ tập tin luôn luôn chỉ vào sau phần tử cuối cùng và phép toán duy nhất có thể là ghi một phần tử mới vào vị trí đó. Trong mode READ, con trỏ tập tin có thể chỉ vào bất kỳ vị trí nào trong tập tin và phép toán duy nhất là đọc phần tử đó. Trong cả hai mode, phép toán READ hoặc WRITE đều di chuyển con trỏ tập tin đến phần tử kế tiếp. Nếu con trỏ tập tin chỉ tới sau phần tử cuối cùng của tập tin thì tập tin được gọi là được chỉ tới cuối tập tin (end-of-file).</para>
+          <para id="id19371647">Các phép toán chủ yếu đối với tập tin tuần tự là:</para>
+          <para id="id19371653">1/ OPEN</para>
+          <para id="id19371658">Thông thường một tập tin phải được mở trước khi sử dụng. Phép toán OPEN chỉ ra tên của tập tin và mode truy xuất tập tin (READ hoặc WRITE). Nếu mode là READ thì tập tin phải chắc chắn là đã tồn tại. Hệ diều hành cung cấp đặc tính của tập tin, cấp phát ô nhớ cần thiết cho vùng nhớ đệm và đặt con trỏ tập tin vào phần tử đầu tiên. Nếu mode là WRITE thì hệ điều hành tạo một tập tin rỗng, nếu tập tin đã tồn tại thì xóa tất cả các phần tử của tập tin để nó rỗng, con trỏ tập tin chỉ vào vị trí đầu tập tin rỗng.</para>
+          <para id="id19371685">Ví dụ trong Pascal thủ tục RESET mở một tập tin để READ và thủ tục REWRITE mở một tập tin để WRITE.</para>
+          <para id="id19371694">2/ READ</para>
+          <para id="id19371698">Phép toán READ chuyển nội dung của phần tử hiện hành của tập tin (được chỉ định bởi con trỏ tập tin) vào biến được chỉ định trong chương trình.</para>
+          <para id="id19371709">3/ WRITE</para>
+          <para id="id19371715">Phép toán WRITE tạo ra một phần tử mới của tập tin tại vị trí hiện hành và chuyển nội dung của biến chương trình được chỉ định vào phần tử mới.</para>
+          <para id="id19371726">4/ Kiểm tra cuối tập tin</para>
+          <para id="id19371731">Là phép toán xác định xem vị trí của con trỏ tập tin có nằm sau phần tử cuối cùng của tập tin hay không.</para>
+          <para id="id19371740">5/ CLOSE</para>
+          <para id="id19371745">Khi việc xử lý tập tin đã hoàn tất thì nó phải được đóng lại. Thông thường tập tin được đóng một cách tự động khi chương trình kết thúc. Tuy nhiên nếu muốn thay đổi mode truy nhập tập tin từ WRITE sang READ hoặc ngược lại thì tập tin phải được đóng một cách tường minh bằng phép toán CLOSE và sau đó mở lại cho mode mới.</para>
+        </section>
+        <section id="id-077218452812">
+          <title>Phép cài đặt</title>
+          <para id="id19371772">Trong hầu hết các hệ máy tính, thì hệ điều hành chịu trách nhiệm chủ yếu về việc cài đặt tập tin bởi vì tập tin được tạo ra và sử dụng bởi nhiều ngôn ngữ lập trình khác nhau. Ngôn ngữ lập trình chỉ làm một việc là cung cấp những cấu trúc dữ liệu cần thiết để giao diện với hệ điều hành.</para>
+          <para id="id19371787">Các phép toán trên tập tin được cài đặt một cách chủ yếu bằng cách gọi các phép toán của hệ điều hành.</para>
+          <para id="id19371796">Khi chương trình mở một tập tin, thì bộ nhớ lưu trữ một bảng thông tin về tập tin (FIT) (File Information Table) và một bộ nhớ đệm (buffer) được cung cấp. Phép toán OPEN của hệ diều hành sẽ lưu trữ thông tin về vị trí và các đặc tính của tập tin vào trong bảng FIT.</para>
+          <para id="id19371811">Nếu tập tin được mở để ghi thì khi phép toán WRITE chuyển một phần tử để nối vào cuối tập tin, thì dữ liệu được gửi cho phép toán WRITE của hệ điều hành. Phép toán WRITE của hệ điều hành sẽ lưu dữ liệu vào trong vị trí có thể của bộ nhớ đệm. Khi trong bộ nhớ đệm đã tích lũy được một khối các phần tử thì khối đó sẽ được chuyển sang bộ nhớ ngoài (đĩa hoặc băng từ). Quá trình tiếp tục của phép toán WRITE được thực hiện bằng cách lấp đầy bộ nhớ đệm cho đến khi một khối có thể được chuyển ra bộ nhớ ngoài.</para>
+          <para id="id19371841">Ðối với READ thì ngược lại, một khối các phần tử của tập tin sẽ được chuyển sang bộ nhớ đệm và mỗi một phép toán READ được thực hiện bởi chương trình lại chuyển một phần tử từ bộ nhớ đệm sang biến chương trình cho đến khi bộ nhớ đệm trở thành rỗng thì một khối lại được chuyển từ bộ nhớ ngoài vào bộ nhớ đệm.</para>
+          <para id="id19371860">
+            <figure id="id19371865">
+              <media id="id6716455" alt=""><image src="../../media/graphics6.png" mime-type="image/png" height="339" width="600"/></media>
+            </figure>
+          </para>
+        </section>
+      </section>
+      <section id="id-0304054112451">
+        <title>Tập tin văn bản</title>
+        <para id="id19371898">Tập tin văn bản là một tập tin của các ký tự. Ðây là một loại tập tin rất thông dụng vì nó được sử dụng một cách dễ dàng trong tất cả các ngôn ngữ lập trình và các công cụ khác (Các loại tập tin khác không có được đặc điểm này). Tập tin văn bản cũng là một tập tin tuần tự nên các thao tác trên nó cũng tương tự như trên tập tin tuần tự. Ngoài ra còn có các phép toán đặc biệt khác cho phép chuyển đổi dữ liệu khác thành ký tự và ngược lại khi đọc hoặc ghi trên tập tin văn bản.</para>
+      </section>
+      <section id="id-162970899859">
+        <title>Tập tin truy xuất trực tiếp</title>
+        <para id="id19371933">Tập tin truy xuất trực tiếp là một tập tin được tổ chức sao cho bất kỳ một phần tử nào cũng được truy xuất một cách ngẫu nhiên. Ðể làm được điều đó mỗi một phần tử của nó phải có một khóa chẳng hạn khóa của mỗi phần tử là số thứ tự của nó trong tập tin. Ðể truy xuất phần tử bất kỳ, trước hết con trỏ của tập tin phải được di chuyển tới phần tử có khóa được chỉ định, sau đó phép toán READ hoặc WRITE mới được thực hiện. Phép toán WRITE có thể thay đổi nội dung đã có trong một phần tử đã tồn tại.</para>
+      </section>
+    </section>
+    <section id="id-844310883159">
+      <title>CÂU HỎI ÔN TẬP</title>
+      <list id="id19371970" list-type="enumerated">
+        <item>Nêu định nghĩa kiểu dữ liệu có cấu trúc.</item>
+        <item>Nêu tên các thuộc tính của cấu trúc dữ liệu?</item>
+        <item>Thế nào là cấu trúc dữ liệu đồng nhất?</item>
+        <item>Thế nào là cấu trúc dữ liệu không đồng nhất?</item>
+        <item>Thế nào là cấu trúc dữ liệu có kích thước cố định?</item>
+        <item>Thế nào là cấu trúc dữ liệu có kích thước thay đổi?</item>
+        <item>Cho ví dụ về một cấu trúc dữ liệu đồng nhất.</item>
+        <item>Cho ví dụ về một cấu trúc dữ liệu không đồng nhất.</item>
+        <item>Cho ví dụ về một cấu trúc dữ có kích thước cố định.</item>
+        <item>Cho ví dụ về một cấu trúc dữ có kích thước không cố định.</item>
+        <item>Trên cấu trúc dữ liệu thường có các phép toán nào?</item>
+        <item>Kể tên các phương pháp lựa chọn một phần tử của cấu trúc dữ liêu?</item>
+        <item>Nêu tên các phương pháp biểu diễn cấu trúc dữ liệu trong bộ nhớ?</item>
+        <item>Phép toán lựa chọn trực tiếp (ngẫu nhiên) một phần tử của cấu trúc dữ liệu được biểu diễn tuần tự được thực hiện bằng cách nào?</item>
+        <item>Có phải kiểu véctơ (mảng một chiều) là một cấu trúc dữ liệu có kích thước cố định?</item>
+        <item>Cho biết công thức xác định số phần tử của một vectơ.</item>
+        <item>Cho biết công thức xác định địa chỉ (vị trí) của phần tử V[i] của véctơ V. </item>
+        <item>Có phải kiểu véctơ (mảng một chiều) là một cấu trúc dữ liệu có kích thước không cố định?</item>
+        <item>Có phải kiểu véctơ (mảng một chiều) là một cấu trúc dữ liệu đồng nhất?</item>
+        <item>Có phải kiểu véctơ (mảng một chiều) là một cấu trúc dữ liệu không đồng nhất?</item>
+        <item>Ðể lưu trữ một véctơ trong bộ nhớ, người ta thường sử dụng biểu diễn tuần tự hay biểu diễn liên kết?</item>
+        <item>Cho biết công thức xác định số phần tử của một ma trận M[LB1..UB1, LB2..UB2] (mảng hai chiều).</item>
+        <item>Cho biết công thức xác định địa chỉ (vị trí) của phần tử M[i,j] của ma trận M[LB1..UB1, LB2..UB2]. Biết rằng các phần tử được lưu trữ theo trật tự dòng. </item>
+        <item>Cho biết công thức xác định địa chỉ (vị trí) của phần tử M[i,j] của ma trận M[LB1..UB1, LB2..UB2]. Biết rằng các phần tử được lưu trữ theo trật tự cột.</item>
+        <item>Giả sử có khai báo VAR A:array[0..3, 1..3] of integer; Các phần tử của ma trận A được lưu trữ trong bộ nhớ theo phương pháp khai triển theo cột (trật tự cột). Hãy vẽ mô hình biểu diễn sự lưu trữ này.</item>
+        <item>Giả sử có khai báo VAR A:array[0..3, 1..3] of integer; Các phần tử của ma trận A được lưu trữ trong bộ nhớ theo phương pháp khai triển theo dòngt (trật tự dòng). Hãy vẽ mô hình biểu diễn sự lưu trữ này.</item>
+        <item>Giả sử có khai báo VAR A:array[0..3, 1..3] of integer; Các phần tử của ma trận A được lưu trữ trong bộ nhớ theo phương pháp khai triển theo dòng (trật tự dòng), giả sử địa chỉ cơ sở của khối ô nhớ là , kích thước bộ mô tả là D, kích thước mỗi phần tử là E. Hãy tính địa chỉ (vị trí) của phân tử A[1,2].</item>
+        <item>Giả sử có khai báo VAR A:array[0..3, 1..3] of integer; Các phần tử của ma trận A được lưu trữ trong bộ nhớ theo phương pháp khai triển theo cột (trật tự cột), giả sử địa chỉ cơ sở của khối ô nhớ là , kích thước bộ mô tả là D, kích thước mỗi phần tử là E. Hãy tính địa chỉ (vị trí) của phân tử A[1,2]. </item>
+        <item>Nêu tên các thuộc tính của kiểu mẩu tin.</item>
+        <item>Có phải mẩu tin là một cấu trúc dữ liệu có kích thước cố định?</item>
+        <item>Có phải mẩu tin là một cấu trúc dữ liệu có kích thước không cố định?</item>
+        <item>Có phải mẩu tin là một cấu trúc dữ liệu đồng nhất?</item>
+        <item>Có phải mẩu tin là một cấu trúc dữ liệu không đồng nhất?</item>
+        <item>Ðể lưu trữ một mẩu tin trong bộ nhớ, người ta thường sử dụng biểu diễn tuần tự hay biểu diễn liên kết?</item>
+        <item>Việc lựa chọn một phần tử của mẩu tin được thực hiện bởi sự lựa chọn tuần tự hay trực tiếp?</item>
+        <item>Có phải mẩu tin có cấu trúc thay đổi là một cấu trúc dữ liệu có kích thước cố định?</item>
+        <item>Có phải mẩu tin có cấu trúc thay đổi là một cấu trúc dữ liệu có kích thước thay đổi?</item>
+        <item>Nêu tên các phương pháp đặc tả chuỗi ký tự.</item>
+        <item>Nêu tên các phép toán thường có trên kiểu chuỗi ký tự.</item>
+        <item>Cấp phát tĩnh được thực hiện vào lúc nào?</item>
+        <item>Cấp phát động được thực hiện vào lúc nào?</item>
+        <item>Cho biết các ưu nhược điểm của cấp phát động.</item>
+        <item>Sử dụng cấp phát tĩnh, người lập trình có thể chủ động giải phóng ô nhớ không?</item>
+        <item>Sử dụng cấp phát động, người lập trình có thể chủ động giải phóng ô nhớ không?</item>
+        <item>Biến con trỏ được cấp phát động hay cấp phát tĩnh?</item>
+        <item>Có những loại con trỏ nào?</item>
+        <item>Nêu tên các phép toán thường có trên tập hợp.</item>
+        <item>Nêu tên các phương pháp để biểu diễn một tập hợp.</item>
+        <item>Giả sử một tập hợp được biểu diễn bởi một vectơ bit, hãy cho biết giải thuật để thực hiện các phép toán Hợp, Giao và Hiệu hai tập hợp. </item>
+        <item>Sử dụng véctơ bit để biểu diễn cho một tập hợp thì có những ưu, nhược điểm gì?</item>
+        <item>Sử dụng bảng băm để biểu diễn cho một tập hợp thì có những ưu, nhược điểm gì?</item>
+        <item>Giả sử một không gian có 5 phần tử e1, e2, e3, e4, e5&gt; Tập hợp { e2, e1, e5, e4} được biểu diễn bởi vector bit nào?</item>
+        <item>Giả sử có ba tập hợp A, B, C được biiểu diễn bởi ba vector bit tương ứng là (1, 0, 1, 1, 1); (1, 0, 1, 0, 1) và (1, 1, 1, 0, 1). Cho biết biểu thức liên hệ giữa các tập A,B và C?</item>
+        <item>Kể tên các phép toán thường có trên tập tin tuần tự.</item>
+        <item>Trong tập tin tuần tự, chúng ta có thể nhảy đến một phần tử bất kỳ để truy xuất nó hay không?</item>
+        <item>Trong tập tin truy xuất trực tiếp, chúng ta có thể nhảy đến một phần tử bất kỳ để truy xuất nó hay không?</item>
+        <item>Trong tập tin truy xuất trực tiếp, chúng ta có thể truy xuất các phần tử một cách tuần tự từ đầu đến cuối tập tin hay không?</item>
+      </list>
+    </section>
+  </content>
+</document>

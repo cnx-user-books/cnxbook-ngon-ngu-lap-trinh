@@ -1,0 +1,343 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Chương trình con</title>
+  <metadata>
+  <md:content-id>m29798</md:content-id><md:title>Chương trình con</md:title>
+  <md:abstract>Học xong chương này, sinh viên sẽ nắm được các vấn đề sau:
+- Khái niệm về hàm (function) trong C.
+- Cách xây dựng và cách sử dụng hàm trong C.</md:abstract>
+  <md:uuid>2b594e53-68df-429a-9e62-8f8d0e3c5622</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-735483120929">
+      <title>KHÁI NIỆM VỀ HÀM TRONG C</title>
+      <para id="id6561741">Trong những chương trình lớn, có thể có những đoạn chương trình viết lặp đi lặp lại nhiều lần, để tránh rườm rà và mất thời gian khi viết chương trình; người ta thường phân chia chương trình thành nhiều module, mỗi module giải quyết một công việc nào đó. Các module như vậy gọi là các chương trình con.</para>
+      <para id="id6561755">Một tiện lợi khác của việc sử dụng chương trình con là ta có thể dễ dàng kiểm tra xác định tính đúng đắn của nó trước khi ráp nối vào chương trình chính và do đó việc xác định sai sót để tiến hành hiệu đính trong chương trình chính sẽ thuận lợi hơn.Trong C, chương trình con được gọi là hàm. Hàm trong C có thể trả về kết quả thông qua tên hàm hay có thể không trả về kết quả.</para>
+      <para id="id6561780">Hàm có hai loại: hàm chuẩn và hàm tự định nghĩa. Trong chương này, ta chú trọng đến cách định nghĩa hàm và cách sử dụng các hàm đó.</para>
+      <para id="id6561790">Một hàm khi được định nghĩa thì có thể sử dụng bất cứ đâu trong chương trình. Trong C, một chương trình bắt đầu thực thi bằng hàm main.</para>
+      <para id="id6561801">Ví dụ 1: Ta có hàm max để tìm số lớn giữa 2 số nguyên a, b như sau:</para>
+      <para id="id6561815">int max(int a, int b)</para>
+      <para id="id6561820">{</para>
+      <para id="id6561824">return (a&gt;b) ? a:b;</para>
+      <para id="id6561832">}</para>
+      <para id="id6561836">Ví dụ 2: Ta có chương trình chính (hàm main) dùng để nhập vào 2 số nguyên a,b và in ra màn hình số lớn trong 2 số </para>
+      <para id="id6561852">#include &lt;stdio.h&gt;</para>
+      <para id="id6561856">#include &lt;conio.h&gt;</para>
+      <para id="id6561860">int max(int a, int b)</para>
+      <para id="id6561864">{</para>
+      <para id="id6561868">return (a&gt;b) ? a:b;</para>
+      <para id="id6561879">}</para>
+      <para id="id6561883">int main()</para>
+      <para id="id6561887">{</para>
+      <para id="id6561891">int a, b, c;</para>
+      <para id="id6561897">printf("\n Nhap vao 3 so a, b,c ");</para>
+      <para id="id7063379">scanf("%d%d%d",&amp;a,&amp;b,&amp;c);</para>
+      <para id="id7063384">printf("\n So lon la %d",max(a, max(b,c)));</para>
+      <para id="id7063389">getch();</para>
+      <para id="id7063395">return 0;</para>
+      <para id="id7063400">}</para>
+      <section id="id-697460337387">
+        <title>Hàm thư viện</title>
+        <para id="id7063411">Hàm thư viện là những hàm đã được định nghĩa sẵn trong một thư viện nào đó, muốn sử dụng các hàm thư viện thì phải khai báo thư viện trước khi sử dụng bằng lệnh #include &lt;tên thư viện.h&gt;</para>
+        <para id="id7063433">Một số thư viện:</para>
+        <para id="id7063438">alloc.h assert.h bcd.h bios.h complex.h</para>
+        <para id="id7063460">conio.h ctype.h dir.h dirent.h dos.h</para>
+        <para id="id7063485">errno.h fcntl.h float.h fstream.h grneric.h</para>
+        <para id="id7063507">graphics.h io.h iomanip.h iostream.h limits.h</para>
+        <para id="id7063529">locale.h malloc.h math.h mem.h process.h</para>
+        <para id="id7063551">setjmp.h share.h signal.h stdarg.h stddef.h</para>
+        <para id="id7063573">stdio.h stdiostr.h stdlib.h stream.h string.h</para>
+        <para id="id7063595">strstrea.h sys\stat.h sys\timeb.h sys\types.h time.h</para>
+        <para id="id7063617">values.h</para>
+        <para id="id7063622">Ý nghĩa của một số thư viện thường dùng:</para>
+        <para id="id7063627">1. stdio.h : Thư viện chứa các hàm vào/ ra chuẩn (standard input/output). Gồm các hàm printf(), scanf(), getc(), putc(), gets(), puts(), fflush(), fopen(), fclose(), fread(), fwrite(), getchar(), putchar(), getw(), putw()…</para>
+        <para id="id7063675">2. conio.h : Thư viện chứa các hàm vào ra trong chế độ DOS (DOS console). Gồm các hàm clrscr(), getch(), getche(), getpass(), cgets(), cputs(), putch(), clreol(),…</para>
+        <para id="id7063696">3. math.h: Thư viện chứa các hàm tính toán gồm các hàm abs(), sqrt(), log(). log10(), sin(), cos(), tan(), acos(), asin(), atan(), pow(), exp(),…</para>
+        <para id="id7063718">4. alloc.h: Thư viện chứa các hàm liên quan đến việc quản lý bộ nhơ. Gồm các hàm calloc(), realloc(), malloc(), free(), farmalloc(), farcalloc(), farfree(), …</para>
+        <para id="id7063742">5. io.h: Thư viện chứa các hàm vào ra cấp thấp. Gồm các hàm open(), _open(), read(), _read(), close(), _close(), creat(), _creat(), creatnew(), eof(), filelength(), lock(),…</para>
+        <para id="id7063761">6. graphics.h: Thư viện chứa các hàm liên quan đến đồ họa. Gồm initgraph(), line(), circle(), putpixel(), getpixel(), setcolor(), …</para>
+        <para id="id7063779">...</para>
+        <para id="id7063784">Muốn sử dụng các hàm thư viện thì ta phải xem cú pháp của các hàm và sử dụng theo đúng cú pháp (xem trong phần trợ giúp của Turbo C).</para>
+      </section>
+      <section id="id-334889354057">
+        <title>Hàm người dùng</title>
+        <para id="id7063802">Hàm người dùng là những hàm do người lập trình tự tạo ra nhằm đáp ứng nhu cầu xử lý của mình.</para>
+      </section>
+    </section>
+    <section id="id-456076458102">
+      <title>XÂY DỰNG MỘT HÀM</title>
+      <section id="id-796005990851">
+        <title>Định nghĩa hàm</title>
+        <para id="id7063829">Cấu trúc của một hàm tự thiết kế:</para>
+        <para id="id7063835">&lt;kiểu kết quả&gt; Tên hàm ([&lt;kiểu t số&gt; &lt;tham số&gt;][,&lt;kiểu t số&gt;&lt;tham số&gt;][…])</para>
+        <para id="id7063885">{</para>
+        <para id="id7063889">[Khai báo biến cục bộ và các câu lệnh thực hiện hàm]</para>
+        <para id="id7063896">[return [&lt;Biểu thức&gt;];]</para>
+        <para id="id7063909">}</para>
+        <para id="id7063913">Giải thích:</para>
+        <para id="id7063918">- Kiểu kết quả: là kiểu dữ liệu của kết quả trả về, có thể là : int, byte, char, float, void… Một hàm có thể có hoặc không có kết quả trả về. Trong trường hợp hàm không có kết quả trả về ta nên sử dụng kiểu kết quả là void.</para>
+        <para id="id7063948">- Kiểu t số: là kiểu dữ liệu của tham số.</para>
+        <para id="id7063961">- Tham số: là tham số truyền dữ liệu vào cho hàm, một hàm có thể có hoặc không có tham số. Tham số này gọi là tham số hình thức, khi gọi hàm chúng ta phải truyền cho nó các tham số thực tế. Nếu có nhiều tham số, mỗi tham số phân cách nhau dấu phẩy (,).</para>
+        <para id="id7064001">- Bên trong thân hàm (phần giới hạn bởi cặp dấu {}) là các khai báo cùng các câu lệnh xử lý. Các khai báo bên trong hàm được gọi là các khai báo cục bộ trong hàm và các khai báo này chỉ tồn tại bên trong hàm mà thôi.</para>
+        <para id="id7064015">- Khi định nghĩa hàm, ta thường sử dụng câu lệnh return để trả về kết quả thông qua tên hàm.</para>
+        <para id="id7064023">Lệnh return dùng để thoát khỏi một hàm và có thể trả về một giá trị nào đó.</para>
+        <para id="id7064035">Cú pháp:</para>
+        <para id="id7064047">return ; /*không trả về giá trị*/</para>
+        <para id="id7064069">return &lt;biểu thức&gt;;/*Trả về giá trị của biểu thức*/</para>
+        <para id="id7064084">return (&lt;biểu thức&gt;); /*Trả về giá trị của biểu thức*/</para>
+        <para id="id7064095">Nếu hàm có kết quả trả về, ta bắt buộc phải sử dụng câu lệnh return để trả về kết quả cho hàm.</para>
+        <para id="id7064111">Ví dụ 1: Viết hàm tìm số lớn giữa 2 số nguyên a và b</para>
+        <para id="id7064125">int max(int a, int b)</para>
+        <para id="id7064129">{</para>
+        <para id="id7064133">return (a&gt;b) ? a:b;</para>
+        <para id="id7064141">}</para>
+        <para id="id7064145">Ví dụ 2: Viết hàm tìm ước chung lớn nhất giữa 2 số nguyên a, b. Cách tìm: đầu tiên ta giả sử UCLN của hai số là số nhỏ nhất trong hai số đó. Nếu điều đó không đúng thì ta giảm đi một đơn vị và cứ giảm như vậy cho tới khi nào tìm thấy UCLN</para>
+        <para id="id7064167">int ucln(int a, int b)</para>
+        <para id="id7064174">{</para>
+        <para id="id7064178">int u;</para>
+        <para id="id7064184">if (a&lt;b)</para>
+        <para id="id7064192">u=a;</para>
+        <para id="id7064199">else</para>
+        <para id="id7064204">u=b;</para>
+        <para id="id7064211">while ((a%u !=0) || (b%u!=0))</para>
+        <para id="id7064216">u--;</para>
+        <para id="id7064222">return u;</para>
+        <para id="id7064228">}</para>
+      </section>
+      <section id="id-739998041912">
+        <title>Sử dụng hàm</title>
+        <para id="id7064240">Một hàm khi định nghĩa thì chúng vẫn chưa được thực thi trừ khi ta có một lời gọi đến hàm đó.</para>
+        <para id="id7064256">Cú pháp gọi hàm: &lt;Tên hàm&gt;([Danh sách các tham số])</para>
+        <para id="id7064270">Ví dụ: Viết chương trình cho phép tìm ước số chung lớn nhất của hai số tự nhiên.</para>
+        <para id="id7064291">#include&lt;stdio.h&gt;</para>
+        <para id="id7064296">unsigned int ucln(unsigned int a, unsigned int b)</para>
+        <para id="id7064308">{</para>
+        <para id="id7064312">unsigned int u;</para>
+        <para id="id7064320">if (a&lt;b)</para>
+        <para id="id7064326">u=a;</para>
+        <para id="id7064332">else</para>
+        <para id="id7064338">u=b;</para>
+        <para id="id7064344">while ((a%u !=0) || (b%u!=0))</para>
+        <para id="id7064349">u--;</para>
+        <para id="id7064356">return u;</para>
+        <para id="id7064361">}</para>
+        <para id="id7064365">int main()</para>
+        <para id="id7064370">{</para>
+        <para id="id7064374">unsigned int a, b, UC;</para>
+        <para id="id7064385">printf(“Nhap a,b: ”);scanf(“%d%d”,&amp;a,&amp;b);</para>
+        <para id="id7064392">UC = ucln(a,b);</para>
+        <para id="id7064404">printf(“Uoc chung lon nhat la: ”, UC);</para>
+        <para id="id7064411">return 0;</para>
+        <para id="id7064416">}</para>
+        <para id="id7064420"/>
+        <para id="id7064424">Lưu ý: Việc gọi hàm là một phép toán, không phải là một phát biểu.</para>
+      </section>
+      <section id="id-353338079226">
+        <title>Nguyên tắc hoạt động của hàm</title>
+        <para id="id7064450">Trong chương trình, khi gặp một lời gọi hàm thì hàm bắt đầu thực hiện bằng cách chuyển các lệnh thi hành đến hàm được gọi. Quá trình diễn ra như sau:</para>
+        <para id="id7064462">- Nếu hàm có tham số, trước tiên các tham số sẽ được gán giá trị thực tương ứng.</para>
+        <para id="id7064482">- Chương trình sẽ thực hiện tiếp các câu lệnh trong thân hàm bắt đầu từ lệnh đầu tiên đến câu lệnh cuối cùng.</para>
+        <para id="id7064493">- Khi gặp lệnh return hoặc dấu } cuối cùng trong thân hàm, chương trình sẽ thoát khỏi hàm để trở về chương trình gọi nó và thực hiện tiếp tục những câu lệnh của chương trình này.</para>
+      </section>
+    </section>
+    <section id="id-89199077352">
+      <title>TRUYỀN THAM SỐ CHO HÀM</title>
+      <para id="id7064516">Mặc nhiên, việc truyền tham số cho hàm trong C là truyền theo giá trị; nghĩa là các giá trị thực (tham số thực) không bị thay đổi giá trị khi truyền cho các tham số hình thức</para>
+      <para id="id7064528">Ví dụ 1: Giả sử ta muốn in ra nhiều dòng, mỗi dòng 50 ký tự nào đó. Để đơn giản ta viết một hàm, nhiệm vụ của hàm này là in ra trên một dòng 50 ký tự nào đó. Hàm này có tên là InKT. </para>
+      <para id="id7064548">#include &lt;stdio.h&gt;</para>
+      <para id="id7064553">#include &lt;conio.h&gt;</para>
+      <para id="id7064557">void InKT(char ch)</para>
+      <para id="id7064562">{</para>
+      <para id="id7064566">int i;</para>
+      <para id="id7064574">for(i=1;i&lt;=50;i++) printf(“%c”,ch);</para>
+      <para id="id7064584">printf(“\n”);</para>
+      <para id="id7064590">}</para>
+      <para id="id7064594">int main()</para>
+      <para id="id7064598">{</para>
+      <para id="id7064603">char c = ‘A’;</para>
+      <para id="id7064612">InKT(‘*’); /* In ra 50 dau * */</para>
+      <para id="id7064621">InKT(‘+’);</para>
+      <para id="id7064627">InKT(c);</para>
+      <para id="id7064632">return 0;</para>
+      <para id="id7064641">}</para>
+      <para id="id7064645">Lưu ý:</para>
+      <para id="id7064657">- Trong hàm InKT ở trên, biến ch gọi là tham số hình thức được truyền bằng giá trị (gọi là tham trị của hàm). Các tham trị của hàm coi như là một biến cục bộ trong hàm và chúng được sử dụng như là dữ liệu đầu vào của hàm.</para>
+      <para id="id7064674">- Khi chương trình con được gọi để thi hành, tham trị được cấp ô nhớ và nhận giá trị là bản sao giá trị của tham số thực. Do đó, mặc dù tham trị cũng là biến, nhưng việc thay đổi giá trị của chúng không có ý nghĩa gì đối với bên ngoài hàm, không ảnh hưởng đến chương trình chính, nghĩa là không làm ảnh hưởng đến tham số thực tương ứng.</para>
+      <para id="id7064692">Ví dụ 2: Ta xét chương trình sau đây:</para>
+      <para id="id7064705">#include &lt;stdio.h&gt;</para>
+      <para id="id7064710">#include &lt;conio.h&gt;</para>
+      <para id="id7064714">int hoanvi(int a, int b)</para>
+      <para id="id7064721">{</para>
+      <para id="id7064725">int t;</para>
+      <para id="id7064730">t=a;/*Đoạn này hoán vị giá trị của 2 biến a, b*/</para>
+      <para id="id7064740">a=b;</para>
+      <para id="id7064752">b=t;</para>
+      <para id="id7064757">printf("\Ben trong ham a=%d , b=%d",a,b);</para>
+      <para id="id7064765">return 0;</para>
+      <para id="id7064770">}</para>
+      <para id="id7064774">int main()</para>
+      <para id="id7064779">{</para>
+      <para id="id7064783">int a, b;</para>
+      <para id="id7064788">clrscr();</para>
+      <para id="id7064794">printf("\n Nhap vao 2 so nguyen a, b:");</para>
+      <para id="id7064799">scanf("%d%d",&amp;a,&amp;b);</para>
+      <para id="id7064805">printf("\n Truoc khi goi ham hoan vi a=%d ,b=%d",a,b);</para>
+      <para id="id7064813">hoanvi(a,b);</para>
+      <para id="id7064818">printf("\n Sau khi goi ham hoan vi a=%d ,b=%d",a,b);</para>
+      <para id="id7064826">getch();</para>
+      <para id="id7057916">return 0;</para>
+      <para id="id7057922">}</para>
+      <para id="id7057926">Kết quả thực hiện chương trình:</para>
+      <para id="id7057932">
+        ***SORRY, THIS MEDIA TYPE IS NOT SUPPORTED.***
+      </para>
+      <para id="id7057960">Giải thích:</para>
+      <para id="id7057968">- Nhập vào 2 số 6 và 5 (a=6, b=5)</para>
+      <para id="id7057974">- Trước khi gọi hàm hoán vị thì a=6, b=5</para>
+      <para id="id7057980">- Bên trong hàm hoán vị a=5, b=6</para>
+      <para id="id7057988">- Khi ra khỏi hàm hoán vị thì a=6, b=5</para>
+      <section id="id-961436729173">
+        <title>* Lưu ý</title>
+        <para id="id7058001">Trong đoạn chương trình trên, nếu ta muốn sau khi kết thúc chương trình con giá trị của a, b thay đổi thì ta phải đặt tham số hình thức là các con trỏ, còn tham số thực tế là địa chỉ của các biến.</para>
+        <para id="id7058018">Lúc này mọi sự thay đổi trên vùng nhớ được quản lý bởi con trỏ là các tham số hình thức của hàm thì sẽ ảnh hưởng đến vùng nhớ đang được quản lý bởi tham số thực tế tương ứng (cần để ý rằng vùng nhớ này chính là các biến ta cần thay đổi giá trị).</para>
+        <para id="id7058046">Người ta thường áp dụng cách này đối với các dữ liệu đầu ra của hàm.</para>
+        <para id="id7058058">Ví dụ: Xét chương trình sau đây:</para>
+        <para id="id7058070">#include &lt;stdio.h&gt;</para>
+        <para id="id7058075">#include &lt;conio.h&gt;</para>
+        <para id="id7058080">long hoanvi(long *a, long *b) </para>
+        <para id="id7058087">/* Khai báo tham số hình thức *a, *b là các con trỏ kiểu long */</para>
+        <para id="id7058097">{</para>
+        <para id="id7058101">long t;</para>
+        <para id="id7058109">t=*a;/*gán nội dung của x cho t*/</para>
+        <para id="id7058119">*a=*b;/*Gán nội dung của b cho a*/</para>
+        <para id="id7058134">*b=t;/*Gán nội dung của t cho b*/</para>
+        <para id="id7058150">printf("\n Ben trong ham a=%ld , b=%ld",*a,*b);</para>
+        <para id="id7058164">/*In ra nội dung của a, b*/</para>
+        <para id="id7058169">return 0;</para>
+        <para id="id7058174">}</para>
+        <para id="id7058179">int main()</para>
+        <para id="id7058183">{</para>
+        <para id="id7058187">long a, b;</para>
+        <para id="id7058193">clrscr();</para>
+        <para id="id7058198">printf("\n Nhap vao 2 so nguyen a, b:");</para>
+        <para id="id7058203">scanf("%ld%ld",&amp;a,&amp;b);</para>
+        <para id="id7058209">printf("\n Truoc khi goi ham hoan vi a=%ld ,b=%ld",a,b);</para>
+        <para id="id7058217">hoanvi(&amp;a,&amp;b); /* Phải là địa chỉ của a và b */</para>
+        <para id="id7058239">printf("\n Sau khi goi ham hoan vi a=%ld ,b=%ld",a,b);</para>
+        <para id="id7058253">getch();</para>
+        <para id="id7058258">return 0;</para>
+        <para id="id7058264">}</para>
+        <para id="id7058268">Kết quả thực hiện chương trình:</para>
+        <para id="id7058274">
+        ***SORRY, THIS MEDIA TYPE IS NOT SUPPORTED.***
+      </para>
+        <para id="id7058300">Giải thích:</para>
+        <para id="id7058309">- Nhập vào 2 số 5, 6 (a=5, b=6)</para>
+        <para id="id7058314">- Trước khi gọi hàm hoanvi thì a=5, b=6</para>
+        <para id="id7058320">- Trong hàm hoanvi (khi đã hoán vị) thì a=6, b=5</para>
+        <para id="id7058326">- Khi ra khỏi hàm hoán vị thì a=6, b=6</para>
+        <para id="id7058332">Lưu ý: Kiểu con trỏ và các phép toán trên biến kiểu con trỏ sẽ nói trong phần sau.</para>
+      </section>
+    </section>
+    <section id="id-614311100444">
+      <title>HÀM ĐỆ QUY</title>
+      <section id="id-898666246245">
+        <title>Định nghĩa </title>
+        <para id="id7058363">Một hàm được gọi là đệ quy nếu bên trong thân hàm có lệnh gọi đến chính nó. </para>
+        <para id="id7058372">Ví dụ: Người ta định nghĩa giai thừa của một số nguyên dương n như sau:</para>
+        <para id="id7058387">n!=1* 2 * 3 *…* (n-1) *n = (n-1)! *n (với 0!=1)</para>
+        <para id="id7058409">Như vậy, để tính n! ta thấy nếu n=0 thì n!=1 ngược lại thì n!=n * (n-1)!</para>
+        <para id="id7058419">Với định nghĩa trên thì hàm đệ quy tính n! được viết:</para>
+        <para id="id7058445">#include &lt;stdio.h&gt;</para>
+        <para id="id7058450">#include &lt;conio.h&gt;</para>
+        <para id="id7058454">/*Hàm tính n! bằng đệ quy*/</para>
+        <para id="id7058471">unsigned int giaithua_dequy(int n)</para>
+        <para id="id7058475">{</para>
+        <para id="id7058479">if (n==0)</para>
+        <para id="id7058488"> return 1;</para>
+        <para id="id7058498">else</para>
+        <para id="id7058503"> return n*giaithua_dequy(n-1);</para>
+        <para id="id7058516">}</para>
+        <para id="id7058520">/*Hàm tính n! không đệ quy*/</para>
+        <para id="id7058537">unsigned int giaithua_khongdequy(int n)</para>
+        <para id="id7058541">{</para>
+        <para id="id7058545">unsigned int kq,i;</para>
+        <para id="id7058550">kq=1;</para>
+        <para id="id7058556">for (i=2;i&lt;=n;i++)</para>
+        <para id="id7058562"> kq=kq*i;</para>
+        <para id="id7058571">return kq;</para>
+        <para id="id7058577">}</para>
+        <para id="id7058581">int main()</para>
+        <para id="id7058585">{</para>
+        <para id="id7058589">int n;</para>
+        <para id="id7058595">clrscr();</para>
+        <para id="id7058600">printf("\n Nhap so n can tinh giai thua ");</para>
+        <para id="id7058606">scanf("%d",&amp;n);</para>
+        <para id="id7058617">printf("\nGoi ham de quy: %d != %u",n,giaithua_dequy(n));</para>
+        <para id="id7058630">printf("\nGoi ham khong de quy: %d != %u",</para>
+        <para id="id7058646">n,giaithua_khongdequy(n));</para>
+        <para id="id7058650">getch();</para>
+        <para id="id7058655">return 0;</para>
+        <para id="id7058661">}</para>
+      </section>
+      <section id="id-641580264186">
+        <title>Đặc điểm cần lưu ý khi viết hàm đệ quy</title>
+        <para id="id7058674">- Hàm đệ quy phải có 2 phần:</para>
+        <list id="id7058682" list-type="bulleted">
+          <item>Phần dừng hay phải có trường hợp nguyên tố. Trong ví dụ ở trên thì trường hợp n=0 là trường hợp nguyên tố.</item>
+          <item>Phần đệ quy: là phần có gọi lại hàm đang được định nghĩa. Trong ví dụ trên thì phần đệ quy là n&gt;0 thì n! = n * (n-1)!</item>
+        </list>
+        <para id="id7058713">- Sử dụng hàm đệ quy trong chương trình sẽ làm chương trình dễ đọc, dễ hiểu và vấn đề được nêu bật rõ ràng hơn. Tuy nhiên trong đa số trường hợp thì hàm đệ quy tốn bộ nhớ nhiều hơn và tốc độ thực hiện chương trình chậm hơn không đệ quy.</para>
+        <para id="id7058730">- Tùy từng bài có cụ thể mà người lập trình quyết định có nên dùng đệ quy hay không (có những trường hợp không dùng đệ quy thì không giải quyết được bài toán).</para>
+      </section>
+    </section>
+    <section id="id-358884791156">
+      <title>BÀI TẬP</title>
+      <section id="id-969741606718">
+        <title>Mục đích yêu cầu</title>
+        <para id="id7058758">Mục đích của việc sử dụng hàm là làm cho chương trình viết ra được sáng sủa, ngắn gọn. Vì thế sinh viên phải nắm vững cách định nghĩa các hàm và cách dùng chúng. Kết hợp các phần đã học trong các chương trước để viết các chương trình con.</para>
+      </section>
+      <section id="id-498314594062">
+        <title>Nội dung </title>
+        <para id="id7058781">1. Viết hàm tìm số lớn nhất trong hai số. Áp dụng tìm số lớn nhất trong ba số a, b, c với a, b, c nhập từ bàn phím.</para>
+        <para id="id7058790">2. Viết hàm tìm UCLN của hai số a và b. Áp dụng: nhập vào tử và mẫu số của một phân số, kiểm tra xem phân số đó đã tối giản hay chưa. </para>
+        <para id="id7058800">3. Viết hàm in n ký tự c trên một dòng. Viết chương trình cho nhập 5 số nguyên cho biết số lượng hàng bán được của mặt hàng A ở 5 cửa hàng khác nhau. Dùng hàm trên vẽ biểu đồ so sánh 5 giá trị đó, mỗi trị dùng một ký tự riêng.</para>
+        <para id="id7058815">4. Viết một hàm tính tổng các chữ số của một số nguyên. Viết chương trình nhập vào một số nguyên, dùng hàm trên kiểm tra xem số đó có chia hết cho 3 không. Một số chia hết cho 3 khi tổng các chữ số của nó chia hết cho 3. </para>
+        <para id="id7058831">5. Tam giác Pascal là một bảng số, trong đó hàng thứ 0 bằng 1, mỗi một số hạng của hàng thứ n+1 là một tổ hợp chập k của n (C
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msubsup><m:mrow/><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mi>k</m:mi></m:mrow></m:mstyle></m:msubsup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {} rSub { size 8{n} }  rSup { size 8{k} } } {}</m:annotation></m:semantics></m:math> =
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mfrac><m:mrow><m:mi>k</m:mi><m:mi>!</m:mi></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mi>k</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mi>!</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {  {k!}  over  { \( n - k \) !} } } {}</m:annotation></m:semantics></m:math>)</para>
+        <para id="id7058985">Tam giác Pascal có dạng sau:</para>
+        <para id="id7058998">1 ( hàng 0 )</para>
+        <para id="id7059008">1 1 ( hàng 1 )</para>
+        <para id="id7059020">1 2 1 ( hàng 2 )</para>
+        <para id="id7059038">1 3 3 1</para>
+        <para id="id7059055">1 4 6 4 1</para>
+        <para id="id7059077">1 5 10 10 5 1 </para>
+        <para id="id7059099">1 6 15 20 15 6 1 (hàng 6)</para>
+        <para id="id7059120">......................................................</para>
+        <para id="id7059126">Viết chương trình in lên màn hình tan giác Pascal có n hàng (n nhập vào khi chạy chương trình) bằng cách tạo hai hàm tính giai thừa và tính tổ hợp.</para>
+        <para id="id7059136">6. Yêu cầu như câu 5 nhưng dựa vào tính chất sau của tổ hợp: C
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msubsup><m:mrow/><m:mstyle fontsize="8pt"><m:mrow><m:mi>n</m:mi></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mi>k</m:mi></m:mrow></m:mstyle></m:msubsup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {} rSub { size 8{n} }  rSup { size 8{k} } } {}</m:annotation></m:semantics></m:math> =C
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msubsup><m:mrow/><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">−</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:mstyle></m:msubsup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {} rSub { size 8{n - 1} }  rSup { size 8{k - 1} } } {}</m:annotation></m:semantics></m:math> +C
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:msubsup><m:mrow/><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:mstyle><m:mstyle fontsize="8pt"><m:mrow><m:mi>k</m:mi></m:mrow></m:mstyle></m:msubsup></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ {} rSub { size 8{n - 1} }  rSup { size 8{k} } } {}</m:annotation></m:semantics></m:math> để hình thành thuật toán là: tạo một hàm tổ hợp có hai biến n, k mang tính đệ quy như sau: </para>
+        <para id="id7059362">1 nếu k=0 hoặc k=nToHop(n-1,k-1) + ToHop(n-1,k) nếu 1&lt; k &lt; n </para>
+        <para id="id7059470">ToHop(n,k)= </para>
+        <para id="id7059478">7. Viết chương trình tính các tổng sau:</para>
+        <para id="id7059484">a) S= 1 + x +x2 + x3 + ... + xn</para>
+        <para id="id7059517">b) S= 1 - x +x2 - x3 + ... (-1)n xn</para>
+        <para id="id7059558">c) S= 1 + x/1! +x2/2! + x3/3! + ... + xn/n!</para>
+        <para id="id7059596">Trong đó n là một số nguyên dương và x là một số bất kỳ được nhập từ bàn phím khi chạy chương trình.</para>
+        <para id="id7059604">8. Viết chương trình in dãy Fibonacci đã nêu trong bằng phương pháp dùng một hàm Fibonacci F có tính đệ quy.</para>
+        <para id="id7059616">Fn = 
+<m:math><m:semantics><m:mtable><m:mtr><m:mrow><m:mrow><m:mtext>1, nÕu n</m:mtext><m:mo stretchy="false">=</m:mo><m:mn>1</m:mn></m:mrow><m:mrow/></m:mrow></m:mtr><m:mtr><m:mrow><m:mrow><m:mtext>2, nÕu n </m:mtext><m:mo stretchy="false">=</m:mo><m:mtext> 2</m:mtext></m:mrow><m:mrow/></m:mrow></m:mtr><m:mtr><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mtext>n-1</m:mtext></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mi>F</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">−</m:mo><m:mn>2</m:mn></m:mrow></m:mrow></m:mstyle></m:msub></m:mrow><m:mrow/></m:mrow></m:mtr><m:mtr><m:mrow><m:mrow/><m:mrow/></m:mrow></m:mtr><m:mtr><m:mrow><m:mrow><m:mtable><m:mtr><m:mrow><m:mrow><m:mo stretchy="true">{</m:mo><m:mrow/></m:mrow><m:mrow><m:mo stretchy="true">{</m:mo><m:mrow/></m:mrow><m:mrow/></m:mrow></m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:mtr><m:mtr><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{alignl { stack {
+ left lbrace "1, nÕu n"=1 {} # 
+ right none  left lbrace "2, nÕu n "=" 2" {} # 
+ right none  left lbrace F rSub { size 8{"n-1"} } +F rSub { size 8{n - 2} }  {} # 
+ right no } }  lbrace } {}</m:annotation></m:semantics></m:math></para>
+        <para id="id6995606">9. Bài toán tháp Hà Nội: Có một cái tháp gồm n tầng, tầng trên nhỏ hơn tầng dưới (hình vẽ). Hãy tìm cách chuyển cái tháp này từ vị trí thứ nhất sang vị trí thứ hai thông qua vị trí trung gian thứ ba. Biết rằng chỉ được chuyển mỗi lần một tầng và không được để tầng lớn trên tầng nhỏ.</para>
+        <para id="id6995623">VT1VT2VT3 </para>
+        <para id="id6995774">10. Viết chương trình phân tích một số nguyên dương ra thừa số nguyên tố.</para>
+      </section>
+    </section>
+  </content>
+</document>

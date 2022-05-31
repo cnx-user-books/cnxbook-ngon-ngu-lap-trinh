@@ -1,0 +1,148 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Kiểu do người dùng định nghĩa</title>
+  <metadata>
+  <md:content-id>m29842</md:content-id><md:title>Kiểu do người dùng định nghĩa</md:title>
+  <md:abstract/>
+  <md:uuid>978d29e6-43b6-4a00-a561-3911ace68793</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-508417353152">
+      <title>TỔNG QUAN</title>
+      <section id="id-709192724329">
+        <title>Mục tiêu</title>
+        <para id="id19911086">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id19911093" list-type="bulleted">
+          <item>Khái niệm về trừu tượng hóa, kiểu dữ liệu do người lập trình định nghĩa.</item>
+          <item>Mục đích của việc định nghĩa kiểu dữ liệu.</item>
+          <item>Phân biệt các hình thức xác định sự tương đương giữa các kiểu dữ liệu</item>
+        </list>
+      </section>
+      <section id="id-275060594072">
+        <title>Nội dung cốt lõi</title>
+        <list id="id19911129" list-type="bulleted">
+          <item>Trừu tượng hoá</item>
+          <item>Kiểu dữ liệu do người dùng định nghĩa.</item>
+          <item>Xác định sự tương đương giữa các kiểu dữ liệu</item>
+        </list>
+      </section>
+      <section id="id-676240421548">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id19911162">Kiến thức và kĩ năng lập trình căn bản</para>
+      </section>
+    </section>
+    <section id="id-386403955255">
+      <title>SỰ PHÁT TRIỂN CỦA KHÁI NIỆM KIỂU DỮ LIỆU</title>
+      <para id="id19911178">Sự phát triển của khái niệm kiểu dữ liệu là sự phát triển chủ yếu của ngôn ngữ lập trình trong những năm 70. Trong những ngôn ngữ cũ như FORTRAN và COBOL đã bắt đầu có khái niệm về kiểu.</para>
+      <para id="id19911191">Ý niệm đầu tiên về sự định nghĩa kiểu là một tập hợp các giá trị mà một biến có thể nhận. Kiểu dữ liệu trong các ngôn ngữ cũ này luôn luôn gắn liền với các biến riêng lẻ, do đó mỗi một phép khai báo biến phải đặt tên cho một biến và định nghĩa kiểu của nó. Do đó nếu một chương trình sử dụng nhiều biến có kiểu giống nhau thì mỗi một biến phải được khai báo riêng.</para>
+      <para id="id19911214">Bước tiếp theo của sự phát triển khái niệm kiểu được nghiên cứu trong Pascal. Trong đó cho phép đặt tên cho một kiểu, tức là một tập giá trị nào đó. Phép khai báo biến chỉ cần tên biến và tên kiểu đã định nghĩa chứ không cần định nghĩa lại kiểu.</para>
+      <para id="id19911228">Bước cuối cùng của sự phát triển khái niệm kiểu là: Kiểu không chỉ là một tập hợp các đối tượng dữ liệu mà còn là một tập hợp các phép toán có thể thao tác trên các đối tượng dữ liệu này.</para>
+    </section>
+    <section id="id-805196785826">
+      <title>TRỪU TƯỢNG HÓA</title>
+      <section id="id-437884256252">
+        <title>Khái niệm trừu tượng hóa</title>
+        <para id="id19911257">Trừu tượng hóa là một phương pháp giúp người lập trình biết cách tập trung vào những vấn đề, những thuộc tính bản chất của chương trình mà bỏ qua các thuộc tính không cần thiết. Nó là một vũ khí chống lại độ phức tạp của chương trình, mục đích của nó là đơn giản hóa quá trình lập trình.</para>
+        <para id="id19911272">Có hai loại trừu tượng hóa cơ bản trong ngôn ngữ lập trình là trừu tượng hóa quá trình và trừu tượng hóa dữ liệu.</para>
+      </section>
+      <section id="id-476540868654">
+        <title>Trừu tượng hóa quá trình</title>
+        <para id="id19911290">Trừu tượng hóa quá trình là việc phân chia chương trình thành những chương trình con. Mỗi chương trình con đảm nhiệm một tác vụ nào đó và được đặc trưng bởi một cái tên. </para>
+        <para id="id19911301">Ở cấp độ chương trình chính chúng ta chỉ gọi thực hiện các chương trình con, thông qua các tên chương trình con, để thực hiện các tác vụ mà chương trình con đó đảm trách. Như vậy, ở chương trình chính, chúng ta chỉ quan tâm đến kết quả của chương trình con mang lại mà không cần biết chi tiết cài đặt bên trong chương trình con đó.</para>
+        <para id="id19911320">Ví dụ để viết một chương trình quản lý, ta có thể viết theo hai cách, cách thứ nhất không phân chia thành các chương trình con và cách thứ hai có sử dụng chương trình con.</para>
+        <figure id="id19911335">
+          <media id="id1171126546342" alt=""><image src="../../media/graphics1-344f.png" mime-type="image/png" height="375" width="600"/></media>
+        </figure>
+        <para id="id19911359">Đối với phương pháp thứ nhất, ta thấy toàn bộ chương trình được viết trong chương trình chính, điều này làm cho chương trình chính rất rườm rà, khó đọc hiểu, khó kiểm soát, khó sửa lỗi,... </para>
+        <para id="id19911368">Đối với phương pháp thứ hai, trong chương trình chính ta chỉ thấy tên các chương trình con (nhap_du_lieu, xu_ly_du_lieu, xuat_du_lieu) và thông qua các tên này ta biết rõ chương trình chính làm những việc gì còn bản thân các việc ấy được làm như thế nào thì ta không cần biết. </para>
+        <para id="id19911384">Ưu điểm của trừu tượng hoá quá trình</para>
+        <para id="id19911389">Việc phân chia chương trình thành các chương trình con có các ưu điểm nổi bật như sau:</para>
+        <list id="id19911397" list-type="bulleted">
+          <item>Ở chương trình chính, cái tổng thể được làm nổi bật, các chi tiết bị che dấu nên chương trình sáng sủa, dễ đọc hiểu.</item>
+          <item>Một chương trình con đã được thiết kế thì có thể gọi thực hiện nhiều lần mà không phải viết lại. Với việc truyền tham số cho chương trình con, ta nhận được các kết quả khác nhau ở các lần gọi khác nhau.</item>
+          <item>Khi xây dựng chương trình con ta có thể kiểm thử nó một cách độc lập, nên việc phát hiện và sửa lỗi dễ dàng hơn.</item>
+          <item>Do chương trình được chia thành nhiều chương trình con, mỗi chương trình con có thể giao cho một hoặc một nhóm lập trình viên thực hiện nên tăng khả năng làm việc theo nhóm. </item>
+        </list>
+      </section>
+      <section id="id-543247909159">
+        <title>Trừu tượng hóa dữ liệu</title>
+        <para id="id19937961">Trừu tượng hoá dữ liệu là việc tạo ra kiểu dữ liệu trừu tượng. Kiểu dữ liệu trừu tượng là một tập hợp các ĐTDL và tập hợp các phép toán, thao tác trên các ĐTDL đó.</para>
+        <para id="id19371954">Ngày nay, khi ta nói kiểu dữ liệu thực chất là kiểu dữ liệu trừu tượng.</para>
+        <para id="id19371962">Kiểu dữ liệu trừu tượng có thể được định nghĩa bởi ngôn ngữ hoặc do người lập trình định nghĩa.</para>
+        <para id="id19371971">Ví dụ về kiểu dữ liệu trừu tượng do ngôn ngữ định nghĩa:</para>
+        <para id="id19371978">Kiểu integer trong Pascal hay kiểu int trong C là một kiểu dữ liệu trừu tượng do ngôn ngữ định nghĩa. Trong đó tập các ĐTDL là tập các số nguyên từ -32768 đến 32767; tập hợp các phép toán bao gồm các phép toán một ngôi (+, -), các phép toán hai ngôi (+, -, *, DIV, MOD), các phép toán quan hệ (&lt;, &lt;=, =, &lt;&gt;, &gt;=, &gt;).</para>
+        <para id="id19371992">Ví dụ về kiểu dữ liệu trừu tượng do người lập trình định nghĩa:</para>
+        <para id="id19372003">Trong môn học cấu trúc dữ liệu, chúng ta đã biết một loạt các kiểu dữ liệu trừu tượng do người lập trình định nghĩa như danh sách, ngăn xếp, hàng đợi, cây,...</para>
+        <para id="id19372014">Chẳng hạn kiểu dữ liệu trừu tượng danh sách là một dãy các phần tử với tập hợp các phép toán như tạo danh sách rỗng, kiểm tra danh sách rỗng, xen một phần tử vào danh sách, xoá một phần tử khỏi danh sách, ...</para>
+        <para id="id19372028">Sau đây ta sẽ nghiên cứu kỹ hơn về kiểu dữ liệu trừu tượng do người dùng định nghĩa.</para>
+      </section>
+    </section>
+    <section id="id-365848008516">
+      <title>ÐỊNH NGHĨA KIỂU</title>
+      <section id="id-156075342583">
+        <title>Khái niệm</title>
+        <para id="id19372053">Ngoài các kiểu nguyên thuỷ được định nghĩa bởi ngôn ngữ, người lập trình còn có thể định nghĩa các kiểu của riêng mình. Ðịnh nghĩa một kiểu dữ liệu mới bao gồm việc xác định các yếu tố sau:</para>
+        <list id="id19372066" list-type="bulleted">
+          <item>Tên của kiểu.</item>
+          <item>Sự biểu diễn bộ nhớ cho các đối tượng dữ liệu của kiểu.</item>
+          <item>Tập hợp các phép toán (các chương trình con) thao tác trên các đối tượng dữ liệu của kiểu.</item>
+        </list>
+        <para id="id19372092">Ví dụ trong Pascal ta xét định nghĩa kiểu như sau:</para>
+        <para id="id19372099">TYPE</para>
+        <para id="id19372103">RealVect = ARRAY[1..10] OF real;</para>
+        <para id="id19372108">Sau đó ta có thể dùng phép khai báo biến:</para>
+        <para id="id19372114">VAR</para>
+        <para id="id19372118">A: RealVect;</para>
+        <para id="id19372124">B,C:RealVect;</para>
+        <para id="id19372129">Ưu điểm của định nghĩa kiểu:</para>
+        <list id="id19372133" list-type="bulleted">
+          <item>Làm cho việc viết chương trinh trở nên ngắn gọn, sáng sủa hơn.</item>
+          <item>Khi cần thay đổi cấu trúc dữ liệu, chỉ cần thay đổi một lần ở mức định nghĩa kiểu chứ không cần phải thay đổi nhiều lần ở mức khai báo từng biến riêng biệt.</item>
+        </list>
+        <para id="id19372157">Chúng ta thấy rằng kiểu do người dùng định nghĩa chính là một kiểu dữ liệu trừu tượng.</para>
+      </section>
+      <section id="id-769570392535">
+        <title>Tính tương đương của các kiểu định nghĩa</title>
+        <para id="id19372174">Kiểm tra kiểu dẫn tới sự so sánh giữa kiểu dữ liệu của đối số thực đã được cho của một phép toán và kiểu dữ liệu của đối số mà phép toán đó cần đến. Nếu kiểu giống nhau thì đối số được chấp nhận và phép toán được tiến hành, nếu kiểu khác nhau, thì một lỗi được xem xét hoặc một sự cưỡng bức chuyển đổi kiểu được dùng để đổi kiểu của đối số thực thành kiểu thích hợp.</para>
+        <para id="id19372189">Vấn đề ở đây là cần phải xác định hai kiểu như thế nào thì được coi là "giống nhau" hay tương đương. Xét ví dụ sau đây:</para>
+        <para id="id19372201">TYPE Vect1 = ARRAY[1..10] OF REAL;</para>
+        <para id="id19372208">Vect2 = ARRAY[1..10] OF REAL;</para>
+        <para id="id19372212">VAR x,z : Vect1;</para>
+        <para id="id19372221">y : Vect2;</para>
+        <para id="id19372228">PROCEDURE Sub(a:Vect1);</para>
+        <para id="id19372233">.....</para>
+        <para id="id19372241">END; { Sub }</para>
+        <para id="id19372249">BEGIN { Chương trình chính }</para>
+        <para id="id19372259">x := y;</para>
+        <para id="id19372263">Sub(y);</para>
+        <para id="id19372268">......</para>
+        <para id="id19372273">END.</para>
+        <para id="id19372278">Vấn đề ở đây là các biến x, y và a có cùng kiểu do đó lệnh gán x := y và lời gọi chương trình con Sub(y) là đúng hay chúng có khác kiểu.</para>
+        <para id="id19372288">Có hai cách giải quyết cho vấn đề này: tương đương tên và tương đương cấu trúc.</para>
+        <para id="id19372296">1/ Tương đương tên</para>
+        <para id="id19372304">H ai kiểu dữ liệu được xem là tương đương chỉ khi chúng có tên giống nhau. Như vậy các kiểu Vect1 và Vect2 ở trên là khác kiểu mặc dù đối tượng dữ liệu có chung một cấu trúc. Lệnh gán x := y và lời gọi chuong trình con Sub(y) là không hợp lệ. Tương đương tên là phương pháp được dùng trong Ada và Pascal. Tương đương tên có một điểm yếu là khi một kiểu không có tên như trong khai báo trực tiếp:</para>
+        <para id="id19372319">VAR w : ARRAY[1..10] OF REAL;</para>
+        <para id="id19372323">Biến w có kiểu riêng nhưng là kiểu không có tên. Như vậy w không thể được dùng như là một đối số cho một phép toán mà phép toán đó đòi hỏi một đối số của một kiểu có tên.</para>
+        <para id="id19372335">2/ Tương đương cấu trúc</para>
+        <para id="id19372343">Hai kiểu dữ liệu được xem là tương đương nếu chúng xác định các đối tượng dữ liệu có cấu trúc bên trong giống nhau. Thông thường thuật ngữ "cấu trúc bên trong giống nhau" có nghĩa là giống nhau về sự biểu diễn bộ nhớ được dùng cho cả hai lớp đối tượng dữ liệu. Ví dụ Vect1 và Vect2 là tương đương cấu trúc bởi vì mỗi một đối tượng dữ liệu của kiểu Vect1 và mỗi một đối tượng dữ liệu của kiểu Vect2 có chung số phần tử có kiểu tương đương.</para>
+        <para id="id19372358">Quản lý bộ nhớ đối với các đối tượng dữ liệu của cả hai kiểu này là giống nhau, do đó công thức truy nhập giống nhau có thể được sử dụng để lựa chọn các phần tử và nói chung sự cài đặt tại thời gian thực hiện của các kiểu dữ liệu là giống hệt nhau.</para>
+        <para id="id19372372">Tương đương cấu trúc không có các bất tiện như tương đương tên nhưng nó lại có những vấn đề khác, chẳng hạn như hai biến có thể tương đương cấu trúc một cách không cố ý mặc dù người lập trình đã khai báo chúng một cách tách biệt như trong ví dụ sau:</para>
+        <para id="id19372387">TYPE Meters = INTEGER;</para>
+        <para id="id19372393">Liters = INTEGER;</para>
+        <para id="id19372397">VARLen : Meters;</para>
+        <para id="id19372404">Vol : Liters;</para>
+        <para id="id19372408">Các biến Len và Vol có kiểu tương đương cấu trúc và do đó một lỗi như phép cộng Len + Vol sẽ không được tìm thấy bởi phép kiểm tra kiểu tĩnh. Khi có nhiều lập trình viên làm việc chung trong một chương trình thì tương đương kiểu không cố ý có thể gây nên các lỗi rất nghiêm trọng như trong ví dụ nói trên.</para>
+      </section>
+    </section>
+    <section id="id-422333458866">
+      <title>CÂU HỎI ÔN TẬP</title>
+      <list id="id19372431" list-type="enumerated">
+        <item>Thế nào là trừu tượng hoá quá trình?</item>
+        <item>Thế nào là trừu tượng hoá dữ liệu?</item>
+        <item>Lập trình theo kiểu trừu tượng hoá quá trình có những ưu điểm nào?</item>
+        <item>Định nghĩa kiểu dữ liệu có những ưu điểm nào?</item>
+        <item>Có những phương pháp nào để xác định sự tương đương của các kiểu dữ liệu.</item>
+      </list>
+    </section>
+  </content>
+</document>

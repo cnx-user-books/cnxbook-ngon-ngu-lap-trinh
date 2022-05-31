@@ -1,0 +1,381 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Kiểu dữ liệu</title>
+  <metadata>
+  <md:content-id>m29851</md:content-id><md:title>Kiểu dữ liệu</md:title>
+  <md:abstract/>
+  <md:uuid>bdff72f3-bd3d-4ed7-b146-1c0913a0a3bc</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-366898853672">
+      <title>TỔNG QUAN</title>
+      <section id="id-469826128664">
+        <title>Mục tiêu</title>
+        <para id="id20315881">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id20315888" list-type="bulleted">
+          <item>Khái niệm về đối tượng dữ liệu, biến, hằng.</item>
+          <item>Khái niệm về kiểu dữ liệu.</item>
+          <item>Các phương pháp kiểm tra kiểu và biến đổi kiểu.</item>
+        </list>
+      </section>
+      <section id="id-656301417248">
+        <title>Nội dung cốt lõi</title>
+        <list id="id20315921" list-type="bulleted">
+          <item>Các khái niệm về đối tượng dữ liệu, kiểu dữ liệu.</item>
+          <item>Sự khai báo các đối tượng dữ liệu trong chương trình.</item>
+          <item>Kiểm tra kiểu, biến đổi kiểu dữ liệu.</item>
+          <item>Vấn đề gán giá trị và khởi tạo biến.</item>
+        </list>
+      </section>
+      <section id="id-982473375699">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id20315962">Kiến thức và kĩ năng lập trình căn bản</para>
+      </section>
+    </section>
+    <section id="id-0799938210921">
+      <title>ÐỐI TƯỢNG DỮ LIỆU </title>
+      <section id="id-6409063705">
+        <title>Khái niệm đối tượng dữ liệu</title>
+        <para id="id20315985">Trong máy tính thực dữ liệu được lưu trữ ở bộ nhớ trong và bộ nhớ ngoài. Trong đó dữ liệu được tổ chức thành các bit, các byte hoặc word. Tuy nhiên trong máy tính ảo của một NNLT nào đó, dữ liệu có tổ chức phức tạp hơn với các mảng, ngăn xếp, số, chuỗi ký tự ...</para>
+        <para id="id20316017">Người ta sử dụng thuật ngữ đối tượng dữ liệu (ÐTDL) để chỉ một nhóm của một hoặc nhiều mẩu dữ liệu trong máy tính ảo.</para>
+        <para id="id20316038">Khác với tính chất tĩnh tương đối của các vùng nhớ trong máy tính thực, các ÐTDL và các mối liên hệ nội tại của chúng lại thay đổi một cách động trong quá trình thực hiện chương trình.</para>
+      </section>
+      <section id="id-424266862909">
+        <title>Các loại ÐTDL</title>
+        <para id="id20316060">Xét về mặt cấu trúc thì người ta phân ÐTDL làm hai loại là ÐTDL sơ cấp và ÐTDL có cấu trúc hay cấu trúc dữ liệu.</para>
+        <para id="id20316080">ÐTDL sơ cấp là một ÐTDL chỉ chứa một giá trị dữ liệu đơn. Hẳng hạn như một số, một kí tự,…</para>
+        <para id="id20316097">ĐTDL có cấu trúc hay cấu trúc dữ liệu là một tích hợp của các ÐTDL khác. Mỗi ĐTDL thành phần của ĐTDL có cấu trúc được gọi là một phần tử. Mỗi phần tử của cấu trúc dữ liệu có thể là một ÐTDL sơ cấp hay cũng có thể là một ÐTDL có cấu trúc khác. Ví dụ một chuỗi kí tự, một tập hợp các số, một véctơ, một ma trận,…đều là các ĐTDL có cấu trúc.</para>
+        <para id="id20316131">Xét về mặt nguồn gốc thì có thể phân ÐTDL làm hai loại: ÐTDL tường minh và ÐTDL ẩn.</para>
+        <para id="id20316149">ÐTDL tường minh là một ÐTDL do người lập trình tạo ra chẳng hạn như các biến, các hằng,… được người lập trình viết ra trong chương trình.</para>
+        <para id="id20316168">ÐTDL ẩn là một ĐTDL được định nghĩa bởi hệ thống như các ngăn xếp lưu trữ các giá trị trung gian, các mẩu tin kích hoạt chương trình con, các ô nhớ đệm của tập tin... Các ÐTDL này được phát sinh một cách tự động khi cần thiết trong quá trình thực hiện chương trình và người lập trình không thể truy cập đến chúng được.</para>
+      </section>
+      <section id="id-887046943163">
+        <title>Thuộc tính của ÐTDL</title>
+        <para id="id20316202">Thuộc tính của một ĐTDL là một tính chất đặc trưng của ĐTDL đó.</para>
+        <para id="id20316209">Mỗi ÐTDL có một tập hợp các thuộc tính để phân biệt ĐTDL này với ĐTDL khác. </para>
+        <para id="id20316217">Các ĐTDL sơ cấp chỉ có một thuộc tính duy nhất là kiểu dữ liệu của đối tượng đó. Các ĐTDL có cấu trúc có thêm các thuộc tính nhằm xác định số lượng, kiểu dữ liệu của các phần tử và các thuộc tính khác.</para>
+      </section>
+      <section id="id-660008126805">
+        <title>Giá trị dữ liệu</title>
+        <para id="id20316240">Giá trị dữ liệu (GTDL) của một ĐTDL sơ cấp có thể là một số, một ký tự hoặc là một giá trị logic tùy thuộc vào kiểu của ĐTDL đó.</para>
+        <para id="id20316250">Mỗi GTDL thường được biểu diễn bởi một dãy các bit trong bộ nhớ của máy tính.</para>
+        <para id="id20316263">Cần phân biệt hai khái niệm ÐTDL và GTDL. Một ÐTDL luôn luôn được biểu diễn bởi một khối ô nhớ trong bộ nhớ của máy tính trong khi một GTDL được biểu diễn bởi một dãy các bit. Khi nói rằng một ÐTDL A chứa một GTDL B có nghĩa là: khối ô nhớ biểu diễn cho A chứa dãy bit biểu diễn cho B.</para>
+        <para id="id20316290">GTDL của một ĐTDL có cấu trúc là một tập hợp các GTDL của các phần tử của ĐTDL có cấu trúc đó.</para>
+      </section>
+      <section id="id-517515301806">
+        <title>Thời gian tồn tại </title>
+        <para id="id20316308">Thời gian tồn tại (lifetime) của một ÐTDL là khoảng thời gian ĐTDL chiếm giữ bộ nhớ của máy tính. Thời gian này được tính từ khi ÐTDL được tạo ra cho đến khi nó bị hủy bỏ trong quá trình thực hiện chương trình.</para>
+      </section>
+      <section id="id-775086998069">
+        <title>Các mối liên kết</title>
+        <para id="id20316334">Một ÐTDL có thể tham gia vào nhiều mối liên kết trong thời gian tồn tại của nó. Các liên kết quan trọng nhất là:</para>
+        <list id="id20316344" list-type="bulleted">
+          <item>Sự liên kết của ÐTDL với một hoặc nhiều giá trị. Sự liên kết này có thể bị thay đổi bởi phép gán trị.</item>
+          <item>Sự liên kết của một ÐTDL với một hoặc nhiều tên được tham chiếu trong quá trình thực hiện chương trình. Các liên kết này được thiết lập bởi sự khai báo và thay đổi bởi việc gọi và trả chương trình con.</item>
+          <item>Sự liên kết của một ÐTDL với một số ÐTDL khác gọi là các hợp thành (component). Các liên kết này thường được biểu diễn bởi giá trị con trỏ và nó có thể bị thay đổi bởi việc thay đổi con trỏ.</item>
+          <item>Sự liên kết của một ÐTDL với ô nhớ trong bộ nhớ. Sự liên kết này thường không thể thay đổi một cách trực tiếp bởi người lập trình mà nó được thiết lập và có thể bị thay đổi bởi các thường trình (routine) quản lý bộ nhớ của máy tính ảo.</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-110553888064">
+      <title>BIẾN VÀ HẰNG</title>
+      <section id="id-505880375824">
+        <title>Biến</title>
+        <para id="id20316417">Biến là một ÐTDL được người lập trình định nghĩa và đặt tên một cách tường minh trong chương trình. Giá trị của biến có thể bị thay đổi trong thời gian tồn tại của nó.</para>
+        <para id="id20316432">Tên biến được dùng để xác định và tham khảo tới biến. Trong các NNLT, tên biến thường được quy định dưới dạng một dãy các chữ cái, dấu gạch dưới và các chữ số, bắt đầu bằng một chữ cái và có chiều dài hữu hạn. </para>
+      </section>
+      <section id="id-418754946398">
+        <title>Hằng</title>
+        <para id="id20316454">Hằng là một ÐTDL có tên và giá trị của hằng không thay đổi trong thời gian tồn tại của nó. </para>
+        <para id="id20316467">Hằng trực kiện (literal constant) là một hằng mà tên của nó là sự mô tả giá trị của nó (chẳng hạn "27" là sự mô tả số thập phân của ÐTDL giá trị 27). Chú ý sự khác biệt giữa 2 giá trị 27. Một cái là một số nguyên được biểu diễn thành một dãy các bit trong bộ nhớ trong quá trình thực hiện chương trình và cái tên "27" là một chuỗi 2 ký tự "2" và "7" mô tả một số nguyên như nó được viết trong chương trình.</para>
+      </section>
+    </section>
+    <section id="id-5924169444">
+      <title>KIỂU DỮ LIỆU</title>
+      <section id="id-261366518587">
+        <title>Ðịnh nghĩa kiểu dữ liệu</title>
+        <para id="id20316510">Kiểu dữ liệu là một tập hợp các ÐTDL và tập hợp các phép toán thao tác trên các ÐTDL đó.</para>
+        <para id="id20316522">Mọi NNLT đều xây dựng cho mình một tập các kiểu dữ liệu nguyên thuỷ. Chẳng hạn ngôn ngữ LISP, kiểu dữ liệu chính là các cây nhị phân với các phép toán CAR, CDR và CONS còn đối với các ngôn ngữ cấp cao khác thì các kiểu dữ liệu nguyên thủy thường là: integer, real, character và boolean. Hơn nữa các ngôn ngữ còn cung cấp phương tiện cho phép người lập trình định nghĩa các kiểu dữ liệu mới.</para>
+        <para id="id20316564">Kiểu dữ liệu trong ngôn ngữ được nghiên cứu trên hai phương diện khác nhau: Sự đặc tả và sự cài đặt kiểu dữ liệu.</para>
+      </section>
+      <section id="id-927235501423">
+        <title>Sự đặc tả kiểu dữ liệu</title>
+        <para id="id20316593">Khi đặc tả một kiểu dữ liệu chúng ta thường quan tâm đến các thành phần cơ bản sau:</para>
+        <list id="id20316602" list-type="bulleted">
+          <item>Các thuộc tính nhằm phân biệt các ÐTDL của kiểu.</item>
+          <item>Các giá trị mà các ÐTDL của kiểu có thể có.</item>
+          <item>Các phép toán có thể thao tác trên các ÐTDL của kiểu.</item>
+        </list>
+        <para id="id19408686">Ví dụ, xét sự đặc tả kiểu dữ liệu mảng ta thấy:</para>
+        <para id="id20316610">1.- Các thuộc tính có thể bao gồm: số chiều, miền xác định của chỉ số đối với mỗi chiều và kiểu dữ liệu của các phần tử.</para>
+        <para id="id19408705">2.- Các giá trị có thể nhận của các phần tử mảng.</para>
+        <para id="id19408715">3.- Các phép toán có thể bao gồm: phép lựa chọn một phần tử mảng thông qua việc sử dụng chỉ số của phần tử đó, phép gán một mảng cho một mảng khác…</para>
+      </section>
+      <section id="id-0191548259663">
+        <title>Phép toán</title>
+        <para id="id19408737">Các phép toán thao tác trên các ÐTDL là một bộ phận không thể thiếu của kiểu dữ liệu. Khi nói đến kiểu dữ liệu mà chúng ta không quan tâm đến các phép toán là chưa hiểu đầy đủ về kiểu dữ liệu đó. Mà dường như khiếm khuyết này lại hay xẩy ra. Ví dụ khi nói đến kiểu integer trong ngôn ngữ Pascal, chúng ta chỉ nghĩ rằng đó là kiểu số nguyên, có các giá trị từ -32768 đến 32767, mà ít khi quan tâm đến các phép toán như +, -, *, … hay nói chính xác hơn chúng ta cứ nghĩ các phép toán này là mặc nhiên phải có. Trong tin học không có cái gì tự nhiên mà có cả, mọi cái hoặc do chúng ta tự tạo ra hoặc sử dụng cái có sẵn do người khác đã tạo ra. Nhấn mạnh việc có mặt các phép toán trong kiểu dữ liệu là để lưu ý chúng ta khi định nghĩa một kiểu dữ liệu mới, phải trang bị cho nó các phép toán cần thiết.</para>
+        <para id="id19408780">Có hai loại phép toán là các phép toán nguyên thủy được ngôn ngữ định nghĩa và các phép toán do người lập trình định nghĩa như là các chương trình con.</para>
+        <para id="id19408802">Phép toán trong NNLT về phương diện lôgic là một hàm toán học: đối với một đối số (argument) đã cho nó có một kết quả duy nhất và xác định.</para>
+        <para id="id19408813">Mỗi một phép toán có một miền xác định (domain) là tập hợp các đối số và một miền giá trị (range) là tập hợp các kết quả có thể tạo ra. Hoạt động của phép toán xác định kết quả được tạo ra đối với tập hợp bất kỳ các đối số đã cho. Giải thuật chỉ rõ làm thế nào để xác định kết quả đối với tập hợp bất kỳ các đối số đã cho là phương pháp phổ biến để xác định hoạt động của phép toán. Ngoài ra còn có những cách xác định khác chẳng hạn để xác định hoạt động của phép toán nhân chúng ta có thể cho một "bảng nhân" thay vì cho giải thuật của phép nhân hai số.</para>
+        <para id="id19408843">Ðể chỉ rõ miền xác định của phép toán, số lượng, thứ tự và kiểu dữ liệu của các đối số, tương tự miền giá trị, số lượng, thứ tự và kiểu dữ liệu của các kết quả người ta thường sử dụng các ký hiệu toán học.</para>
+        <para id="id19408852">Tên phép toán: Miền xác định -&gt; Miền giá trị</para>
+        <para id="id19408858">Trong đóMiền xác định = Kiểu đối số X Kiểu đối số X… </para>
+        <para id="id19408870">(Miền xác định là tập tích Đề-các của các kiểu đối số)</para>
+        <para id="id19408877">Miền giá trị = Kiểu kết quả X Kiểu kết quả X ...</para>
+        <para id="id19408884">(Miền giá trị là tập tích Đề-các của các kiểu kết quả)</para>
+        <para id="id19408890">Khi nghiên cứu các phép toán trên các kiểu dữ liệu chúng ta cần lưu ý các vấn đề sau:</para>
+        <para id="id19408899">1.- Các phép toán không được xác định đầu vào một cách chắc chắn.</para>
+        <para id="id19408906">Một phép toán được xác định trên nhiều hơn một miền xác định thường chứa đựng các lỗi. Ví dụ các phép toán số học có thể xác định trên nhiều tập hợp số khác nhau có thể gây ra sự tràn số hoặc một kết quả sai lệch mà ta không thể kiểm soát được.</para>
+        <para id="id19408921">Ví dụ trong ngôn ngữ Pascal, phép cộng có thể xác định trên nhiều miền xác định khác nhau như integer, real,… nên có thể có những kết quả sai lệch như trong ví dụ sau:</para>
+        <para id="id19408943">var a, b : integer;</para>
+        <para id="id19408948">begin</para>
+        <para id="id19408952">{1}a:= 32767;</para>
+        <para id="id19408963">{2}b:= 30000;</para>
+        <para id="id19408974">{3}writeln(32767+30000);</para>
+        <para id="id19408984">{4}writeln(a+b);</para>
+        <para id="id19408995">end.</para>
+        <para id="id19409000">Kết quả của chương trình trên là 62767 và -2769.</para>
+        <para id="id19409006">Trong đó 62767 là kết quả của phép cộng 32767+30000. Đây là một kết quả đúng, do máy tính “hiểu” các số 32767 và 30000 là các số thực (real) và phép “+” trong lệnh {3} là “phép cộng các số thực”. Ngược lại -2769 là kết quả sai của phép toán a+b. Về mặt toán học thì kết quả của a+b là 62767, nhưng kết quả của chương trình máy tính lại là -2769! Sở dĩ chương trình máy tính (ngôn ngữ Pascal) lại có kết quả này là do hai biến a và b được khai báo là các biến thuộc kiểu integer nên phép “+” trong lệnh {4} được hiểu là “phép cộng các số nguyên”. Về nguyên tắc thì tổng a+b phải có giá trị thuộc kiểu integer nhưng do tập giá trị của kiểu integer là các số nguyên từ -32768 đến 32767 nên mới “sinh chuyện”.</para>
+        <para id="id19409033">2.- Các đối số ẩn</para>
+        <para id="id19409039">Các phép toán trong chương trình thông thường sẽ được gọi với một tập hợp các đối số tường minh (explicit arguments). Tuy nhiên các phép toán có thể truy cập đến những đối số ẩn (implicit arguments) thông qua việc sử dụng các biến toàn cục hoặc tham chiếu các biến không cục bộ khác. Những đối số ẩn như thế sẽ gây khó khăn cho việc kiểm soát giá trị dữ liệu và do đó có thể ảnh hưởng đến kết quả của chương trình.</para>
+        <para id="id19409053">Ví dụ:</para>
+        <para id="id19409058">Var x: Integer;</para>
+        <para id="id19409063">Procedure P;</para>
+        <para id="id19409068">Begin</para>
+        <para id="id19409072">x:= 0;</para>
+        <para id="id19409078">End;</para>
+        <para id="id19409083">Begin</para>
+        <para id="id19409087">{1} x:=10;</para>
+        <para id="id19409102">{2}P;</para>
+        <para id="id19409113">{3}Writeln(x);</para>
+        <para id="id19409124">End.</para>
+        <para id="id19409128">Trong ví dụ trên, chương trình con P thực hiện việc giá trị 0 cho biến toàn cục x. Trong chương trình chính, mặc dù ta mới gán 10 cho x (lệnh 1), nhưng sau khi gọi thủ tục P (lệnh 2) thì ở lệnh 3, x lại có giá trị 0. Việc chương trình con sử dụng biến không cục bộ như vậy sẽ dễ gây ngộ nhận cho người lập trình rằng x có giá trị 10, đặc biệt khi thủ tục P được định nghĩa ở một đoạn nào đó, xa đoạn chương trình chính. </para>
+        <para id="id19409144">3.- Hiệu ứng lề</para>
+        <para id="id19409149">Một phép toán có thể trả về một kết quả ẩn, và các kết quả ẩn như vậy sẽ gây ra hiệu ứng lề (side effect) làm thay đổi giá trị được lưu trữ của các ÐTDL khác mà người lập trình khó lòng kiểm soát. Các phép toán có thể gây nên hiệu ứng lề là phép gán (có trả về một giá trị) và các chương trình con mà tham số được truyền bằng quy chiếu. Chẳng hạn xét ví dụ sau trong Pascal:</para>
+        <para id="id19409169">var m,n: integer;</para>
+        <para id="id19409174">function f(var a: integer): integer;</para>
+        <para id="id19409178">begin</para>
+        <para id="id19409183">a := 2*a;</para>
+        <para id="id19409191">f := 5;</para>
+        <para id="id19409201">end;</para>
+        <para id="id19409205">begin</para>
+        <para id="id19409210">m := 10;</para>
+        <para id="id19409218">n := m + f(m);</para>
+        <para id="id19409228">writeln(n);</para>
+        <para id="id19409236">readln;</para>
+        <para id="id19409244">end.</para>
+        <para id="id19409248">Với mọi số integer a hàm f luôn trả về một kết quả tường minh là 5 và một kết quả ẩn là 2a, chính kết quả ẩn này làm thay đổi giá trị của ÐTDL m do đó n sẽ có giá trị là 25 chứ không phải là 15 như chúng ta lầm tưởng. </para>
+      </section>
+      <section id="id-716083106809">
+        <title>Sự cài đặt kiểu dữ liệu</title>
+        <para id="id19409280">Khi xét sự cài đặt kiểu dữ liệu ta phải quan tâm đến hai yếu tố sau:</para>
+        <list id="id19409288" list-type="bulleted">
+          <item>Tổ chức lưu trữ giá trị dữ liệu của kiểu dữ liệu trong bộ nhớ của máy tính hay còn gọi là sự biểu diễn trong bộ nhớ.</item>
+          <item>Giải thuật thực hiện các phép toán thao tác trên các giá trị dữ liệu của kiểu.</item>
+        </list>
+        <para id="id19409310">Hai yếu tố này liên quan chặt chẽ đến nhau, nói chính xác hơn là tuỳ thuộc vào cách thức tổ chức lưu trữ mà có các giải thuật thao tác tương ứng.</para>
+      </section>
+    </section>
+    <section id="id-844901117847">
+      <title>SỰ KHAI BÁO</title>
+      <section id="id-855467498218">
+        <title>Khái niệm khai báo</title>
+        <para id="id19409338">Khai báo là một lệnh trong chương trình dùng để chuyển tới bộ dịch, thông tin về số lượng và kiểu của ÐTDL cần thiết trong quá trình thực hiện chương trình.</para>
+        <para id="id19409353">Nhờ vị trí của khai báo trong chương trình, chẳng hạn đầu chương trình con, sự khai báo có thể chỉ rõ thời gian tồn tại của ÐTDL.</para>
+        <para id="id19409363">Sự khai báo còn xác định sự liên kết của các ÐTDL với các tên của nó.</para>
+        <para id="id19409370">Có hai loại khai báo là khai báo tường minh và khai báo ẩn. Khai báo tường minh là sự khai báo do người lập trình viết ra trong chương trình, như trong các khai báo của Pascal. Khai báo ẩn như trong trường hợp các ÐTDL được dùng một cách mặc nhiên mà không cần một sự khai báo tường minh nào. Ví dụ trong ngôn ngữ FORTRAN biến INDEX có thể dùng mà không cần khai báo tường minh và nó được trình biên dịch FORTRAN hiểu một cách mặc nhiên là một biến nguyên bởi vì tên của nó được bắt đầu bởi một trong các chữ cái từ I đến N.</para>
+        <para id="id19409397">Ngôn ngữ lập trình được chia làm hai loại: ngôn ngữ khai báo, trong đó các ÐTDL phải được khai báo trước khi sử dụng và ngôn ngữ không khai báo, trong đó ÐTDL có thể sử dụng mà không cần phải khai báo. Với ngôn ngữ khai báo, ÐTDL sau khi đã khai báo phải sử dụng đúng như nó đã được khai báo, trong khi đối với ngôn ngữ không khai báo, một ÐTDL có thể sử dụng một cách tuỳ thích. Ðây là một trong những lý do làm cho ngôn ngữ không khai báo trở nên mềm dẻo hơn.</para>
+      </section>
+      <section id="id-29616973988">
+        <title>Mục đích của sự khai báo</title>
+        <para id="id19409438">Việc khai báo có các mục đích quan trọng sau:</para>
+        <list id="id19409444" list-type="bulleted">
+          <item>Chọn một tổ chức lưu trữ tốt nhất cho ÐTDL. Chẳng hạn trong ngôn ngữ Pascal để lưu trữ ngày trong tháng ta có thể khai báo biến ngay có kiểu là integer được lưu trữ trong bộ nhớ bởi 2 byte. Tuy nhiên trong một tháng chỉ có tối đa 31 ngày nên ta có thể khai báo biến ngay có kiểu miền con 1..31 được lưu trữ trong bộ nhớ chỉ với 1 byte. </item>
+          <item>Quản lý bộ nhớ: Sự khai báo cho phép xác định thời gian tồn tại của ÐTDL mà các chương trình quản lý bộ nhớ sử dụng để cấp phát và giải phóng bộ nhớ cho ÐTDL.</item>
+          <item>Các phép toán chung. Hầu hết các ngôn ngữ đều dùng các ký hiệu đặc biệt như "+" để chỉ một phép toán nào đó phụ thuộc vào kiểu dữ liệu của đối số. Ví dụ trong Pascal, "A+B" có nghĩa là "phép cọng các số nguyên" nếu A và B thuộc kiểu Integer, "phép cọng các số thực" nếu A và B thuộc kiểu real và là "phép hợp" nếu A và B thuộc kiểu tập hợp. Các phép toán như thế được gọi là các phép toán chung bởi vì nó không chỉ rõ một phép toán nhất định nào. Sự khai báo cho phép bộ dịch xác định một phép toán cụ thể được chỉ định bởi ký hiệu phép toán chung. Ví dụ trong Pascal, từ sự khai báo hai biến A và B, trình biên dịch sẽ xác định được phép toán cụ thể trong ba phép toán, theo đó nếu A, B là các biến integer thì "A+B" là phép cộng hai số nguyên, nếu A, B là hai biến real thì "A+B" là phép cộng hai số thực… Ngược lại trong SNOBOL4 vì không có khai báo kiểu cho biến nên sự xác định phép "+" nào để thực hiện phải được làm tại thời điểm mà một phép "+" bị bắt gặp trong quá trình thực hiện chương trình.</item>
+          <item>Kiểm tra kiểu. Mục đích quan trọng nhất của việc khai báo là chúng cho phép kiểm tra kiểu của biến. Vì tính chất quan trọng của việc kiểm tra kiểu nên chúng ta sẽ xem xét nó trong mục sau.</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-427797877685">
+      <title>KIỂM TRA KIỂU VÀ BIẾN ÐỔI KIỂU</title>
+      <section id="id-944016318142">
+        <title>Khái niệm kiểm tra kiểu</title>
+        <para id="id19409601">Kiểm tra kiểu là kiểm tra xem kiểu thực nhận được của các đối số trong một phép toán có đúng với kiểu dữ liệu mà các đối số đó cần có hay không. </para>
+        <para id="id19409616">Ví dụ trước khi thực hiện lệnh gán X := A * B việc kiểm tra phải được xác định đối với 2 phép toán nhân và phép gán. Trước hết phép nhân phải nhận được 2 tham số A, B có kiểu số, nếu cả A và B đúng là có kiểu số (chẳng hạn số nguyên) thì tiếp tục kiểm tra cho phép toán gán. Tích A*B sẽ là một số nguyên nên X cũng phải là một biến thuộc kiểu nguyên, nếu không đúng như vậy thì có sự sai kiểu.</para>
+        <para id="id19409635">Kiểm tra kiểu có thể được tiến hành trong lúc chạy chương trình (kiểm tra kiểu động) hoặc trong lúc biên dịch chương trình (kiểm tra kiểu tĩnh).</para>
+      </section>
+      <section id="id-165930587275">
+        <title>Kiểm tra kiểu động</title>
+        <para id="id19409654">Khái niệm:</para>
+        <para id="id19409659">Kiểm tra kiểu động là kiểm tra kiểu được thực hiện trong khi thực hiện chương trình. </para>
+        <para id="id19409678">Thông thường kiểm tra kiểu động được thực hiện một cách tức thì trước khi thực hiện một phép toán. </para>
+        <para id="id19409687">Phương pháp thực hiện: </para>
+        <para id="id19409693">Ðể kiểm tra kiểu động người ta phải lưu trữ thông tin về kiểu của mỗi một ÐTDL cùng với ĐTDL đó. Trước khi thực hiện một phép toán thông tin về kiểu của mỗi một đối số được kiểm tra. Nếu kiểu của các đối số là đúng thì phép toán sẽ được thực hiện và kiểu của kết quả sẽ được ghi lại để dùng kiểm tra cho các phép toán sau, ngược lại sẽ có một thông báo lỗi về kiểu .</para>
+        <para id="id19409714">Ngôn ngữ sử dụng:</para>
+        <para id="id19409719">Kiểm tra kiểu động được sử dụng trong các ngôn ngữ không khai báo như SNOBOL4, LISP, APL. Trong các ngôn ngữ này không có sự khai báo kiểu cho biến. Kiểu dữ liệu của các biến A và B trong biểu thức "A+B" có thể thay đổi trong quá trình thực hiện chương trình. Trong những trường hợp như vậy, kiểu của A và B phải được kiểm tra động tại mỗi lần phép cộng được gọi thực hiện. Trong các ngôn ngữ không khai báo, các biến đôi khi được gọi là không định kiểu vì chúng không có kiểu cố định.</para>
+        <para id="id19409742">Ưu điểm:</para>
+        <para id="id19409747">Ưu điểm chủ yếu của kiểm tra kiểu động là tính mềm dẻo trong khi viết chương trình: không yêu cầu khai báo kiểu và kiểu của ÐTDL có thể thay đổi trong quá trình thực hiện chương trình. Người lập trình không phải lo lắng về kiểu dữ liệu.</para>
+        <para id="id19409762">Nhược điểm:</para>
+        <para id="id19409767">Tuy nhiên kiểm tra kiểu động cũng có một số yếu điểm như sau:</para>
+        <list id="id19409774" list-type="bulleted">
+          <item>Có khả năng bỏ sót lỗi về kiểu. Bởi vì việc kiểm tra động chỉ kiểm tra tại thời điểm thực hiện phép toán do đó các phép toán nằm trong nhánh chương trình không được thực hiện thì sẽ không được kiểm tra. Bất kỳ một nhánh chưa được kiểm tra nào đều có thể chứa các đối số có lỗi về kiểu và do đó các lỗi này có thể xuất hiện tại thời điểm sau đó. Ví dụ ta có một đoạn chương trình sau được viết trong một ngôn ngữ kiểm tra kiểu động:</item>
+        </list>
+        <para id="id19409792">Nhập số a từ bàn phím;</para>
+        <para id="id19409798">Nhập số b từ bàn phím;</para>
+        <para id="id19409803">Nếu a &gt; b Thì x := a + b </para>
+        <para id="id19409810">Ngược lại x := a + “titi”;</para>
+        <para id="id19409818">Nếu khi thực hiện đoạn chương trình này, người sử dụng luôn luôn nhập số a lớn hơn số b thì điều kiện a&gt;b luôn luôn đúng nên không bao giờ chương trình thực hiện lệnh x := a + “titi” do đó không bao giờ phát hiện lỗi về kiểu: a là một số, không thể cộng với “titi” là một chuỗi.</para>
+        <list id="id19409839" list-type="bulleted">
+          <item>Kiểm tra kiểu động đòi hỏi thông tin về kiểu phải được lưu giữ cho mỗi một ÐTDL trong quá trình thực hiện chương trình do đó yêu cầu về bộ nhớ phải lớn.</item>
+          <item>Kiểm tra kiểu phải được tiến hành tức thì trước mỗi khi thực hiện một phép toán nên tốc độ thực hiện chương trình chậm.</item>
+        </list>
+      </section>
+      <section id="id-919744925352">
+        <title>Kiểm tra kiểu tĩnh</title>
+        <para id="id19409874">Khái niệm:</para>
+        <para id="id19409879">Kiểm tra kiểu tĩnh là sự kiểm tra kiểu được thực hiện trong quá trình dịch chương trình. </para>
+        <para id="id19409898">Phương pháp thực hiện:</para>
+        <para id="id19409903">Theo nguyên tắc kiểm tra kiểu tĩnh, thông tin về kiểu của ÐTDL phải được cung cấp cho bộ dịch. Thông tin này một phần được cung cấp bởi phép khai báo của người lập trình và một phần bởi ngôn ngữ .</para>
+        <para id="id19409916">Các thông tin bao gồm:</para>
+        <list id="id19409922" list-type="bulleted">
+          <item>Ðối với mỗi một phép toán thì đó là số lượng, thứ tự và kiểu dữ liệu của đối số và kiểu của kết quả. Ðối với các phép toán nguyên thuỷ thì việc định nghĩa ngôn ngữ sẽ cung cấp các thông tin này còn đối với chương trình con thì người lập trình phải xác định một cách tường minh.</item>
+          <item>Ðối với mỗi một biến thì đó là kiểu của biến.</item>
+          <item>Ðối với mỗi một hằng, thì đó là kiểu của đối tượng dữ liệu hằng. Ngữ nghĩa của một hằng trực kiện sẽ chỉ ra kiểu của nó, chẳng hạn "2" là một số nguyên, "2.3" là một số thực.</item>
+        </list>
+        <para id="id19409959">Kiểm tra kiểu tĩnh được thực hiện như sau: Thông qua đoạn đầu của chương trình, bộ biên dịch tập hợp thông tin từ sự khai báo trong chương trình vào trong bảng danh biểu (symbol table) nơi chứa thông tin về kiểu của các biến và chương trình con. Bộ biên dịch cũng sẽ có thông tin về các phép toán nguyên thuỷ được định nghĩa bởi ngôn ngữ, các hằng...Khi gặp một phép toán thì phải tra trong bảng danh biểu để xác định kiểu của mỗi một đối số có hợp lệ hay không. Chú ý rằng nếu phép toán là phép toán chung như đã nói ở trên thì có thể có nhiều kiểu hợp lệ cho một đối số. Nếu kiểu của đối số là hợp lệ thì kiểu kết quả được xác định và bộ biên dịch ghi lại thông tin này để kiểm tra các phép toán sau.</para>
+        <para id="id19409988">Ngôn ngữ sử dụng:</para>
+        <para id="id19409993">Kiểm tra kiểu tĩnh thường được sử dụng trong các ngôn ngữ khai báo tức là khi viết chương trình, các biến phải được khai báo kiểu trước khi sử dụng như Pascal, C…</para>
+        <para id="id19410013">Ưu điểm:</para>
+        <list id="id19410017" list-type="bulleted">
+          <item>Do phép kiểm tra kiểu tĩnh kiểm tra tất cả các phép toán có thể xuất hiện trong bất kỳ một lệnh nào của chương trình, tất cả các nhánh của chương trình đều được kiểm tra nên không thể có sự sót lỗi vê kiểu. </item>
+          <item>Mặt khác thông tin về kiểu không gắn với ÐTDL tại thời điểm thực hiện chương trình nên tiết kiệm được bộ nhớ và tăng tốc độ thực hiện chương trình.</item>
+        </list>
+        <para id="id19410047">Nhược điểm:</para>
+        <para id="id19410052">Yếu điểm chủ yếu của kiểm tra kiểu tĩnh là chương trình không mềm dẻo, người lập trình luôn phải lo lắng về việc sử dụng biến không đúng kiểu. </para>
+      </section>
+    </section>
+    <section id="id-229745447503">
+      <title>CHUYỂN ÐỔI KIỂU</title>
+      <para id="id19410074">Trong quá trình kiểm tra kiểu, nếu có sự không tương thích giữa kiểu thực của đối số và kiểu đang được monng đợi của phép toán ấy thì có hai lựa chọn có thể:</para>
+      <list id="id19410085" list-type="bulleted">
+        <item>Sự không tương thích kiểu bị báo lỗi hoặc</item>
+        <item>Một sự chuyển đổi kiểu tự động được thi hành để đổi kiểu của đối số thực tế thành kiểu đúng với yêu cầu.</item>
+      </list>
+      <para id="id19410106">Chuyển đổi kiểu là một phép toán được định nghĩa như sau: </para>
+      <para id="id19410115">Sự chuyển đổi: Kiểu1 -&gt; Kiểu2 nghĩa là sự chuyển đổi lấy ÐTDL của một kiểu và sản sinh ra một ÐTDL "tương ứng" của một kiểu khác. Hầu hết các ngôn ngữ đều cung cấp hai phương pháp chuyển đổi kiểu:</para>
+      <list id="id19410129" list-type="bulleted">
+        <item>Trang bị một tập hợp các hàm đã được xây dựng mà người lập trình có thể gọi trong chương trình để tạo ra sự chuyển đổi kiểu. Ví dụ Pascal trang bị hàm ROUND để đổi một ÐTDL số thực thành một đối tượng dữ liệu nguyên với giá trị bằng phần nguyên của số thực.</item>
+        <item>Như là một sự chuyển đổi tự động (còn gọi là ép kiểu) do ngôn ngữ thực hiện trong một số trường hợp không tương thích kiểu nào đó. Ví dụ trong Pascal các đối số của phép toán số học "+" có lẫn số thực và số nguyên hoặc khi gán một số nguyên cho một biến số thực thì số nguyên phải được đổi một cách tự động thành kiểu thực.</item>
+      </list>
+      <para id="id19410163">Ðối với kiểm tra kiểu động thì sự chuyển đổi kiểu tự động được diễn ra tại điểm mà sự không tương thích kiểu được tìm thấy trong quá trình thực hiện chương trình. Ðối với sự kiểm tra kiểu tĩnh thì một mã phụ sẽ được xen vào trong chương trình đích dùng để gọi tới hàm biến đổi kiểu tại điểm thích hợp trong quá trình thực hiện.</para>
+      <para id="id19410185">Chuyển đổi kiểu tự động giúp người lập trình khỏi mọi lo lắng về sự sai kiểu và tránh việc gọi tới một số lượng lớn các phép biến đổi kiểu tường minh trong chương trình. Tuy nhiên chúng ta nên tránh việc chuyển đổi kiểu bằng cách viết các phép toán đúng kiểu. Chẳng hạn trong lập trình thay vì viết lệnh x := 1 (với x là biến số thực) ta nên viết x := 1.0, với lệnh trước thì khi thực hiện phải có một sự chuyển đổi kiểu tự động còn với lệnh sau thì không cần nên thời gian thực hiện sẽ nhanh hơn.</para>
+    </section>
+    <section id="id-880804562622">
+      <title>GÁN VÀ KHỞI TẠO</title>
+      <section id="id-749887983815">
+        <title>Phép gán</title>
+        <para id="id19410228">Gán trị cho biến là sự lưu trữ giá trị dữ liệu vào trong ô nhớ của biến đó.</para>
+        <para id="id19410235">Gán trị là một phép toán cơ bản trong các NNLT. Nó dùng để thay đổi sự liên kết của giá trị với ÐTDL. </para>
+        <para id="id19410244">Nói chung các ngôn ngữ khác nhau thì phép gán cũng khác nhau. </para>
+        <para id="id19410251">Sự khác nhau đầu tiên là khác nhau về cú pháp, chẳng hạn ta có một số cú pháp lệnh gán như sau:</para>
+        <para id="id19410264">A := B(Pascal hay Ada)</para>
+        <para id="id19410274">A = B(C, C++, Fortran, PL/1 và SNOBOL4)</para>
+        <para id="id19410287">MOVE B TO A(COBOL)</para>
+        <para id="id19410295">A &lt;- B(APL)</para>
+        <para id="id19410304">(SETQ A B)(LISP)</para>
+        <para id="id19410313">Sự khác nhau thứ hai là kết quả trả về của phép gán trị. Nói chung trong các ngôn ngữ, lệnh gán trị không trả về kết quả. Chẳng hạn trong Pascal, đặc tả phép gán là Phép gán (:=) Type1 x Type2 -&gt; Void với sự hoạt động: Ðặt giá trị được chứa trong đối tượng dữ liệu Type1 thành bản sao của giá trị được chứa trong đối tượng dữ liệu Type2 và trả về một kết quả có kiểu void (có thể hiểu là không có kết quả trả về).</para>
+        <para id="id19410350">Trong một số ngôn ngữ như C, C++ và LISP, phép gán trả về trực tiếp một kết quả là một bản sao của giá trị được gán. Chẳng hạn trong C, sự đặc tả phép gán là</para>
+        <para id="id19410362">Phép gán (=) Type1 x Type2 -&gt; Type3 với sự hoạt động: Ðặt giá trị được chứa trong đối tượng dữ liệu Type1 thành bản sao của giá trị được chứa trong đối tượng dữ liệu Type2 và tạo ra một ÐTDL mới Type3 chứa bản sao giá trị của Type2, trả về Type3 như là một kết quả.</para>
+        <para id="id19410387">Vì phép gán trong Pascal không trả về một kết quả nên chúng ta chỉ sử dụng chức năng “gán trị” của nó mà thôi. Vì không có kết quả trả về nên mỗi một lệnh ta chỉ có thể viết một phép gán, chẳng hạn để gán giá trị 10 cho hai biến A và B ta phải viết hai lệnh B := 10; A := B; hoặc A := 10; B := 10;</para>
+        <para id="id19410405">Ngược lại khi lập trình bằng ngôn ngữ C, vì phép gán có trả về một kết quả nên ta có thể viết: A = B = 10; Trong đó phép gán B =10 vừa thực hiện chức năng “gán trị” giá trị 10 cho B vừa trả về 1 giá trị để gán tiếp cho A. Giá trị được trả về như là một kết quả của phép gán B cho A bị bỏ qua vì lệnh không chứa một phép toán nào sau đó nữa.</para>
+        <para id="id19410420">Phép gán trong ngôn ngữ C++ cũng có cùng cơ chế như trong C, vì vậy khi thiết kế toán tử gán cho một đối tượng nào đó (Overloading toán tử = trong khi xây dựng một lớp nào đó) ta phải viết:</para>
+        <para id="id19410433">&lt;tên lớp&gt; &amp; operator= (const &lt;tên lớp&gt; &amp; Obj)</para>
+        <para id="id19410439">{ </para>
+        <para id="id19410443">// Thực hiện việc gán dữ liệu;</para>
+        <para id="id19410452">return *this;</para>
+        <para id="id19410460">}</para>
+        <para id="id19410464">Trong đó tên lớp là tên của lớp chúng ta đang định nghĩa. Phương thức này nhận vào một đối tượng Obj, thực hiện việc gán Obj cho đối tượng hiện hành và trả đối tượng hiện hành này về như một kết quả.</para>
+        <para id="id19410478">Ví dụ ta tạo một class có tên là point để biểu diễn cho một điểm trong mặt phẳng được đặc trưng bởi hai tọa độ x và y. Trong chương trình ta muốn gán các điểm cho nhau, nên trong khi định nghĩa class point, ta phải định nghĩa toán tử gán. Cụ thể như sau: </para>
+        <para id="id19410493">class point {</para>
+        <para id="id19410498">float x;</para>
+        <para id="id19410502">float y;</para>
+        <para id="id19410507">public:</para>
+        <para id="id19410512">point() {x=0.0 ; y=0.0;} // Phương thức xây dựng mặc nhiên </para>
+        <para id="id19410521">point (float a, float b) {x=a; y=b;} // Phương thức xây dựng bình thường</para>
+        <para id="id19410532">point &amp; operator= (const point &amp; p ) // Định nghĩa toán tử gán</para>
+        <para id="id19410541">{</para>
+        <para id="id19410546">x = p.x; y = p.y; // Gán dữ liệu</para>
+        <para id="id19410556">return * this;</para>
+        <para id="id19410563">}</para>
+        <para id="id19410568">}; // term</para>
+        <para id="id19410574">Sự khác nhau cuối cùng của phép gán là ở cách thức tiến hành gán trị. Xét lệnh gán của Pascal "A := B", ở Pascal cũng như một số ngôn ngữ khác, điều này có nghĩa là: "Gán bản sao của giá trị của biến B cho biến A". Bây giờ ta lại xét lệnh gán "A = B" của SNOBOL4. Trong SNOBOL4 thì nó có nghĩa là: "Tạo một biến tên A tham chiếu tới ÐTDL mà B đã tham chiếu". Trong SNOBOL4 cả A và B cùng trỏ tới một ÐTDL.</para>
+        <para id="id19410593">Pascal A := B (Sao chép ÐTDL khi gán)</para>
+        <para id="id19410606">Trước Sau</para>
+        <figure id="id19410622">
+          <media id="id1169421853631" alt=""><image src="../../media/graphics1-1321.png" mime-type="image/png" height="85" width="255"/></media>
+        </figure>
+        <para id="id19410649">SNOBOL4 A = B (Sao chép sự trỏ đến ÐTDL khi gán)</para>
+        <para id="id19410664">
+          <figure id="id19410667">
+            <media id="id4854169" alt=""><image src="../../media/graphics2-9011.png" mime-type="image/png" height="124" width="496"/></media>
+          </figure>
+        </para>
+        <para id="id19410695">Cách thực hiện lệnh gán của SNOBOL4 rõ ràng là đã tạo ra một sự lắm tên.</para>
+      </section>
+      <section id="id-185719949447">
+        <title>Sự khởi tạo biến</title>
+        <para id="id19410711">Khởi tạo một biến là gán cho biến đó một giá trị đầu tiên.</para>
+        <para id="id19410718">Một biến khi được tạo ra thì sẽ được cấp phát ô nhớ nhưng nó vẫn chưa được khởi tạo. Khi nó được gán một giá trị đầu tiên thì mới được khởi tạo.</para>
+        <para id="id19410732">Các biến chưa được khởi tạo là nguồn gốc của các lỗi lập trình. Khi một biến được cấp phát ô nhớ mà chưa được khởi tạo thì trong ô nhớ của nó cũng có một giá trị ngẫu nhiên nào đó. Thường là một giá trị rác (Khi một ĐTDL nào trước đó đã bị hủy bỏ nhưng giá trị của ĐTDL này trong ô nhớ vẫn còn, giá trị này gọi là giá trị rác). Ðiều nguy hiểm là giá trị rác này vẫn là một giá trị hợp lệ. Vì thế chương trình có thể xử lý trên giá trị rác này một cách bình thường và chúng ta không thể kiểm sóat được kết quả xử lý đó. </para>
+        <para id="id19410761">Vì tính chất nghiêm trọng như đã nói trên của biến chưa được khởi tạo, các ngôn ngữ lập trình có thể sử dụng các giải pháp sau để khắc phục:</para>
+        <para id="id19410772">1.- Nếu biến chưa được khở tạo thì sẽ có giá trị NULL: Khi một biến mới được tạo ra, ô nhớ cấp phát cho nó phải chứa một dãy các bit biểu diễn cho một giá trị “NULL”. Tùy thuộc vào kiểu của biến mà giá trị NULL này sẽ có một giá trị cụ thể, ví dụ nếu là biến số thì NULL là 0, nếu là biến chuỗi kí tự thì NULL là chuỗi rỗng, nếu biến là logic thì NULL là FALSE...</para>
+        <para id="id19410795">2.- Khởi tạo biến ngay sau khi nó vừa được tạo ra là một cách lập trình tốt và trong một số ngôn ngữ mới đều cung cấp phương tiện để làm điều này một cách dễ dàng. Trong ngôn ngữ Pascal một biến được khởi tạo đồng thời với việc khai báo được gọi là biến có giá trị đầu hay còn gọi là hằng định kiểu.</para>
+        <para id="id19410838">Ví dụ:</para>
+        <para id="id19410843">const i:integer=10; </para>
+        <para id="id19410849">a: ARRAY[1..3,1..2] Of Integer = ((11, 12), (21, 22), (31, 32));</para>
+        <para id="id19410857">var j:integer;</para>
+        <para id="id19410862">begin</para>
+        <para id="id19410866">writeln(i); i:= i+1; writeln(i);</para>
+        <para id="id19410878">for i:=1 to 3 do begin</para>
+        <para id="id19410886">for j:=1 to 2 do write(a[i,j]:5);</para>
+        <para id="id19410893">writeln;</para>
+        <para id="id19410901">end; end.</para>
+      </section>
+    </section>
+    <section id="id-341194213837">
+      <title>CÂU HỎI ÔN TẬP</title>
+      <list id="id19410918" list-type="enumerated">
+        <item>Xét về mặt cấu trúc thì có các loại đối tượng dữ liệu nào?</item>
+        <item>Thế nào là một đối tượng dữ liệu sơ cấp?</item>
+        <item>Thế nào là một đối tượng dữ liệu có cấu trúc?</item>
+        <item>Đối tượng dữ liệu tường minh là gì?</item>
+        <item>Đối tượng dữ liệu ẩn là gì?</item>
+        <item>Kể tên các mối liên kết của đối tượng dữ liệu.</item>
+        <item>Thế nào là một biến?</item>
+        <item>Thế nào là một hằng?</item>
+        <item>Kiểu dữ liệu là gì?</item>
+        <item>Khi đặc tả một kiểu dữ liệu, chúng ta phải đặc tả những điều gì?</item>
+        <item>Cho ví dụ về một phép toán gây ra hiệu ứng lề.</item>
+        <item>Khi cài đặt một kiểu dữ liệu, chúng ta phải chỉ rõ những điều gì?</item>
+        <item>Mục đích của sự khai báo là gì?</item>
+        <item>Thế nào là kiểm tra kiểu?</item>
+        <item>Khi có sự không tương thích về kiểu thì chương trình dịch phải làm gì?</item>
+        <item>Kể tên các phương pháp kiểm tra kiểu.</item>
+        <item>Kiểm tra kiểu tĩnh được tiến hành trong lúc nào?</item>
+        <item>Kiểm tra kiểu động được tiến hành trong lúc nào?</item>
+        <item>Nêu các điểm mạnh của kiểm tra kiểu tĩnh.</item>
+        <item>Nêu các điểm yếu của kiểm tra kiểu tĩnh.</item>
+        <item>Nêu các điểm mạnh của kiểm tra kiểu động.</item>
+        <item>Nêu các điểm yếu của kiểm tra kiểu động.</item>
+        <item>Thông tin về kiểu trong kiểm tra kiểu tĩnh được lưu trữ ở đâu?</item>
+        <item>Thông tin về kiểu trong kiểm tra kiểu động được lưu trữ ở đâu?</item>
+        <item>Kiểm tra kiểu động được thực hiện trong ngôn ngữ nào?</item>
+        <item>Kiểm tra kiểu tĩnh được thực hiện trong ngôn ngữ nào?</item>
+        <item>Phép gán trị có trả về một kết quả không?</item>
+        <item>Thế nào là khởi tạo một biến?</item>
+        <item>Nếu trong một biểu thức có sử dụng một biến chưa được khởi tạo thì có thể đánh giá (định trị) được biểu thức đó không?</item>
+      </list>
+    </section>
+  </content>
+</document>

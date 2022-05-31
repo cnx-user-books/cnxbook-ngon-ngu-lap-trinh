@@ -1,0 +1,57 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Tổng quan</title>
+  <metadata>
+  <md:content-id>m30064</md:content-id><md:title>Tổng quan</md:title>
+  <md:abstract/>
+  <md:uuid>18f3f695-8756-4fb8-a7b9-d7892903f257</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-391995327488">
+      <title>MỤC ĐÍCH YÊU CẦU</title>
+      <para id="id19455548">Mục đích của môn học Ngôn ngữ lập trình là cung cấp cho sinh viên một khối lượng kiến thức tương đối hoàn chỉnh về nguyên lí của ngôn ngữ lập trình. Cùng với môn học Tin học lí thuyết, Ngôn ngữ lập trình sẽ là môn học tiên quyết để học môn Trình biên dịch. Sau khi học xong môn học này, sinh viên cần:</para>
+      <list id="id19455562" list-type="bulleted">
+        <item>Nắm được các khái niệm về đối tượng dữ liệu và kiểu dữ liệu. Các khía cạnh cần nghiên cứu khi đặc tả và cài đặt một kiểu dữ liệu. Vấn đề kiểm tra kiểu và chuyển đổi kiểu cũng cần được quan tâm.</item>
+        <item>Nắm được các kiểu dữ liệu sơ cấp và có cấu trúc. Với mỗi kiểu dữ liệu cần nắm định nghĩa, đặc tả và cách cài đặt kiểu dữ liệu.</item>
+        <item>Nắm được khái niệm trừu tượng hoá trong lập trình thể hiện trên hai khía cạnh là trừu tượng hoá dữ liệu bằng cách sử dụng các kiểu dữ liệu tự định nghĩa và trừu tượng hoá chương trình bằng cách chia chương trình thành các chương trình con. Vấn đề truyền tham số cho chương trình con cũng cần được lưu tâm.</item>
+        <item>Nắm được khái niệm điều khiển tuần tự, nguyên tắc điều khiển tuần tự trong biểu thức và giữa các câu lệnh.</item>
+      </list>
+    </section>
+    <section id="id-400548641685">
+      <title>ĐỐI TƯỢNG SỬ DỤNG</title>
+      <para id="id19455633">Môn học ngôn ngữ lập trình được dùng để giảng dạy cho các sinh viên năm thứ 4 chuyên ngành Tin học.</para>
+    </section>
+    <section id="id-39846597106">
+      <title>NỘI DUNG CỐT LÕI </title>
+      <para id="id19455656">Trong khuôn khổ 45 tiết, giáo trình được cấu trúc thành 9 chương</para>
+      <para id="id19455663">Chương 1: Mở đầu. Chương này trình bày khái niệm về ngôn ngữ lập trình, lợi ích của việc nghiên cứu ngôn ngữ lập trình và các tiêu chuẩn để đánh giá một ngôn ngữ lập trình tốt.</para>
+      <para id="id19455680">Chương 2: Kiểu dữ liệu. Chương này trình bày các khái niệm về đối tượng dữ liệu và kiểu dữ liệu; các phương pháp kiểm tra kiểu và chuyển đổi kiểu; Phép gán trị cho biến và sự khởi tạo biến. </para>
+      <para id="id19455697">Chương 3: Kiểu dữ liệu sơ cấp. Chương này trình bày khái niệm về kiểu dữ liệu sơ cấp, sự đặc tả và nguyên tắc cài đặt một kiểu dữ liệu sơ cấp nói chung. Phần chủ yếu của chương trình bày một số kiểu dữ liệu sơ cấp phổ biến như các kiểu số, kiểu miền con, kiểu liệt kê, kiểu kí tự và kiểu logic.</para>
+      <para id="id19455717">Chương 4: Kiểu dữ liệu có cấu trúc. Chương này trình bày khái niệm về kiểu dữ liệu có cấu trúc, sự đặc tả các thuộc tính, đặc tả phép toán, đặc biệt là phép toán lựa chọn một phần tử; các phương pháp lưu trữ một cấu trúc dữ liệu trong bộ nhớ và phương pháp lựa chọn phần tử. Nội dung chủ yếu của chương trình bày các cấu trúc cụ thể như mảng, mẩu tin, chuỗi ký tự, tập hợp…</para>
+      <para id="id19455742">Chương 5: Kiểu dữ liệu tự định nghĩa. Chương này trình bày về sự trừu tượng hoá, định nghĩa kiểu dữ liệu và sự tương đương của các kiểu dữ liệu được định nghã.</para>
+      <para id="id19455758">Chương 6: Chương trình con. Chương này trìn bày về sự định nghĩa và cơ chế gọi thực hiện chương trình con, các phương pháp truyền tham số cho chương trình con.</para>
+      <para id="id19455774">Chương 7: Điều khiển tuần tự. Chương này trình bày các loại điều khiển tuần tự và vấn đề xử lý ngoại lệ.</para>
+      <para id="id19455786">Chương 8: Lập trình hàm. Chương này trình bày khái niệm, bản chất của lập trình hàm và giới thiệu một ngôn ngữ lập trình hàm điển hình là LISP.</para>
+      <para id="id19455801">Chương 9: Lập trình logic. Chương này trình bày khái niệm, bản chất của lập trình logic và giới thiệu một ngôn ngữ lập trình hàm điển hình là PROLOG. </para>
+    </section>
+    <section id="id-190951486274">
+      <title>KIẾN THỨC TIÊN QUYẾT</title>
+      <para id="id19455828">Để học tốt môn học ngôn ngữ lập trình cần phải có các kiến thức và kĩ năng lập trình căn bản.</para>
+    </section>
+    <section id="id-376085352182">
+      <title>DANH MỤC TÀI LIỆU THAM KHẢO</title>
+      <para id="id19455846">[1] Terrence W. Pratt, Marvin V. Zelkowitz; Programming Languages: Design and Implementation; <link url="http://www.prenhall.com/">Prentice-Hall,</link> 2000.</para>
+      <para id="id19455881">[2] Doris Appleby, Julius J. VandeKopple; Programming Languages; McGraw-Hill; 1997.</para>
+      <para id="id19455906">[3] Ryan Stensifer; The Study of Programming Languages; Prentice Hall, 1995.</para>
+      <para id="id19455931">[4] Maryse CONDILLAC; Prolog fondements et applications; BORDAS, Paris 1986. </para>
+      <para id="id19455947">[5] Website về XLISP </para>
+      <para id="id19455952">
+        <link url="http://webmaker.web.cern.ch/WebMaker/examples/xlisp/www/cldoc_1.html">http://webmaker.web.cern.ch/WebMaker/examples/xlisp/www/cldoc_1.html</link>
+      </para>
+      <para id="id19343146">[6] Website về Turbo Prolog </para>
+      <para id="id19343152">
+        <link url="http://www.csupomona.edu/%7Ejrfisher/www/prolog_tutorial/contents.html">http://www.csupomona.edu/%7Ejrfisher/www/prolog_tutorial/contents.html</link>
+      </para>
+    </section>
+  </content>
+</document>

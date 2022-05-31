@@ -1,0 +1,319 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Điều khiển tuần tự</title>
+  <metadata>
+  <md:content-id>m29969</md:content-id><md:title>Điều khiển tuần tự</md:title>
+  <md:abstract/>
+  <md:uuid>beb621d7-fc4b-4d7c-a42c-012d8b9acc71</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-486990960424">
+      <title>TỔNG QUAN</title>
+      <section id="id-679013749406">
+        <title>Mục tiêu</title>
+        <para id="id19469755">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id20351460" list-type="bulleted">
+          <item>Khái niệm về điều khiển tuần tự.</item>
+          <item>Các thứ tự thực hiện chương trình trong biểu thức, trong câu lệnh..</item>
+          <item>Khái niệm về ngoại lệ, xử lý ngoại lệ.</item>
+        </list>
+      </section>
+      <section id="id-276262705524">
+        <title>Nội dung cốt lõi</title>
+        <list id="id20351084" list-type="bulleted">
+          <item>Điều khiển tuần tự trong biểu thức.</item>
+          <item>Điều khiển tuần tự trong câu lệnh.</item>
+          <item>Ngoại lệ và xử lý ngoại lệ.</item>
+        </list>
+      </section>
+      <section id="id-102215091404">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id18732946">Kiến thức về cấu trúc dữ liệu và kĩ năng lập trình căn bản</para>
+      </section>
+    </section>
+    <section id="id-661881800239">
+      <title>KHÁI NIỆM ÐIỀU KHIỂN TUẦN TỰ</title>
+      <para id="id19471088">Ðiều khiển tuần tự là tập hợp quy tắc xác định thứ tự thực hiện trong chương trình. </para>
+      <para id="id19471097">Xét về mặt cấu trúc thì có ba loại điều khiển:</para>
+      <list id="id20351212" list-type="bulleted">
+        <item>Ðiều khiển trong biểu thức.</item>
+        <item>Ðiều khiển giữa các lệnh.</item>
+        <item>Ðiều khiển giữa các chương trình con.</item>
+      </list>
+      <para id="id20351231">Xét về mặt thiết kế ngôn ngữ thì có hai loại điều khiển là:</para>
+      <list id="id18401603" list-type="bulleted">
+        <item>Ðiều khiển ẩn được thiết kế trong ngôn ngữ chẳng hạn quy tắc ưu tiên của các toán tử trong biểu thức.</item>
+      </list>
+      <list id="id18401614" list-type="bulleted">
+        <item>Ðiều khiển tường minh do người lập trình viết trong chương trình chẳng hạn sử dụng các câu lệnh điều khiển như rẽ nhánh, lặp lại ...</item>
+      </list>
+    </section>
+    <section id="id-988329257644">
+      <title>ÐIỀU KHIỂN TUẦN TỰ TRONG BIỂU THỨC</title>
+      <section id="id-283736582503">
+        <title>Ðặt vấn đề</title>
+        <para id="id19951662">Xét công thức nghiệm của phương trình bậc hai</para>
+        <figure id="id19951672">
+          <media id="id1163767886654" alt=""><image src="../../media/graphics1-9729.png" mime-type="image/png" height="50" width="140"/></media>
+        </figure>
+        <para id="id18833186">Công thức đơn giản này bao gồm ít nhất 15 phép toán khác nhau. Mã hoá trong hợp ngữ hoặc ngôn ngữ máy, có thể đòi hỏi ít nhất 15 lệnh. Hơn thế, người lập trình phải quy định bộ nhớ cho 5 đến 10 kết quả trung gian sẽ phát sinh. Người lập trình cũng sẽ phải quan tâm đến việc tối ưu như các phép toán sẽ được thực hiện theo thứ tự như thế nào để bộ nhớ tạm là nhỏ nhất ...</para>
+        <para id="id18833201">Trong ngôn ngữ cấp cao như FORTRAN, công thức này được viết như một biểu thức</para>
+        <para id="id17424754">x = (-b + SQRT(b**2 - 4*a*c))/(2*a)</para>
+        <para id="id17424759">Biểu thức là một phương tiện tự nhiên và mạnh mẽ cho việc biểu diễn dãy các phép toán, tuy vậy chúng nảy sinh các vấn đề mới chẳng hạn như thứ tự thực hiện các toán tử.</para>
+      </section>
+      <section id="id-405191752772">
+        <title>Sự biểu diễn theo cấu trúc cây của biểu thức</title>
+        <para id="id17424781">Cơ chế điều khiển tuần tự cơ bản trong biểu thức là phép lấy hàm hợp: Một phép toán chính và các toán hạng của nó. Trong đó các toán hạng có thể là các hằng, biến hoặc các phép toán khác mà các toán hạng của chúng lại có thể là các hằng, biến hoặc các phép toán khác... Như vậy có thể xem biểu thức là một cấu trúc cây, trong đó nút gốc của cây biểu diễn cho phép toán chính, các nút giữa gốc và lá biểu diễn cho các phép toán trung gian và các nút lá biểu diễn các biến và các hằng. Ví dụ biểu thức nghiệm phương trình bậc hai được biểu diễn theo cấu trúc cây như sau (dùng M để biểu diễn cho phép toán một ngôi lấy số đối):</para>
+        <para id="id17424786">Sự biểu diễn cây làm sáng sủa cấu trúc điều khiển của biểu thức. Rõ ràng là các kết quả của biến hoặc phép toán ở cấp thấp trong cây được coi như là toán hạng của phép toán ở cấp cao hơn và do đó chúng phải được thực hiện trước.</para>
+        <figure id="id19910690">
+          <media id="id1163767886766" alt=""><image src="../../media/graphics2-9b67.png" mime-type="image/png" height="465" width="563"/></media>
+        </figure>
+      </section>
+      <section id="id-568258630181">
+        <title>Cú pháp của biểu thức</title>
+        <para id="id19199637">Nếu chúng ta xem biểu thức được biểu diễn bởi cây thì để dùng biểu thức trong chương trình, cây phải được tuyến tính hóa chẳng hạn phải có quy định để viết cây như là một dãy tuyến tính các ký hiệu. Chúng ta hãy xem các ký hiệu phổ biến nhất:</para>
+        <section id="id-196533356586">
+          <title>Ký hiệu tiền tố (prefix)</title>
+          <para id="id19199659">Theo ký hiệu Prefix, phép toán viết trước, sau đó là các toán hạng theo thứ tự từ trái sang phải. Nếu một toán hạng lại là một phép toán thì cũng theo quy tắc tương tự. Có ba loại ký hiệu prèix là ordinary, Polish, và Cambridge Polish.</para>
+          <para id="id20351286">Ký hiệu ordinary prefix sử dụng các dấu ngoặc để bao quanh các toán hạng và dấu phẩy để phân biệt các toán hạng. Ví dụ cấu trúc cây trong hình trên sẽ trở thành:</para>
+          <para id="id19199671">/(+M(B),SQRT(-(^(B,),*(*(4,A),C)))),*(2,A)) </para>
+          <para id="id20351305">Một biến thể của ký hiệu này được dùng trong ngôn ngữ LISP đôi khi được gọi là Cambridge Polish. Theo ký hiệu Cambridge Polish thì các dấu ngoặc bên trái đứng sau một toán tử được chuyển ra trước toán tử đó và dấu phẩy ngăn cách các toán hạng bị xóa đi. Cấu trúc cây trên trở thành: (/(+(M B)(SQRT(-(^ B 2)(*(* 4 A)C)))) (* 2 A))</para>
+          <para id="id20351320">Biến thể thứ hai được gọi là ký hiệu Polish, cho phép bỏ hẳn các dấu ngoặc. Nếu chúng ta giả sử rằng số lượng các toán hạng của mỗi một phép toán là đã biết và cố định thì các dấu ngoặc là không cần thiết. Cấu trúc cây trên sẽ trở thành: / + M B SQRT - ^ B 2 * * 4 A C * 2 A </para>
+          <para id="id19199107">Bởi vì nhà toán học Ba lan Lukasiewiez đã phát minh ra ký hiệu không dấu ngoặc này nên thuật ngữ "Polish" được dùng cho ký hiệu này và các biến thể của nó.</para>
+          <para id="id19199117">Thực tế hiển nhiên là các biểu thức kiểu này rất khó giải. Trong thực tế, chúng ta không thể giải biểu thức dạng Polish. Các dạng ordinary prefix và Cambridge Polish đòi hỏi quá nhiều dấu ngoặc và dĩ nhiên là các ký hiệu này không gần gũi với những ký hiệu đã trở thành thói quen của chúng ta. Tuy nhiên ký hiệu ordinary prefix là một ký hiệu toán học chuẩn cho hầu hết các phép toán khác các phép toán số học và logic, chẳng hạn f(x,y,z) được viết theo ký hiệu prefix. Ðiều quan trọng hơn là ký hiệu prefix được dùng để biểu diễn một phép toán với số lượng toán hạng bất kỳ và do đó nói chung chỉ cần học một quy tắc để viết các biểu thức bất kỳ.</para>
+        </section>
+        <section id="id-755058766843">
+          <title>Ký hiệu hậu tố (postfix)</title>
+          <para id="id19199130">Ký hiệu postfix tương tự như ký hiệu Prefix ngoại trừ ký hiệu phép toán đứng sau danh sách các toán hạng. Ví dụ ((A,B)+,(C,A)-)* Hoặc A B + C A - *</para>
+          <para id="id20349858">Postfix không phải là sự biểu diễn phổ biến cho biểu thức trong ngôn ngữ lập trình nhưng nó có tầm quan trọng như là cơ sở của sự biểu diễn tại thời gian thực hiện của biểu thức.</para>
+        </section>
+        <section id="id-732304063226">
+          <title>Kí hiệu trung tố (infix)</title>
+          <para id="id20349879">Ký hiệu trung tố thích hợp với phép toán hai ngôi tức là phép toán có hai toán hạng. Trong ký hiệu trung tố, ký hiệu phép toán được viết giữa hai toán hạng. Vì ký hiệu trung tố dùng cho các phép tính số học cơ bản, phép toán quan hệ và các phép toán logic trong toán hoc thông thường nên nó cũng được chọn để dùng một cách rộng rãi trong ngôn ngữ lập trình cho các phép toán đó và trong một số trường hợp còn được mở rộng cho các phép toán khác. Mặc dù ký hiệu trung tố được dùng một cách phổ biến, nhưng việc dùng nó trong ngôn ngữ lập trình cũng gây ra một số vấn đề nhất định:</para>
+          <para id="id20349909">1/ Vì ký hiệu trung tố chỉ thích hợp đối với phép toán hai ngôi nên một ngôn ngữ không chỉ dùng ký hiệu trung tố mà còn kết hợp với ký hiệu Prexfix hoặc Postfix. Ðiều này làm cho việc dịch trở nên phức tạp hơn.</para>
+          <para id="id20349922">2/ Khi có nhiều hơn một toán tử trung tố xuất hiện trong một biểu thức thì có thể xẩy ra tình trạng mập mờ, nghĩa là một biểu thức có thể biểu diễn bằng nhiều cây biểu thức. Ví dụ biểu thức trung tố: A * B + C có thể được biểu diễn thành hai cây như sau:</para>
+          <figure id="id19380019">
+            <media id="id1163770876678" alt=""><image src="../../media/graphics3-9df8.png" mime-type="image/png" height="194" width="523"/></media>
+          </figure>
+          <para id="id19380042">Dấu ngoặc có thể được dùng để chia các toán tử và toán hạng thành các nhóm, như (A * B) + C hoặc A * (B + C), nhưng trong các biểu thức phức tạp thì các dấu ngoặc lồng nhiều lớp là một trở ngại lớn cho người lập trình. Vì lý do này các ngôn ngữ thường sử dụng quy tắc điều khiển ẩn mà việc dùng dấu ngoặc là không cần thiết. Hai quy tắc ẩn phổ biến là:</para>
+          <para id="id19380057">a/ Quy tắc ưu tiên trước: Các phép toán xuất hiện trong biểu thức được sắp xếp theo một thứ bậc hoặc một thứ tự ưu tiên trước. Trong một biểu thức có nhiều phép toán, thứ bậc theo quy tắc ẩn là phép toán nào có bậc ưu tiên cao hơn sẽ được thực hiện trước. Ví dụ trong biểu thức A * B + C, phép nhân ưu tiên trước phép cộng nên sẽ được thực hiện trước.</para>
+          <para id="id19380072">b/ Quy tắc kết hợp: Trong một biểu thức có nhiều phép toán cùng cấp theo thứ tự ưu tiên thì nguyên tắc kết hợp là cần thiết để hoàn thiện việc xác định thứ tự các phép toán. Ví dụ trong biểu thức: A - B - C thì phép toán trừ thứ nhất hay phép trừ thứ hai được thực hiện trước?. Kết hợp trái (thực hiện từ trái qua phải) là nguyên tắc phổ biến nhất cho các phép toán số học, do đó A - B - C được xử lý như (A - B) - C. Tuy nhiên, có một số phép toán lại đòi hỏi sự kết hợp phải, chẳng hạn phép gán trong ngôn ngữ C. Trong ngôn ngữ C ta có thể viết a = b = 10, và thứ tự thực hiện là gán 10 cho b trước, kết quả trả về của phép gán này là 10 sẽ được gán tiếp cho a.</para>
+        </section>
+      </section>
+      <section id="id-385044281749">
+        <title>Dịch biểu thức thành biểu diễn cây</title>
+        <para id="id19380116">Dịch một biểu thức từ sự biểu diễn cú pháp của nó trong văn bản chương trình thành dạng có thể thực hiện là một qúa trình hai giai đoạn. Trước hết biểu thức được dịch thành biểu diễn cây của nó và sau đó cây được dịch thành một dãy các lệnh có thể thực hiện được. Giai đoạn 1 thông thường chỉ liên quan tới sự thành lập cấu trúc điều khiển cây cơ bản của biểu thức, lợi dụng quy tắc ẩn về ưu tiên trước và kết hợp khi biểu thức dùng ký hiệu trung tố. Giai đoạn thứ hai có những quyết định cụ thể liên quan tới thủ tục của sự định giá (evalution) được tạo ra bao gồm cả sự tối ưu hóa quá trình định giá.</para>
+      </section>
+      <section id="id-697435061758">
+        <title>Biểu diễn trong thời gian thực hiện của biểu thức</title>
+        <para id="id19910358">Nhiều sự biểu diễn thời gian thực của biểu thức được dùng trong cài đặt ngôn ngữ. Sau đây là một số sự lựa chọn đươc dùng:</para>
+        <para id="id19910368">1/ Dãy mã máy. Kỹ thuật phổ biến nhất là dịch các biểu thức thành dạng mã máy. Thứ tự các lệnh phản ánh cấu trúc điều khiển tuần tự của biến thức ban đầu. Biễu diễn mã máy cho phép dùng trình thông dịch của phần cứng nên thực hiện rất nhanh.</para>
+        <para id="id19910382">2/ Cấu trúc cây. Biểu thức có thể được thực hiện một cách trực tiếp trong biểu diễn cấu trúc cây tự nhiên của chúng, sử dụng trình thông dịch mềm. Ðây là kỹ thuật cơ bản đươc dùng trong LISP nơi mà toàn bộ chương trình được biểu diễn như là một cấu trúc cây trong quá trình thực hiện.</para>
+        <para id="id19910397">3/ Dạng frefix hoặc Postfix. Biểu thức trong dạng prefix hoặc postfix có thể được thực hiện bằng giải thuật thông dịch mà nó quét biểu thức từ trái qua phải. Biểu diễn postfix có một lợi ích đặc biệt ở đây, là thứ tự của các ký hiệu trong biểu diễn postfix tương ứng với thứ tự trong đó các phép toán khác nhau phải được thực hiện. Biểu diễn prefix là dạng có thể thực hiện của chương trình trong SNOBOL4.</para>
+        <para id="id19910412">Các chiến lược định gia biểu thức sẽ được trình bày trong lý thuyết chương trình dịch.</para>
+      </section>
+    </section>
+    <section id="id-191901656704">
+      <title>ÐIỀU KHIỂN TUẦN TỰ GIỮA CÁC LỆNH</title>
+      <section id="id-887380110735">
+        <title>Các lệnh cơ bản</title>
+        <para id="id19910436">Lệnh cơ bản là lệnh mà trong đó không chứa các lệnh khác. Các lệnh cơ bản bao gồm lệnh gán, lời gọi chương trình con, các lệnh nhập, xuất, lệnh nhảy goto. Trong một lệnh cơ bản có thể chứa các biểu thức mà cấu trúc điều khiển đã được trình bày ở phần trên.</para>
+        <para id="id19910451">Các cấu trúc trong chương trình thường có là: hợp thành, lựa chọn và lặp lại. Các ngôn ngữ khác nhau cài đặt các cấu trúc này một cáh khác nhau.</para>
+      </section>
+      <section id="id-0184704343205">
+        <title>Điều khiển tuần tự dùng nhãn lệnh và lệnh GOTO</title>
+        <para id="id19910473">Cơ chế ban đầu của điều khiển tuần tự trong hầu hết các ngôn ngữ là ghi nhãn lệnh và chuyển điều khiển tới lệnh có nhãn từ chỗ này sang chỗ khác trong chương trình. Việc chuyển điều khiển thường được thực hiện bằng lệnh GOTO. Có hai dạng của lệnh GOTO là:</para>
+        <para id="id19910487">1/ GOTO không điều kiện. Trong một chuỗi các lệnh, một lệnh GOTO không điều kiện như GOTO NEXT chuyển điều khiển tới lệnh có nhãn là NEXT. Lệnh đứng sau GOTO sẽ không được thực hiện.</para>
+        <para id="id19910500">2/ GOTO có điều kiện. Trong một chuỗi lệnh, một lệnh GOTO có điều kiện như IF A = 0 then GOTO NEXT chuyển điều khiển tới lệnh có nhãn là NEXT chỉ khi điều kiện sau IF đúng.</para>
+        <para id="id19910514">Sử dụng hai dạng GOTO này, chúng ta dễ dàng biểu diễn các dạng điều khiển cơ bản như sau</para>
+        <table id="id19375304" summary="">
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <tbody>
+              <row>
+                <entry>Lệnh hợp thành</entry>
+                <entry>Lệnh lựa chọn</entry>
+                <entry>Lệnh lặp lại</entry>
+              </row>
+              <row>
+                <entry>S0</entry>
+                <entry>S0</entry>
+                <entry>S0</entry>
+              </row>
+              <row>
+                <entry>GOTO L1</entry>
+                <entry>IF A=0 THEN GOTO L1</entry>
+                <entry>L1: IF A=0 THEN GOTO L2</entry>
+              </row>
+              <row>
+                <entry>L2: S2</entry>
+                <entry>S1</entry>
+                <entry>S1</entry>
+              </row>
+              <row>
+                <entry>GOTO L3</entry>
+                <entry>GOTO L2</entry>
+                <entry>GOTO L1</entry>
+              </row>
+              <row>
+                <entry>L1: S1</entry>
+                <entry>L1: S2</entry>
+                <entry>L2: S2</entry>
+              </row>
+              <row>
+                <entry>GOTO L2</entry>
+                <entry>L2: S3</entry>
+                <entry/>
+              </row>
+              <row>
+                <entry>L3 : S3</entry>
+                <entry/>
+                <entry/>
+              </row>
+              <row>
+                <entry>Chuỗi lệnh thực hiện</entry>
+                <entry>Chuỗi lệnh thực hiện</entry>
+                <entry>Chuỗi lệnh thực hiện</entry>
+              </row>
+              <row>
+                <entry>S0 S1 S2 S3</entry>
+                <entry>S0 S1 S3</entry>
+                <entry>S0 S2</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry>Hoặc S0 S2 S3</entry>
+                <entry>Hoặc S0 S1 S2</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry/>
+                <entry>Hoặc S0 S1 S1 S2</entry>
+              </row>
+              <row>
+                <entry/>
+                <entry/>
+                <entry>Hoặc S0 S1 S1 S1 S2</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para id="id19377666">Lệnh GOTO có thuận tiện là dễ dùng, và có hiệu quả trong thực hiện vì nó phản ánh cấu trúc cơ bản của máy tính quy ước (conventional computers), trong đó mỗi một từ lệnh hoặc byte lệnh đều có địa chỉ, và trong phần cứng có các lệnh nhảy được xây dựng để chuyển điều kkhiển đến địa chỉ được chỉ định. Lệnh GOTO biểu thị một cấu trúc điều khiển tự nhiên để người lập trình chuyển ngôn ngữ cấp cao sang hợp ngữ. Hầu hết các ngôn ngữ cũ đều có cả lệnh GOTO cơ bản và nhiều dạng cải tiến đặt nền móng cho việc dùng nhãn như là dữ liệu. Trong các ngôn ngữ mới như Pascal điều khiển tuần tự trên cơ sở lệnh GOTO ít quan trong hơn mặc dù vẫn còn lệnh đó.</para>
+        <para id="id19377670">Trong một số ngôn ngữ mới, lệnh GOTO đã bị loại bỏ hoàn toàn. Vì sử dụng nhãn và lệnh GOTO thì chương trình trở nên rất khó đọc vì không có cấu trúc tổng thể và thứ tự các lệnh trong văn bản chương trình nguồn không tương ứng với thứ tự các lệnh khi thực hiện.</para>
+      </section>
+      <section id="id-963622154017">
+        <title>Các lệnh cấu trúc</title>
+        <para id="id19411757">Một lệnh có cấu trúc là một lệnh chứa các lệnh khác. Các lệnh thành phần của một lệnh có cấu trúc có thể là một lệnh cơ bản hoặc một lệnh có cấu trúc. Hầu hết ngôn ngữ cung cấp một tập hợp các lệnh có cấu trúc biểu thị các dạng điều khiển cơ bản ( hợp thành, lựa chọn và lặp lại) mà không cần dùng lệnh GOTO.</para>
+        <section id="id-101312981174">
+          <title>Lệnh hợp thành (Compound Statements)</title>
+          <para id="id19411783">Lệnh hợp thành là một chuỗi các lệnh được đặt vào trong một cặp ký hiệu thể hiện sự mở đầu và kết thúc của chuỗi đó. Chẳng hạn trong Pascal, lệnh hợp thành là chuỗi các lệnh được đặt trong cặp tữ khóa begin và end như sau:</para>
+          <para id="id19411797">Begin </para>
+          <para id="id19411802">Lệnh 1;</para>
+          <para id="id19411806">Lênh 2;</para>
+          <para id="id19411812">.......</para>
+          <para id="id19411818">Lệnh n</para>
+          <para id="id19411824">End </para>
+          <para id="id19411828">Cấu trúc lệnh hợp thành cho phép một tập hợp các lênh được trừu tượng hóa thành một lệnh đơn.</para>
+          <para id="id19411837">Lệnh hợp thành được cài đặt trong máy tính ảo bằng cách thiết lập một khối các mã lệnh có thể thực hiện được biểu diễn cho mỗi một lệnh của chuỗi lệnh trong bộ nhớ. Thứ tự mà chúng xuất hiện trong bộ nhớ xác định thứ tự trong đó chúng được thực hiện.</para>
+        </section>
+        <section id="id-398729683302">
+          <title>Lệnh điều kiện (Conditional Statements)</title>
+          <para id="id19411861">Lệnh điều kiện là một lệnh biểu thị sự lựa chọn của hai hoặc nhiều lệnh. Việc lưạ chọn được điều khiển bằng cách kiểm tra một số điều kiện thường được viết trong dạng biểu thức của các phép toán quan hệ và logic. Các lệnh điều kiện phổ biến là lệnh IF và lệnh CASE.</para>
+          <para id="id19411875">Lệnh IF được cụ thể hóa thành các dạng IF một nhánh, IF hai nhánh và IF đa nhánh.</para>
+          <para id="id19411885">Chọn thực hiện một lệnh được biểu thị là IF một nhánh: IF &lt;điều kiện&gt; THEN &lt;Lệnh&gt; ENDIF</para>
+          <para id="id19411896">Chọn một trong hai dùng IF hai nhánh: IF &lt;điều kiện&gt; THEN &lt;Lệnh1&gt; ELSE &lt;Lệnh2&gt; ENDIF</para>
+          <para id="id19411903">Chọn một trong nhiều dùng các IF nối tiếp nhau hoặc dùng IF đa nhánh:</para>
+          <para id="id19411911">IF &lt;điều kiện1&gt; THEN &lt;Lệnh1&gt;</para>
+          <para id="id19411919">ELSIF&lt;điều kiện2&gt; THEN &lt;Lệnh2&gt;</para>
+          <para id="id19411928">.</para>
+          <para id="id19411935">.</para>
+          <para id="id19411943">.</para>
+          <para id="id19411950">ELSIF &lt;điều kiệnN&gt; THEN &lt;LệnhN&gt;</para>
+          <para id="id19411959">ELSE &lt;LệnhN+1&gt; ENDIF</para>
+          <para id="id19411967">Lệnh CASE</para>
+          <para id="id19411972">Ðiều kiện trong lệnh If đa nhánh thường phải lặp lại việc kiểm tra giá trị của một biến, ví dụ:</para>
+          <para id="id19411978">IF TAG = 0 THEN </para>
+          <para id="id19411983">&lt;Lệnh 0&gt;</para>
+          <para id="id19378284">ELSIF TAG = 1 THEN</para>
+          <para id="id19378288">&lt;Lệnh 1&gt;</para>
+          <para id="id19378296">ELSIF TAG = 2 THEN</para>
+          <para id="id19378300">&lt;Lệnh 2&gt;</para>
+          <para id="id19378308">ELSE</para>
+          <para id="id19378313">&lt;Lệnh 3&gt;</para>
+          <para id="id19378321">ENDIF</para>
+          <para id="id19378325">Cấu trúc phổ biến này được biểu diễn một cách súc tích hơn bằng lệnh CASE</para>
+          <para id="id19378333">CASE TAG OF</para>
+          <para id="id19378338">0: &lt;Lệnh 0&gt;</para>
+          <para id="id19378346">1: &lt;Lệnh 1&gt;</para>
+          <para id="id19378354">2: &lt;Lệnh 2&gt;</para>
+          <para id="id19378362">OTHERS: &lt;Lệnh3&gt;</para>
+          <para id="id19378370">ENDCASE</para>
+          <para id="id19378374">Cài đặt lệnh điều kiện</para>
+          <para id="id19378380">Lệnh IF được cài đặt bằng cách dùng lệnh rẽ nhánh và lệnh nhảy có điều kiện hoặc không có điều kiện trong phần cứng. Kết quả tương tự như đã mô tả trong phần 7.3.2.</para>
+        </section>
+        <section id="id-216161287943">
+          <title>Lệnh lặp (Interation Statements)</title>
+          <para id="id19378401">Lặp lại đơn, kiểu đơn giản nhất của lệnh lặp xác định phần thân (của lệnh) được thực hiện một số cố định lần. Lệnh PERFORM của COBOL là một điển hình: PERFORM &lt;thân&gt; k TIMES </para>
+          <para id="id19378412">Lặp lại khi điều kiện đúng: WHILE &lt; test &gt; DO &lt;thân&gt;</para>
+          <para id="id19378418">Lặp lại trong khi tăng một sự đếm: FOR i:=1 STEP 2 UNTIL 30 DO &lt;thân&gt;</para>
+          <para id="id19378426">Lặp không xác định, trong đó điều kiện để thoát khỏi vòng lặp không đặt tại đầu vòng, như trong Ada: </para>
+          <para id="id19378435">LOOP</para>
+          <para id="id19378439">.......</para>
+          <para id="id19378445">EXIT WHEN &lt;điều kiện&gt;</para>
+          <para id="id19378451">........</para>
+          <para id="id19378456">END LOOP;</para>
+          <para id="id19378461">Hoặc trong Pascal sử dụng vòng lặp WHILE với điều kiện luôn luôn đúng: WHILE true DO BEGIN .... END;</para>
+          <para id="id19378470">Cài đặt các lệnh lặp dùng các chỉ thị rẽ nhánh/ nhảy của phần cứng.</para>
+        </section>
+      </section>
+    </section>
+    <section id="id-856373384765">
+      <title>SỰ NGOẠI LỆ VÀ XỬ LÝ NGOẠI LỆ</title>
+      <section id="id-671486998613">
+        <title>Một số khái niệm</title>
+        <para id="id19378496">Trong quá trình thực hiện chương trình thường xẩy ra một số sự kiện đặc biệt hoặc các lỗi như sự tràn số, truy xuất đến chỉ số mảng nằm ngoài tập chỉ số, thực hiện lệnh đọc một phần tử cuối tập tin... Các sự kiện đó được gọi là ngoại lệ (exception). Thay vì tiếp tục thực hiện chương trình bình thường, một chương trình con sẽ được gọi để thực hiện một vài xử lý đặc biệt nào đó gọi là xử lý ngoại lệ. Hành động chú ý đến ngoại lệ, ngắt sự thực hiện chương trình và chuyển điều khiển đến xử lý ngoại lệ được gọi là đề xuất ngoại lệ (raising the exception) </para>
+      </section>
+      <section id="id-495323067589">
+        <title>Xử lý ngoại lệ</title>
+        <para id="id19378543">Thông thường các ngoại lệ đã được định nghĩa trước bởi ngôn ngữ, chẳng hạn như ZERO_DIVIDE chỉ sự kiện chia cho một số không, END_OF_FILE: hết tập tin , OVERFLOW: tràn số, hay tràn stack ... Xử lý ngoại lệ là một hành vi xử lý tương ứng khi một ngoại lệ có thể diễn ra. Ví dụ</para>
+        <para id="id19378558">void example () {</para>
+        <para id="id19378562">......</para>
+        <para id="id19378567">average = sum/total;</para>
+        <para id="id19378571">...</para>
+        <para id="id19378576">return ;</para>
+        <para id="id19378582">when zero_divide {</para>
+        <para id="id19378588">average = 0;</para>
+        <para id="id19378594">printf(“ error: cannot compute average, total is zero\n”);</para>
+        <para id="id19378603">}</para>
+        <para id="id19378608">......</para>
+        <para id="id19378614">} /** function example **/</para>
+      </section>
+      <section id="id-437425598406">
+        <title>Ðề xuất một ngoại lệ</title>
+        <para id="id19378626">Một ngoại lệ có thể bị đề xuất bằng phép toán nguyên thuỷ được định nghĩa bởi ngôn ngữ chẳng hạn phép cộng, phép nhân có thể đề xuất ngoại lệ OVERFLOW. Ngoài ra, một ngoại lệ có thể bị đề xuất một cách tường minh bởi người lập trình bằng cách dùng một lệnh được cung cấp cho mục đích đó. Chẳng hạn trong Ada: raise BAD_DATA_VALUE;</para>
+        <para id="id19378640">Lệnh này có thể được thực hiện trong một chương trình con sau khi xác định một biến riêng hoặc tập tin nhập chứa giá trị không đúng.</para>
+      </section>
+      <section id="id-052507552926">
+        <title>Lan truyền một ngoại lệ (Propagating an exception)</title>
+        <para id="id19378660">Thông thường, khi xây dựng chương trình thì vị trí mà một ngoại lệ xuất hiện không phải là vị trí tốt nhất để xử lý nó. Khi một ngoại lệ được xử lý trong một chương trình con khác chứ không phải trong chương trình con mà nó được đề xuất thì ngoại lệ đó được gọi là được truyền (propagated) từ điểm mà tại đó nó được đề xuất đến điểm mà nó được xử lý.</para>
+        <para id="id19378675">Quy tắc để xác định việc xử lý một ngoại lệ đặc thù thường được gọi là chuỗi động (dynamic chain) của các kích hoạt chương trình con hướng tới chương trình con mà nó đề xuất ngoại lệ. Khi một ngoại lệ P được đề xuất trong chương trình con C, thì P được xử lý bởi một xử lý được định nghĩa trong C nếu có một cái xử lý như thế. Nếu không có thì C kết thúc. Nếu chương trình con B gọi C thì ngoại lệ được truyền đến B và một lần nữa được đề xuất tại điểm trong B nơi mà B gọi C. Nếu B không cung cấp một xử lý cho P thì B bị kết thúc và ngoại lệ lại được truyền tới chương trình gọi B vân vân... Nếu các chương trình con và bản thân chương trình chính không có xử lý cho P thì toàn bộ chương trình kết thúc và xử lý chuẩn được định nghĩa bởi ngôn ngữ sẽ được gọi tới.</para>
+        <para id="id19378710">Một hiệu quả quan trọng của quy tắc này đối với việc truyền các ngoại lệ là nó cho phép một chương trình con kế thừa (remain) như là một phép toán trừu tượng được định nghĩa bởi người lập trình ngay cả trong việc xử lý ngoại lệ. Một phép toán nguyên thuỷ có thể bất ngờ ngắt quá trình bình thường của nó và đề xuất một ngoại lệ. Tương tự, thông qua việc thực hiện lệnh RAISE, một chương trình con có thể bất ngờ ngắt quá trình bình thường của nó và đề xuất một ngoại lệ. Ðến chương trình gọi thì hiệu quả của đề xuất ngoại lệ của chương trình con cũng giống như hiệu quả đề xuất của phép toán nguyên thủy, nếu chương trình con tự nó không có một xử lý ngoại lệ. Nếu ngoại lệ được xử lý trong chương trình con thì chương trình con trở về một cách bình thường và chương trình gọi nó không bao giờ biết được rằng một ngoại lệ đã được đề xuất.</para>
+      </section>
+      <section id="id-0787446341469">
+        <title>Sau khi một ngoại lệ được xử lý</title>
+        <para id="id19378753">Sau khi một xử lý đã hoàn thành việc xử lý một ngoại lệ và xử lý đó đã kết thúc thì có một vấn đề đặt ra là quyền điều khiển được chuyển tới chỗ nào? Ðiều khiển nên được chuyển tới chỗ mà ngoại lệ được đề xuất? Ðiều khiển nên chuyển về lệnh trong chương trình con chứa xử lý nơi mà ngoại lệ được đề xuất sau khi được truyền tới? Chương trình con chứa xử lý tự kết thúc một cách bình thường và nó xuất hiện tại chương trình gọi như là không có gì xẩy ra. Ðây là những lựa chọn khi thiết kế ngôn ngữ.</para>
+      </section>
+    </section>
+    <section id="id-126712119712">
+      <title>CÂU HỎI ÔN TẬP</title>
+      <list id="id19492599" list-type="enumerated">
+        <item>Thế nào là điều khiển tuần tự?</item>
+        <item>Xét về mặt cấu trúc thì có những loại điều khiển tuần tự nào?</item>
+        <item>Xét về mặt thiết kế ngôn ngữ thì có những loại điều khiển tuần tự nào?</item>
+        <item>Trong biểu diễn trung tố một biểu thức, để khắc phục tình trạng một biểu thức có thể có nhiều cây biểu thức (tình trạng mập mờ), người ta thường sử dụng các quy tắc gì?</item>
+      </list>
+    </section>
+  </content>
+</document>

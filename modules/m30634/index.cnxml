@@ -1,0 +1,228 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Kiểu dữ liệu sơ cấp</title>
+  <metadata>
+  <md:content-id>m30634</md:content-id><md:title>Kiểu dữ liệu sơ cấp</md:title>
+  <md:abstract/>
+  <md:uuid>9b697a7c-a624-44e4-878f-d97c059d7930</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-440708587541">
+      <title>TỔNG QUAN</title>
+      <section id="id-302739729872">
+        <title>Mục tiêu</title>
+        <para id="id20315601">Sau khi học xong chương này, sinh viên cần phải nắm:</para>
+        <list id="id20315607" list-type="bulleted">
+          <item>Khái niệm về kiểu dữ liệu sơ cấp.</item>
+          <item>Đặc tả và phương pháp cài đặt kiểu dữ liệu sơ cấp trong các ngôn ngữ lập trình.</item>
+          <item>Một số kiểu dữ liệu sơ cấp cụ thể như: kiểu số, ký tự, logic…</item>
+        </list>
+      </section>
+      <section id="id-0535277807093">
+        <title>Nội dung cốt lõi</title>
+        <list id="id20315644" list-type="bulleted">
+          <item>Kiến thức tổng quan về kiểu dữ liệu sơ cấp.</item>
+          <item>Một vài kiểu dữ liệu sơ cấp: kiểu số, liệt kê, logic, ký tự.</item>
+        </list>
+      </section>
+      <section id="id-719665859415">
+        <title>Kiến thức cơ bản cần thiết</title>
+        <para id="id20315672">Kiến thức và kĩ năng lập trình căn bản, kiến thức chương 2.</para>
+      </section>
+    </section>
+    <section id="id-306865082726">
+      <title>ÐỊNH NGHĨA KIỂU DỮ LIỆU SƠ CẤP</title>
+      <para id="id20315687">Kiểu dữ liệu sơ cấp là một kiểu dữ liệu mà các ÐTDL của nó là các ÐTDL sơ cấp. </para>
+      <para id="id20315695">Nói chung các ngôn ngữ lập trình đều có các kiểu dữ liệu sơ cấp sau: số nguyên (integer, int…), số thực (real, float, double…), ký tự (char, character…), logic (bool, boolean…) và kiểu liệt kê.</para>
+    </section>
+    <section id="id-919411074301">
+      <title>SỰ ÐẶC TẢ CÁC KIỂU DỮ LIỆU SƠ CẤP</title>
+      <section id="id-594053804953">
+        <title>Thuộc tính của kiểu dữ liệu sơ cấp</title>
+        <para id="id20315747">Thuộc tính cơ bản nhất của bất kỳ một ÐTDL sơ cấp nào chính là kiểu dữ liệu của nó. Ðối với một số kiểu dữ liệu cụ thể thì có thể có thêm các thuộc tính bổ sung để đặc trưng cho kiểu đó.</para>
+      </section>
+      <section id="id-0013782527811">
+        <title>Giá trị của kiểu dữ liệu sơ cấp</title>
+        <para id="id20315769">Tập hợp các giá trị của một kiểu dữ liệu sơ cấp luôn là một tập hợp có thứ tự và có một giá trị nhỏ nhất và một giá trị lớn nhất. </para>
+        <para id="id20315796">Chính nhờ tính chất có thứ tự của tập giá trị sơ cấp nên trong thao tác sắp xếp dữ liệu, khóa sắp xếp thường thuộc kiểu dữ liệu sơ cấp.</para>
+        <para id="id20315806">Ví dụ kiểu dữ liệu integer là một tập hợp hữu hạn các số nguyên (dĩ nhiên là có thứ tự), từ một số nguyên nhỏ nhất đến một số nguyên lớn nhất. Số nguyên nhỏ nhất và số nguyên lớn nhất là các số nguyên tương ứng với các giá trị nguyên nhỏ nhất và lớn nhất có thể biểu diễn một cách thuận tiện trong bộ nhớ của máy tính.</para>
+      </section>
+      <section id="id-646541115925">
+        <title>Phép toán trên kiểu dữ liệu sơ cấp</title>
+        <para id="id20315837">Do tập giá trị sơ cấp có thứ tự, nên trong tất cả các kiểu dữ liệu sơ cấp đều có các phép toán quan hệ. Ngoài ra còn có các phép toán nhận vào một số đối số thuộc kiểu sơ cấp và trả về một giá trị sơ cấp cùng kiểu. Tuy nhiên cần hết sức lưu ý rằng tập các giá trị sơ cấp có giá trị nhỏ nhất và giá trị lớn nhất, cho nên đôi khi giá trị trả về của phép toán không nằm trong giới hạn của tập giá trị sơ cấp, điều này sẽ gây ra sự sai sót trong chương trình. </para>
+      </section>
+    </section>
+    <section id="id-0983409929968">
+      <title>CÀI ÐẶT CÁC KIỂU DỮ LIỆU SƠ CẤP</title>
+      <section id="id-442375199718">
+        <title>Tổ chức dữ liệu trong bộ nhớ</title>
+        <para id="id20315883">Người ta thường sử dụng việc tổ chức dữ liệu dưới phần cứng của máy tính để biểu diễn cho các giá trị dữ liệu của kiểu dữ liệu sơ cấp. </para>
+        <para id="id20315894">Lý do của việc lựa chọn này rất đơn giản: Nếu biểu diễn bộ nhớ của phần cứng được sử dụng thì các phép toán cơ bản trên dữ liệu của kiểu này có thể được thực hiện bởi các phép toán do phần cứng cung cấp. Mà các phép toán được thiết kế bởi phần cứng sẽ có tốc độ thực hiện nhanh. Ngược lại, nếu ta sử dụng sự biểu diễn bởi phần mềm thì phải sử dụng các phép toán mô phỏng bởi phần mềm mà tốc độ thực hiện sẽ chậm hơn.</para>
+        <para id="id20315914">Tuy nhiên, việc sử dụng biểu diễn bởi phần cứng cũng có yếu điểm là tập các giá trị sẽ bị hạn chế. </para>
+        <para id="id20315924">Ví dụ để biểu diễn một số nguyên trong bộ nhớ, ta có thể sử dụng hai phương pháp:</para>
+        <para id="id20315932">1.- Sử dụng cách biểu diễn một số nguyên của phần cứng, chẳng hạn sử dụng 16 bit để biểu diễn cho một số nguyên. Với phương pháp này thì ta có thể sử dụng luôn các phép tính số học trên số nguyên (+, -, *, DIV, MOD) đã được thiết kế cho phần cứng. Ưu điểm của phương pháp này là các phép tính số học có tốc độ thực hiện nhanh. Nhược điểm của phương pháp là tập giá trị các số nguyên chỉ có 65535 số (từ -32768 đến 32767).</para>
+        <para id="id20315947">2.- Sử dụng một cấu trúc dữ liệu nào đó để biểu diễn cho một số nguyên, chẳng hạn sử dụng một chuỗi kí tự, trong đó mỗi kí tự lưu trữ môt chữ số. Ưu điểm của phương pháp là tập các giá trị nguyên sẽ rất lớn (số các chữ số trong một nguyên có thể bằng chiều dài của chuỗi kí tự biểu diễn cho nó). Nhược điểm của phương pháp là chúng ta phải xây dựng các chương trình con để thực hiện các phép tính số học và dĩ nhiên tốc độ thực hiện của các chương trình con này sẽ chậm hơn các phép tính được xây dựng trong phần cứng. </para>
+        <para id="id20315978">Các thuộc tính (chủ yếu là kiểu dữ liệu) của ÐTDL sơ cấp được xử lý bằng 2 cách chính như sau:</para>
+        <para id="id20315987">1.- Các thuộc tính của ÐTDL có thể được xác định trong khi biên dịch bởi trình biên dịch. Các thuộc tính này sẽ được lưu trữ trong bộ dịch của ngôn ngữ (chẳng hạn bảng danh biểu) và khi cần sẽ tìm lại các thuộc tính này để sử dụng. Ðó là phương pháp thông dụng trong các ngôn ngữ biên dịch như FORTRAN, C và Pascal, nơi mà tính hiệu quả của việc sử dụng bộ nhớ và tốc độ thực hiện chương trình là những mục tiêu trên hết.</para>
+        <para id="id20316002">2.- Các thuộc tính có thể được lưu trữ trong bộ mô tả như là một phần của ÐTDL tại thời gian thực hiện. Ðây là phương pháp thông dụng trong các ngôn ngữ thông dịch như LISP và SNOBOL4, nơi mà tính linh hoạt mềm dẻo là mục tiêu trước hết chứ không phải là tính hiệu quả. </para>
+      </section>
+      <section id="id-882342650156">
+        <title>Cài đặt phép toán</title>
+        <para id="id20316025">Mỗi một phép toán thao tác trên các ÐTDL của một kiểu dữ liệu sơ cấp đã cho có thể được cài đặt bằng một trong 3 cách như sau:</para>
+        <para id="id20316035">1.- Như là một phép toán phần cứng trực tiếp, nếu sự biểu diễn bộ nhớ của ÐTDL là sự biểu diễn của phần cứng. Ví dụ nếu các số nguyên được lưu trữ bằng cách dùng biểu diễn phần cứng cho số nguyên thì các phép toán như phép cộng, trừ và các phép toán số học khác của số nguyên có thể được thực hiện bằng cách dùng các phép toán số học cho số nguyên đã được xây dựng trong phần cứng.</para>
+        <para id="id20316050">2.- Như là một thủ tục hoặc hàm thực hiện các phép toán. Ví dụ phép toán lấy căn bậc hai thông thường không được cung cấp một cách trực tiếp như là một phép toán trong phần cứng ngay cả khi các số được biểu diễn bằng sự biểu diễn của phần cứng và vì vậy nó được cài đặt như là một chương trình con tính căn bậc hai. Nếu các ÐTDL không được biểu diễn bằng sự biểu diễn xác định bởi phần cứng thì tất cả các phép toán phải được mô phỏng bởi phần mềm.</para>
+        <para id="id20316064">3.- Như là một chuỗi các dòng mã lệnh dùng để thực hiện phép toán như là một dãy các phép toán phần cứng. Ví dụ hàm lấy trị tuyệt đối của một số được định nghĩa là:</para>
+        <para id="id20316076">ABS(x) = 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="true">{</m:mo><m:mtable><m:mtr><m:mtd><m:mrow><m:mrow><m:mtext>x nêu x </m:mtext><m:mo stretchy="false">≥</m:mo><m:mtext> 0</m:mtext></m:mrow><m:mrow/></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mtext>- x nêu x </m:mtext><m:mo stretchy="false">&lt;</m:mo><m:mtext> 0 </m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ left lbrace  matrix {
+"x nêu x " &gt;= " 0" {} ##
+"- x nêu x "&lt;" 0 "
+}  right none } {}</m:annotation></m:semantics></m:math> thường được cài đặt như là một chuỗi các mã lệnh:</para>
+        <para id="id20316164">1.- Nhận giá trị x từ bộ nhớ</para>
+        <para id="id20316171">2.- Nếu x&gt;=0 thì bỏ qua chỉ thị kế tiếp</para>
+        <para id="id20316180">3.- Ðặt x = -x</para>
+        <para id="id20316186">4.- Lưu x vào bộ nhớ</para>
+        <para id="id20316194">Trong đó mỗi một dòng mã lệnh được thực hiện bởi một phép toán trong phần cứng.</para>
+      </section>
+    </section>
+    <section id="id-136034350509">
+      <title>KIỂU DỮ LIỆU SỐ</title>
+      <para id="id20316211">Hầu hết các ngôn ngữ lập trình đều có các kiểu dữ liệu số, nhưng các chi tiết của sự đặc tả và phép cài đặt các kiểu này có nhiều điểm khác nhau. Kiểu số nguyên và kiểu số thực là phổ biến nhất bởi vì chúng dựa một cách trực tiếp vào phần cứng của máy tính.</para>
+      <section id="id-727295085543">
+        <title>Số nguyên</title>
+        <section id="id-864836751751">
+          <title>Sự đặc tả </title>
+          <para id="id20316240">Đặc tả các thuộc tính: Một ÐTDL của kiểu số nguyên không có thuộc tính nào khác ngoài kiểu của nó. </para>
+          <para id="id20310364">Đặc tả giá trị: Tập hợp các giá trị nguyên được xác định theo dạng là một tập hợp con có thứ tự hữu hạn của tập vô hạn các số nguyên đã được nghiên cứu trong toán học. Giá trị nguyên lớn nhất đôi khi được biểu diễn như là một hằng xác định. Ví dụ trong Pascal là hằng MaxInt. Miền giá trị của kiểu số nguyên là tập các số nguyên từ -MaxInt đến MaxInt. Giá trị MaxInt được lựa chọn phản ánh giá trị nguyên lớn nhất có thể biểu diễn được trong phần cứng.</para>
+          <para id="id20310383">Ðặc tả các phép toán: Trên ÐTDL nguyên thường có các nhóm phép toán chính như sau:</para>
+          <para id="id20310394">1.- Các phép tính số học</para>
+          <para id="id20310399">Các phép tính số học hai ngôi thường được định nghĩa là: </para>
+          <para id="id20310406">Bin_Op: Integer x Integer -&gt; Integer.</para>
+          <para id="id20310418">Ở đây Bin_Op có thể là cộng (+), trừ (-), nhân (*), chia (/ hoặc DIV), lấy phần dư (MOD) hoặc một số phép toán tương tự khác.</para>
+          <para id="id20310426">Các phép tính số học một ngôi được định nghĩa: Unary_Op : Integer -&gt; Integer</para>
+          <para id="id20310433">Ở đây Unary_Op có thể là âm (-), dương (+).</para>
+          <para id="id20310438">Các phép toán số học phổ biến khác thường được chứa trong thư viện chương trình con.</para>
+          <para id="id20310447">2.- Các phép toán quan hệ </para>
+          <para id="id20310452">Các phép toán quan hệ được định nghĩa là: Rel_Op : Integer x Integer -&gt; Boolean</para>
+          <para id="id20310459">Ở đây Rel_Op có thể là bằng, khác, nhỏ hơn, lớn hơn, nhỏ hơn hoặc bằng, lớn hơn hoặc bằng. Phép toán quan hệ so sánh hai giá trị dữ liệu đối số và trả về kết quả là một đối tượng dữ liệu logic (đúng hoặc sai).</para>
+          <para id="id20310472">3.- Gán trị </para>
+          <para id="id20310477">Cũng như phép gán tổng quát, phép gán của số nguyên có thể trả về (với định nghĩa: Assignment : Intger x Integer -&gt; Integer) hoặc không trả về một giá trị (với đinh nghĩa: Assignment : Integer x Intger -&gt; Void) .</para>
+        </section>
+        <section id="id-355853247811">
+          <title>Sự cài đặt </title>
+          <para id="id20310508">Kiểu dữ liệu nguyên hầu hết được cài đặt một cách trực tiếp bằng cách dùng sự biểu diễn bộ nhớ được xác định bởi phần cứng và tập hợp các phép tính số học, các phép toán quan hệ nguyên thuỷ trong phần cứng cho các số nguyên. Thông thường sự biểu diễn này sử dụng một từ trong bộ nhớ hoặc một dãy các bytes để lưu trữ một số nguyên. Chẳng hạn ngôn ngữ Pascal đã sử dụng biểu diễn số nguyên bởi 1 từ (word) trong phần cứng của máy tính để biểu diễn cho một số integer.</para>
+        </section>
+      </section>
+      <section id="id-358616404634">
+        <title>Miền con của số nguyên </title>
+        <section id="id-444522349218">
+          <title>Sự đặc tả </title>
+          <para id="id20310548">Kiểu miền con của kiểu dữ liệu nguyên là một kiểu dữ liệu mà tập các giá trị của nó là một dãy các giá trị nguyên trong một khoảng giới hạn đã định.</para>
+          <para id="id20310566">Các dạng khai báo sau thường được sử dụng:</para>
+          <para id="id20310573">A : 1..10 (Pascal) </para>
+          <para id="id20310578">A : Integer Range 1..10 (Ada)</para>
+          <para id="id20310582">Như vậy về thuộc tính, kiểu miền con của kiểu số nguyên, có thuộc tính của kiểu số nguyên. Về giá trị, tập các giá trị của kiểu miền con được xác định rõ trong phép khai báo và cuối cùng, kiểu miền con cho phép sử dụng tập hợp phép toán như trong kiểu số nguyên bình thường. </para>
+        </section>
+        <section id="id-939783907918">
+          <title>Sự cài đặt</title>
+          <para id="id20310606">Kiểu miền con được cài đặt tương tự như cài đặt kiểu số nguyên.</para>
+        </section>
+        <section id="id-85134015884">
+          <title>Lợi ích của việc sử dụng kiểu miền con</title>
+          <para id="id20310622">Kiểu miền con có một ưu điểm nổi bật đó là kiểm tra kiểu tốt hơn kiểu số nguyên. Việc khai báo một biến kiểu miền con cho phép kiểm tra kiểu một cách nghiêm ngặt hơn khi thực hiện lệnh gán trị cho biến. Ví dụ để lưu trữ các tháng trong một năm ta có thể sử dung biến MONTH với khai báo kiểu miền con là MONTH: 1..12 thì lệnh gán MONTH := 0 là không hợp lệ và lỗi đó được tự động tìm thấy khi biên dịch. Nhưng nếu MONTH được khai báo là Integer thì lệnh gán trên là hợp lệ và lỗi chỉ có thể được tìm ra bởi người lập trình trong quá trình chạy thử.</para>
+        </section>
+      </section>
+      <section id="id-58930255484">
+        <title>Số thực dấu chấm động</title>
+        <section id="id-220576731546">
+          <title>Sự đặc tả </title>
+          <para id="id20310672">Tập hợp các giá trị thực dấu chấm động được xác định là một dãy số có thứ tự từ một số âm nhỏ nhất tới một số lớn nhất được xác định trong phần cứng của máy tính, nhưng các giá trị không được phân bố rời rạc đều trong giới hạn này.</para>
+          <para id="id20310692">Các phép tính số học, các phép toán quan hệ, phép gán đối với số thực cũng giống như đối với số nguyên. Một số phép toán khác cũng được các ngôn ngữ trang bị như là các hàm, chẳng hạn:</para>
+          <para id="id20310704">SIN : Real -&gt; Real (Hàm SIN)</para>
+          <para id="id20310714">COS : Real -&gt; Real (Hàm COSIN) </para>
+          <para id="id20310726">SQRT: Real -&gt; Real (Hàm lấy căn bậc hai)</para>
+          <para id="id20310736">MAX : Real x Real -&gt; Real (Hàm lấy giá trị lớn nhất)</para>
+        </section>
+        <section id="id-171511542232">
+          <title>Sự cài đặt </title>
+          <para id="id20310751">Sự biểu diễn bộ nhớ cho kiểu dữ liệu thực dấu chấm động dựa trên cơ sở biểu diễn phần cứng trong đó một ô nhớ được chia thành một phần định trị (mantissa) và một số mũ (exponent).</para>
+          <para id="id20310768">Các phép tính số học và các phép toán quan hệ trên kiểu số thực được hỗ trợ bởi phần cứng. Các phép toán khác phải được ngôn ngữ cài đặt như là các chương trình con. </para>
+        </section>
+      </section>
+    </section>
+    <section id="id-762617650114">
+      <title>KIỂU LIỆT KÊ </title>
+      <section id="id-90076010393">
+        <title>Đặt vấn đề</title>
+        <para id="id20310798">Trong lập trình, có một điều phổ biến là một biến có thể lấy một hoặc một số nhỏ các giá trị. Chẳng hạn biến NGAY_TRONG_TUAN chỉ lấy 7 giá trị biểu diễn cho “chủ nhât”, “thứ hai”, “thứ ba”,...”thứ bảy”. Tương tự biến GIOI_TINH chỉ có hai giá trị biểu diễn là "nam" và "nữ". Trong các ngôn ngữ như FORTRAN hay COBOL một biến như vậy phải có kiểu số nguyên và các giá trị được biểu diễn bởi các số nguyên chẳng hạn "chủ nhật" được biểu diễn bởi số 1, "thứ hai" được biểu diễn bởi số 2,... "nam" được biểu diễn bởi số 0 và "nữ" được biểu diễn bởi số 1.</para>
+        <para id="id20310828">Chương trình sử dụng các giá trị này như là các số nguyên và người lập trình phải nhớ sự tương ứng giữa các giá trị nguyên với "nghĩa" của chúng trong ứng dụng. Quả thực đây là một điều bất tiện và dễ gây ra sai sót.</para>
+        <para id="id20310842">Nhiều ngôn ngữ mới như Pascal hay Ada cho phép người lập trình tự đặt ra một kiểu dữ liệu bằng cách liệt kê ra một danh sách các giá trị của kiểu đó. Kiểu này gọi là kiểu liệt kê.</para>
+      </section>
+      <section id="id-858617554063">
+        <title>Sự đặc tả</title>
+        <para id="id20310865">Người lập trình định nghĩa kiểu liệt kê bằng cách liệt kê ra một danh sách các tên trực kiện thông qua sự khai báo. Các tên trực kiện trong danh sách là các giá trị của kiểu và thứ tự của chúng cũng được xác định nhờ thứ tự chúng xuất hiện trong danh sách. Chẳng hạn, ta có khai báo biến trong Pascal:</para>
+        <para id="id20310885">VAR </para>
+        <para id="id20310891">NGAY_TRONG_TUAN : (Chu_nhat, Hai, Ba, Tu, Nam, Sau, Bay);</para>
+        <para id="id20310896">Vì có nhiều biến có cùng một kiểu liệt kê được dùng trong một chương trình nên người ta thường định nghĩa một liệt kê như là một kiểu có tên, sau đó sử dụng nó để xác định kiểu cho nhiều biến như trong Pascal:</para>
+        <para id="id20310910">TYPE</para>
+        <para id="id20310915">NGAY = (Chu_nhat, Hai, Ba, Tu, Nam, Sau, Bay);</para>
+        <para id="id20310920">sau đó khai báo biến:</para>
+        <para id="id20310925">VAR</para>
+        <para id="id20310929">NGAY_TRONG_TUAN, NGAY_LAM_VIEC: NGAY; </para>
+        <para id="id20310933">Trong sự khai báo trên, các tên trực kiện như Chu_nhat, Hai, Ba,… chính là các giá trị của kiểu và các giá trị này được sắp thứ tự như chúng đã được ghi ra, tức là Chu_nhat &lt; Hai &lt; Ba &lt; … &lt; Bay.</para>
+        <para id="id20310948">Chú ý rằng kiểu NGAY đã được định nghĩa thì có thể được dùng như một tên kiểu nguyên thuỷ (Integer chẳng hạn) và các hằng trực kiện như Chu_nhat, Hai, Ba, Tu,.. cũng được sử dụng như là các hằng trực kiện nguyên thuỷ (chẳng hạn "27"). Vì thế ta có thể viết: </para>
+        <para id="id20310964">IF NGAY_TRONG_TUAN = Hai THEN ...</para>
+        <para id="id20310971">Các phép toán cơ bản trong kiểu liệt kê là các phép toán quan hệ (bằng, nhỏ hơn, lớn hơn...), phép gán trị, phép toán cho giá trị đứng sau và giá trị đứng trước một giá trị trong dãy các hằng trực kiện của liệt kê.</para>
+      </section>
+      <section id="id-910318397226">
+        <title>Sự cài đặt</title>
+        <para id="id20310993">Biểu diễn bộ nhớ cho một ÐTDL kiểu liệt kê thường là không phức tạp. Mỗi giá trị trong liệt kê được biểu diễn bằng một số nguyên 0, 1, 2,... Ví dụ kiểu NGAY ở trên chỉ cần sử dụng 7 giá trị từ 0 đến 6, trong đó 0 biểu diễn cho Chu_nhat, 1 biểu diễn cho Hai, 2 biểu diễn cho Ba,...</para>
+        <para id="id20311008">Sự cài đặt các phép toán cơ bản cũng không phức tạp. Các phép quan hệ được cài đặt bằng cách sử dụng các phép toán quan hệ dưới phần cứng cho số nguyên như "=", "&lt;", "&gt;",... Phép toán lấy giá trị đứng sau một giá trị được cài đặt bằng cách lấy số nguyên biểu diễn cho giá trị đó cộng thêm 1 và có sự kiểm tra để thấy được kết quả không vượt quá giới hạn cho phép. Chẳng hạn để xác định giá trị sau Hai, ta lấy 1 (biểu diễn cho Hai) cộng với 1 được 2, mà 2 biểu diễn cho Ba, nên sau Hai là Ba, nhưng sau Bay thì không có giá trị nào vì tổng của 6 (biểu diễn cho Bay) với 1 được 7, vượt quá giới hạn cho phép của kiểu. Tương tự cho phép toán lấy giá trị đứng trước của một giá trị. </para>
+      </section>
+      <section id="id-82641704091">
+        <title>Lợi ích của việc sử dụng kiểu liệt kê</title>
+        <para id="id20311046">Kiểu liệt kê được đưa vào trong ngôn ngữ lập trình nhằm để giải quyết vấn đề được nêu ra trong phần đặt vấn đề. Từ đó ta có thể thấy rõ việc sử dụng kiểu liệt kê làm cho chương trình sáng sủa, trực quan, người lập trình không còn phải nhớ “nghĩa” của giá trị số và do vậy chương trình sẽ có độ chính xác cao hơn. Nói cách khác, kiểu liệt kê làm tăng tính dễ đọc, tính dễ viết và độ tin cậy của ngôn ngữ. </para>
+      </section>
+    </section>
+    <section id="id-685865959959">
+      <title>KIỂU LOGIC</title>
+      <para id="id20311070">Kiểu logic (bool, boolean hoặc logical) là kiểu dữ liệu phổ biến trong hầu hết các ngôn ngữ.</para>
+      <section id="id-405753488358">
+        <title>Sự đặc tả</title>
+        <para id="id20311097">Kiểu dữ liệu logic gồm các ÐTDL có một trong hai giá trị đúng hoặc sai. Trong Pascal và Ada, kiểu dữ liệu logic được xem một cách đơn giản như là một liệt kê được định nghĩa bởi ngôn ngữ. BOOLEAN = (FALSE, TRUE) trong đó xác định các tên "FALSE" và "TRUE" cho các giá trị của kiểu và xác định thứ tự FALSE &lt; TRUE. Các phép toán phổ biến trên kiểu logic gồm có:</para>
+        <para id="id20311112">AND: Boolean X Boolean -&gt; Boolean</para>
+        <para id="id20311118">OR: Boolean X Boolean -&gt; Boolean</para>
+        <para id="id20311124">NOT: Boolean -&gt; Boolean</para>
+      </section>
+      <section id="id-144716332426">
+        <title>Phép cài đặt</title>
+        <para id="id20311140">Chỉ cần một bit của bộ nhớ để lưu trữ một đố tượng dữ liệu logic. Tuy nhiên vì các bit đơn có thể không có địa chỉ riêng trong bộ nhớ nên ta phải sử dụng một đơn vị nhớ có địa chỉ như là byte hoặc word do đó các giá trị FALSE và TRUE có thể được biểu diễn bằng hai cách khác nhau:</para>
+        <para id="id20311158">1.- Bit đặc trưng (thông thường là bit dấu của sự biểu diễn số) với 0 biểu diễn cho FALSE và 1 biểu diễn cho TRUE, các bits còn lại trong byte hoặc word sẽ bị bỏ qua.</para>
+        <para id="id20311175">2.- Sử dụng toàn bộ đơn vị nhớ để ghi giá trị zero (tất cả các bit đề bằng 0) biểu diễn cho FALSE còn giá trị khác zero biểu diễn cho TRUE.</para>
+      </section>
+    </section>
+    <section id="id-499260066828">
+      <title>KIỂU KÝ TỰ</title>
+      <para id="id20311201">Hầu hết dữ liệu xuất và nhập đều có dạng ký tự và có sự chuyển đổi sang dạng dữ liệu khác trong quá trình nhập xuất. Chẳng hạn khi ta nhập một chữ số (hoặc một chuỗi chữ số) từ bàn phím vào một biến số trong chương trình thì đã có một sự chuyển đổi chữ số (chuỗi chữ số) thành số. Hay khi ta ghi một số ra máy in hoặc ra một tập tin văn bản thì đã có một sự chuyển đổi từ số thành chữ số (chuỗi chữ số). Tuy nhiên việc xử lý một số dữ liệu trực tiếp dưới dạng ký tự cũng cần thiết trong một số ứng dụng nào đó, chẳng hạn trong xử lý văn bản. Dữ liệu chuỗi ký tự có thể được cung cấp một cách trực tiếp thông qua kiểu chuỗi ký tự (như trong SNOBOL4, PL/1 và các ngôn ngữ mới khác) hoặc thông qua kiểu ký tự và chuỗi ký tự được xem như là một mảng các ký tự (như trong APL, Pascal và Ada. Chú ý Turbo Pascal đã có kiểu chuỗi ký tự).</para>
+      <section id="id-15208305263">
+        <title>Sự đặc tả</title>
+        <para id="id20311243">Kiểu ký tự là một liệt kê được định nghĩa bởi ngôn ngữ tương ứng với một tập hợp ký tự chuẩn được cho bởi phần cứng và hệ điều hành như tập các ký tự ASCII chẳng hạn. </para>
+        <para id="id20311255">Các phép toán trên dữ liệu ký tự bao gồm: các phép toán quan hệ, phép gán, và đôi khi có phép kiểm tra xem một ký tự có thuộc một lớp đặc biệt "chữ cái", "chữ số" hoặc lớp ký tự xác định nào đó.</para>
+      </section>
+      <section id="id-435444776875">
+        <title>Phép cài đặt</title>
+        <para id="id20311277">Các giá trị dữ liệu hầu như luôn được cài đặt một cách trực tiếp bởi phần cứng và hệ điều hành. Do đó các phép toán quan hệ cũng được biểu diễn một cách trực tiếp bởi phần cứng.</para>
+      </section>
+    </section>
+    <section id="id-946457122256">
+      <title>CÂU HỎI ÔN TẬP</title>
+      <list id="id20311299" list-type="enumerated">
+        <item>Nêu định nghĩa kiểu dữ liệu sơ cấp.</item>
+        <item>Tập các giá trị của một kiểu sơ cấp có đặc điểm gì?</item>
+        <item>Có phải các ngôn ngữ lập trình thường sử dụng biểu diễn trong phần cứng để biểu diễn cho kiểu số nguyên?</item>
+        <item>Ðể cài đặt các phép toán số học trên kiểu dữ liệu số nguyên, có phải người ta phải thiết lập các chương trình con trong ngôn ngữ?</item>
+        <item>Tại sao người ta lại sử dụng kiểu liệt kê?</item>
+        <item>Tại sao người ta lại sử dụng kiểu miền con?</item>
+      </list>
+    </section>
+  </content>
+</document>
